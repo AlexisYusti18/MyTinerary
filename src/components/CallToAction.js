@@ -4,11 +4,9 @@ import Box from '@mui/material/Box';
 
 function CalltoAction(){
     return(
-        <Box className="fondo-calltoaction">
-            <h2 className="">¿Aun no has viajado a la ciudad de tus sueños? ¡Encuentra tu destino perfecto ahora mismo!</h2>
-        </Box>
-    
-
+       <div>
+            <button className='callToAction'>Choose your next destination, now</button>
+       </div>
     );
 }
 export default CalltoAction

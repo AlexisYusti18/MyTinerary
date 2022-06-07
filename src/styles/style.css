@@ -2,9 +2,13 @@
     padding: 0%;
     margin: 0%;
     box-sizing: border-box;
-    font-family: 'Baloo Thambi 2', cursive !important;
+    font-family: 'Inter', sans-serif !important;
 }
-@import url('https://fonts.googleapis.com/css2?family=Baloo+Thambi+2:wght@500&display=swap');
+/* TODA LA PAG */
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Thambi+2:wght@400;500&family=Inter&family=Shadows+Into+Light&display=swap'); 
+/* LOGO */
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Thambi+2:wght@400;500&family=Shadows+Into+Light&display=swap');
+
 
 .MuiButton-root{
     color: black !important;
@@ -16,7 +20,8 @@
     font-size: 1.3rem !important;
 }
 .logo{
-    height: 30vh;
+    margin-top: 6rem;
+    height: 24vh;
 }
 .usuario-noregistrado{
     height: 3rem;
@@ -27,19 +32,78 @@
 .fondo{
     min-width: 100% !important;
     height: 90vh !important;
-    background-image: url(../assets/paisaje.jpg);
+    background-image: url(../assets/fondo4.jpg);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
 }
-.titulo{
-    color: #F2EBE9;
+.subtitulo{
+    color:white;
+    font-size: 4vh;
 }
+.titulo{
+    font-size: 7vh;
+    color:#492c36;
+    font-family: 'Shadows Into Light', cursive !important;
 
+}
 .fondo-calltoaction{
-    background-image: url(../assets/fondo-call.jpg);
+   background-color: white;
     background-size: cover;
     background-position: center;
     min-height: 40vh;
 
 }
+.menu-color{
+    color: black !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* BOTON */
+/* From uiverse.io by @adamgiebl */
+.callToAction{
+    --green: #39fd1b;
+    font-size: 15px;
+    padding: 0.7em 2.7em;
+    letter-spacing: 0.06em;
+    position: relative;
+    font-family: inherit;
+    border-radius: 0.6em;
+    overflow: hidden;
+    transition: all 0.3s;
+    line-height: 1.4em;
+    border: 2px solid var(--green);
+    background: linear-gradient(to right, rgba(27, 253, 156, 0.1) 1%, transparent 40%,transparent 60% , rgba(27, 253, 156, 0.1) 100%);
+    color: var(--green);
+    box-shadow: inset 0 0 10px rgba(27, 253, 156, 0.4), 0 0 9px 3px rgba(27, 253, 156, 0.1);
+   }
+   
+   .callToAction:hover {
+    color: #82ffc9;
+    box-shadow: inset 0 0 10px rgba(27, 253, 156, 0.6), 0 0 9px 3px rgba(27, 253, 156, 0.2);
+   }
+   
+   .callToAction:before {
+    content: "";
+    position: absolute;
+    left: -4em;
+    width: 4em;
+    height: 100%;
+    top: 0;
+    transition: transform .4s ease-in-out;
+    background: linear-gradient(to right, transparent 1%, rgba(27, 253, 156, 0.1) 40%,rgba(27, 253, 156, 0.1) 60% , transparent 100%);
+   }
+   
+   .callToAction:hover:before {
+    transform: translateX(15em);
+   }
