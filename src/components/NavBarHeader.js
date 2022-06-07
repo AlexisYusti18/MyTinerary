@@ -20,7 +20,7 @@ const ResponsiveAppBar = () => {
   };
   
   return (
-    <AppBar position="static" sx={{backgroundColor:"#F2EBE9"}} className='nose'>
+    <AppBar position="static" sx={{backgroundColor:"#F6FBF4"}} className='nose'>
       <Container maxWidth="xl">
         <Toolbar className='nose'>
             <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>

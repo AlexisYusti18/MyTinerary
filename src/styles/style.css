@@ -16,7 +16,7 @@
     font-size: 1.3rem !important;
 }
 .logo{
-    height: 4rem;
+    height: 30vh;
 }
 .usuario-noregistrado{
     height: 3rem;
@@ -25,10 +25,21 @@
     background-color: white;
 }
 .fondo{
-    width: 100% !important;
+    min-width: 100% !important;
     height: 90vh !important;
     background-image: url(../assets/paisaje.jpg);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+}
+.titulo{
+    color: #F2EBE9;
+}
+
+.fondo-calltoaction{
+    background-image: url(../assets/fondo-call.jpg);
+    background-size: cover;
+    background-position: center;
+    min-height: 40vh;
+
 }
