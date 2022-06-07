@@ -1,0 +1,34 @@
+*{
+    padding: 0%;
+    margin: 0%;
+    box-sizing: border-box;
+    font-family: 'Baloo Thambi 2', cursive !important;
+}
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Thambi+2:wght@500&display=swap');
+
+.MuiButton-root{
+    color: black !important;
+    font-size: 1.3rem !important;
+}
+.MuiList-root{
+    background-color: #F2EBE9 !important;
+    color: black !important;
+    font-size: 1.3rem !important;
+}
+.logo{
+    height: 4rem;
+}
+.usuario-noregistrado{
+    height: 3rem;
+    border: 2px solid black;
+    border-radius: 50%;
+    background-color: white;
+}
+.fondo{
+    width: 100% !important;
+    height: 90vh !important;
+    background-image: url(../assets/paisaje.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
