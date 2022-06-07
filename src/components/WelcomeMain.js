@@ -10,6 +10,7 @@ function Welcome(){
              <img className="logo" src={logo} alt='logo'/>
              <h1 className="titulo">MyTinerarie</h1>
              <h2 className="subtitulo">Find your perfect trip, designed by insiders who know and love their cities!</h2>
+             
         </Box>
     )
 }

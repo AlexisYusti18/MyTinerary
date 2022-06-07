@@ -2,7 +2,7 @@ import './styles/App.css';
 import NavBarHeader from './components/NavBarHeader';
 import WelcomeMain from './components/WelcomeMain';
 import CalltoAction from './components/CallToAction';
-import Carrousel from './components/Carrousel';
+import Carousel from './components/Carousel';
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
       <NavBarHeader/>
       <WelcomeMain/>
       <CalltoAction/>
-      <Carrousel/>
+      <Carousel/>
     </div>
   );
 }

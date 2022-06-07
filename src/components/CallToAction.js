@@ -1,12 +1,12 @@
 import React from "react";
 import '../styles/style.css'
-import Box from '@mui/material/Box';
+//import Box from '@mui/material/Box';
 
 function CalltoAction(){
     return(
-       <div>
+        <div className='fondo-call'>
             <button className='callToAction'>Choose your next destination, now</button>
-       </div>
+        </div>
     );
 }
 export default CalltoAction

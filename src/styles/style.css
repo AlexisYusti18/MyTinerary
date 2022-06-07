@@ -9,19 +9,16 @@
 /* LOGO */
 @import url('https://fonts.googleapis.com/css2?family=Baloo+Thambi+2:wght@400;500&family=Shadows+Into+Light&display=swap');
 
-
+/* NAVBAR HEADER */
 .MuiButton-root{
-    color: black !important;
+    color: white !important;
     font-size: 1.3rem !important;
 }
 .MuiList-root{
-    background-color: #F2EBE9 !important;
-    color: black !important;
+    background-color: #b5bcc4 !important;
+    color: white !important;
     font-size: 1.3rem !important;
-}
-.logo{
-    margin-top: 6rem;
-    height: 24vh;
+    opacity: 75% !important;
 }
 .usuario-noregistrado{
     height: 3rem;
@@ -29,17 +26,20 @@
     border-radius: 50%;
     background-color: white;
 }
+
+/* WelcomeMain */
+.logo{
+    margin-top: 6rem;
+    height: 24vh;
+}
+
 .fondo{
     min-width: 100% !important;
-    height: 90vh !important;
+    height: 100vh !important;
     background-image: url(../assets/fondo4.jpg);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-}
-.subtitulo{
-    color:white;
-    font-size: 4vh;
 }
 .titulo{
     font-size: 7vh;
@@ -47,63 +47,64 @@
     font-family: 'Shadows Into Light', cursive !important;
 
 }
-.fondo-calltoaction{
-   background-color: white;
-    background-size: cover;
-    background-position: center;
-    min-height: 40vh;
-
+.subtitulo{
+    color:white;
+    font-size: 4vh;
+    opacity: 90%;
 }
 .menu-color{
     color: black !important;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-/* BOTON */
-/* From uiverse.io by @adamgiebl */
-.callToAction{
-    --green: #39fd1b;
-    font-size: 15px;
-    padding: 0.7em 2.7em;
-    letter-spacing: 0.06em;
+/* CallToAction - boton*/
+.fondo-call{
+    background-color: white;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 40vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+button.callToAction {
+    margin: 12px 12px 12px 12px ;
+    padding: 0.8em 1.8em;
+    border: 2px solid #9f8b7b;
     position: relative;
-    font-family: inherit;
-    border-radius: 0.6em;
     overflow: hidden;
-    transition: all 0.3s;
-    line-height: 1.4em;
-    border: 2px solid var(--green);
-    background: linear-gradient(to right, rgba(27, 253, 156, 0.1) 1%, transparent 40%,transparent 60% , rgba(27, 253, 156, 0.1) 100%);
-    color: var(--green);
-    box-shadow: inset 0 0 10px rgba(27, 253, 156, 0.4), 0 0 9px 3px rgba(27, 253, 156, 0.1);
-   }
-   
-   .callToAction:hover {
-    color: #82ffc9;
-    box-shadow: inset 0 0 10px rgba(27, 253, 156, 0.6), 0 0 9px 3px rgba(27, 253, 156, 0.2);
-   }
-   
-   .callToAction:before {
-    content: "";
+    background-color: #9f8b7b;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 17px;
+    transition: .3s;
+    z-index: 1;
+    font-family: 'Inter', sans-serif;
+    color: black;
+}
+button.callToAction::before {
+    content: '';
+    width: 0;
+    height: 300%;
     position: absolute;
-    left: -4em;
-    width: 4em;
-    height: 100%;
-    top: 0;
-    transition: transform .4s ease-in-out;
-    background: linear-gradient(to right, transparent 1%, rgba(27, 253, 156, 0.1) 40%,rgba(27, 253, 156, 0.1) 60% , transparent 100%);
-   }
-   
-   .callToAction:hover:before {
-    transform: translateX(15em);
-   }
+    top: 50%;
+    left: 50%;
+    transform: translate(-80%, -40%) rotate(45deg);
+    background-color: #cf7126;
+    transition: .5s ease;
+    display: block;
+    z-index: -1;
+}
+button.callToAction:hover::before {
+         width: 60%;
+}
+button.callToAction:hover {
+    color: white;
+    background-color: #492c36;
+}
+
+/* CARROUSEL */
+.carousel-ctn{
+    background-color: blue;
+}
+/* FOOTER */
