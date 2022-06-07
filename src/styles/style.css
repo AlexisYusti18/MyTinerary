@@ -105,6 +105,20 @@ button.callToAction:hover {
 
 /* CARROUSEL */
 .carousel-ctn{
-    background-color: blue;
+    min-height: 50vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-color: blanchedalmond;
 }
+.bqyzQp{
+    margin-top: 5rem;
+}
+.img-carousel{
+    height: 40vh;
+    width: 70vh;
+}
+
+
 /* FOOTER */

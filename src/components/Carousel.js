@@ -1,5 +1,6 @@
 import React from 'react';
 import Carousel from 'react-grid-carousel';
+//import '../components/Data'
 
 
 const cities=[
@@ -28,8 +29,8 @@ const cities=[
       image:"https://images.unsplash.com/photo-1526997237335-45a11b46ecb3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1075&q=80"
   },
   {
-      name:"Copenhagen, Denmark",
-      image:"Palih boraca, Višegrad, Bosnia"
+      name:"Porto, Portugal",
+      image:"https://images.unsplash.com/photo-1569959220744-ff553533f492?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1164&q=80"
   },
   {
       name:"Island Visovac, Croatia",
@@ -52,60 +53,48 @@ const cities=[
       image:"https://images.unsplash.com/photo-1594069758873-e79e9075eb7d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
   }
 ];
-console.log(cities);
+//console.log(cities);
 
 function CarouselItem(){
+    //data.map()
+    
+    return (
+      <Carousel loop mobileBreakpoint={300}
+      
+        responsiveLayout={[
+          {
+              breakpoint: 1920,
+              cols: 2,
+              rows: 2,
+              gap: 10,
+              loop: true,   
+            },
+          {
+            breakpoint: 400,
+            cols: 1,
+            rows: 4,
+            gap: 5,
+            loop: true, 
+          },
+          {
+              breakpoint: 480,
+              cols: 1,
+              rows: 2,
+              gap: 10,
+              loop: true, 
+            },
+        ]}>
+        
+        {cities && cities.map(citys=>
+          <Carousel.Item>
+          <img className='img-carousel' src={citys.image} alt={citys.name}/>
+          <h1>{citys.name}</h1>         
+        </Carousel.Item>
 
-
-
-
-
-
-
-
-
-
-  return (
-    <div className='carousel-ctn'>
-      <Carousel cols={2} rows={2} gap={10} loop>
-      <Carousel.Item>
-        <img width="50%" src="https://picsum.photos/800/600?random=1" alt='imagen'/>
-      </Carousel.Item>
-      <Carousel.Item>
-        <img width="50%" src="https://picsum.photos/800/600?random=2" alt='imagen'/>
-      </Carousel.Item>
-      <Carousel.Item>
-        <img width="50%" src="https://picsum.photos/800/600?random=3" alt='imagen'/>
-      </Carousel.Item>
-      <Carousel.Item>
-        <img width="50%" src="https://picsum.photos/800/600?random=3" alt='imagen'/>
-      </Carousel.Item>
-      <Carousel.Item>
-        <img width="50%" src="https://picsum.photos/800/600?random=3" alt='imagen'/>
-      </Carousel.Item>
-      <Carousel.Item>
-        <img width="50%" src="https://picsum.photos/800/600?random=3" alt='imagen'/>
-      </Carousel.Item>
-      <Carousel.Item>
-        <img width="50%" src="https://picsum.photos/800/600?random=3" alt='imagen'/>
-      </Carousel.Item>
-      <Carousel.Item>
-        <img width="50%" src="https://picsum.photos/800/600?random=3" alt='imagen'/>
-      </Carousel.Item>
-      <Carousel.Item>
-        <img width="50%" src="https://picsum.photos/800/600?random=3" alt='imagen'/>
-      </Carousel.Item>
-      <Carousel.Item>
-        <img width="50%" src="https://picsum.photos/800/600?random=3" alt='imagen'/>
-      </Carousel.Item>
-      <Carousel.Item>
-        <img width="50%" src="https://picsum.photos/800/600?random=3" alt='imagen'/>
-      </Carousel.Item>
-      <Carousel.Item>
-        <img width="50%" src="https://picsum.photos/800/600?random=3" alt='imagen'/>
-      </Carousel.Item>
-    </Carousel>
-    </div>
-  )
+        )}
+      </Carousel>
+    )
+    
 }
 export default CarouselItem;
+//cuando cities sea true
