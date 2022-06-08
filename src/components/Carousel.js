@@ -13,11 +13,11 @@ const cities=[
       image:"https://images.unsplash.com/photo-1595190588814-ae94398addf7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80"
   },
   {
-      name:"Pas de la Casa, Andorra",
+      name:"Pas Casa, Andorra",
       image:"https://images.unsplash.com/photo-1586508577371-677932dfae8b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1110&q=80"
   },
   {
-      name:"Hallstatt, Austria",
+      name:"Hallstat, Austria",
       image:"https://images.unsplash.com/photo-1597086831879-756db15e81d3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80"
   },
   {
@@ -25,7 +25,7 @@ const cities=[
       image:"https://images.unsplash.com/photo-1567031538362-ee02eefeb68d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
   },
   {
-      name:"Palih boraca, Bosnia",
+      name:"Palih, Bosnia",
       image:"https://images.unsplash.com/photo-1526997237335-45a11b46ecb3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1075&q=80"
   },
   {
@@ -33,7 +33,7 @@ const cities=[
       image:"https://images.unsplash.com/photo-1569959220744-ff553533f492?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1164&q=80"
   },
   {
-      name:"Island Visovac, Croatia",
+      name:"Visovac, Croatia",
       image:"https://images.unsplash.com/photo-1554585343-acd99e31977b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
   },
   {
@@ -59,8 +59,9 @@ function CarouselItem(){
     //data.map()
     
     return (
-     
-        <Carousel loop mobileBreakpoint={300}
+      <div className='carousel-ctn'>
+        <h3 className='title-carousel'>Popular MyTineraries</h3>
+          <Carousel loop mobileBreakpoint={300}
       
       responsiveLayout={[
         { 
@@ -69,7 +70,7 @@ function CarouselItem(){
             rows: 2,
             gap: 2,
             loop: true,  
-            autoplay:2000 
+            autoplay:2000
           },
         {
           breakpoint: 1200,
@@ -89,24 +90,27 @@ function CarouselItem(){
         },
         
         {
-            breakpoint: 480,
-            cols: 2,
-            rows: 2,
+            breakpoint: 510,
+            cols: 1,
+            rows: 4,
             gap: 10,
             loop: true,
             autoplay:2000  
           },
       ]}>
-      
       {cities && cities.map(citys=>
-      <Carousel.Item>
-        <h1>{citys.name}</h1>   
-        <img className='img-carousel' src={citys.image} alt={citys.name}/>
-      </Carousel.Item>
+          <Carousel.Item>
+            <div className='carouselItem-ctn'>
+                <p className='title-cities'>{citys.name}</p>   
+                <img className='img-carousel' src={citys.image} alt={citys.name}/>
+            </div>
+          </Carousel.Item>
 
       )}
     </Carousel>
 
+      </div>
+        
   
     )
     

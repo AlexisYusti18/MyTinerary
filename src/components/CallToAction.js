@@ -5,6 +5,7 @@ import '../styles/style.css'
 function CalltoAction(){
     return(
         <div className='fondo-call'>
+            <h3 className="title-callToAction">Haven't you visited the city of your dreams yet?</h3>
             <button className='callToAction'>Choose your next destination, now</button>
         </div>
     );

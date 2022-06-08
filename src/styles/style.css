@@ -58,14 +58,16 @@
 
 /* CallToAction - boton*/
 .fondo-call{
-    background-color: blue;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    
     min-height: 40vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+.title-callToAction{
+    color: white;
+    font-size: 40px;
 }
 button.callToAction {
     margin: 12px 12px 12px 12px ;
@@ -106,14 +108,36 @@ button.callToAction:hover {
 /* CARROUSEL */
 .carousel-ctn{
     min-height: 40vh;
+    background-color:#b5bcc4;
+    background-image: url('https://images.unsplash.com/photo-1488085061387-422e29b40080?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1631&q=80');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
 }
-.bqyzQp{
-    margin-top: 5rem;
+.title-carousel{
+    padding: 2rem;
+    font-size: 40px;
+    color:#492c36;
+    font-family: 'Shadows Into Light', cursive !important;
+}       
+.carouselItem-ctn{
+     margin-top: 2rem;
 }
 .img-carousel{
     height: 35vh;
     width: 90vh;
-} 
+}
+.img-carousel:hover{
+    border: 3px solid white;
+}
+.title-cities{
+    transform: translateY(3.5rem);
+    color: white;
+    font-weight: 600;
+    opacity: 90%;
+    font-size: 25px;
+}
 
 
 @media screen and (max-width:1520px) {
@@ -134,7 +158,30 @@ button.callToAction:hover {
         width: 40vh;
     }
 }
-
+@media screen and (max-width:715px){
+    .img-carousel{
+        height: 20vh;
+        width: 30vh;
+    }
+}
+@media screen and (max-width:550px){
+    .img-carousel{
+        height: 25vh;
+        width: 29vh;
+    }
+}
+@media screen and (max-width:510px){
+    .img-carousel{
+        height: 40vh;
+        width: 40vh;
+    }
+}
+@media screen and (max-width:370px){
+    .img-carousel{
+        height: 30vh;
+        width: 35vh;
+    }
+}
 
 
 /* FOOTER */
