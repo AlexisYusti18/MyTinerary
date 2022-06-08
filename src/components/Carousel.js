@@ -5,7 +5,7 @@ import Carousel from 'react-grid-carousel';
 
 const cities=[
   {
-      name:"Rothenburg ob der Tauber, Germany",
+      name:"Rothenburg, Germany",
       image:"https://images.unsplash.com/photo-1467269204594-9661b134dd2b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
   },
   {
@@ -21,7 +21,7 @@ const cities=[
       image:"https://images.unsplash.com/photo-1597086831879-756db15e81d3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80"
   },
   {
-      name:"Cinquentenaire, Brussels, Belgium",
+      name:"Brussels, Belgium",
       image:"https://images.unsplash.com/photo-1567031538362-ee02eefeb68d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
   },
   {
@@ -59,40 +59,55 @@ function CarouselItem(){
     //data.map()
     
     return (
-      <Carousel loop mobileBreakpoint={300}
+     
+        <Carousel loop mobileBreakpoint={300}
       
-        responsiveLayout={[
-          {
-              breakpoint: 1920,
-              cols: 2,
-              rows: 2,
-              gap: 10,
-              loop: true,   
-            },
-          {
-            breakpoint: 400,
-            cols: 1,
-            rows: 4,
-            gap: 5,
-            loop: true, 
+      responsiveLayout={[
+        { 
+          breakpoint: 1920,
+            cols: 2,
+            rows: 2,
+            gap: 2,
+            loop: true,  
+            autoplay:2000 
           },
-          {
-              breakpoint: 480,
-              cols: 1,
-              rows: 2,
-              gap: 10,
-              loop: true, 
-            },
-        ]}>
+        {
+          breakpoint: 1200,
+          cols: 2,
+          rows: 2,
+          gap: 5,
+          loop: true,
+          autoplay:2000  
+        },
+        {
+          breakpoint: 1520,
+          cols: 2,
+          rows: 2,
+          gap: 5,
+          loop: true,
+          autoplay:2000  
+        },
         
-        {cities && cities.map(citys=>
-          <Carousel.Item>
-          <img className='img-carousel' src={citys.image} alt={citys.name}/>
-          <h1>{citys.name}</h1>         
-        </Carousel.Item>
+        {
+            breakpoint: 480,
+            cols: 2,
+            rows: 2,
+            gap: 10,
+            loop: true,
+            autoplay:2000  
+          },
+      ]}>
+      
+      {cities && cities.map(citys=>
+      <Carousel.Item>
+        <h1>{citys.name}</h1>   
+        <img className='img-carousel' src={citys.image} alt={citys.name}/>
+      </Carousel.Item>
 
-        )}
-      </Carousel>
+      )}
+    </Carousel>
+
+  
     )
     
 }

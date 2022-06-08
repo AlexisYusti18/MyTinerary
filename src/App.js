@@ -10,7 +10,9 @@ function App() {
       <NavBarHeader/>
       <WelcomeMain/>
       <CalltoAction/>
-      <Carousel/>
+      <div className='carousel-ctn'>
+          <Carousel/>
+      </div>
      
     </div>
   );

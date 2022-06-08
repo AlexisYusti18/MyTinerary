@@ -58,7 +58,7 @@
 
 /* CallToAction - boton*/
 .fondo-call{
-    background-color: white;
+    background-color: blue;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -105,20 +105,36 @@ button.callToAction:hover {
 
 /* CARROUSEL */
 .carousel-ctn{
-    min-height: 50vh;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    background-color: blanchedalmond;
+    min-height: 40vh;
 }
 .bqyzQp{
     margin-top: 5rem;
 }
 .img-carousel{
-    height: 40vh;
-    width: 70vh;
+    height: 35vh;
+    width: 90vh;
+} 
+
+
+@media screen and (max-width:1520px) {
+    .img-carousel{
+        height: 30vh;
+        width: 70vh;
+    }
 }
+@media screen and (max-width:1430px) {
+    .img-carousel{
+        height: 30vh;
+        width: 50vh;
+    }
+}
+@media screen and (max-width:870px) {
+    .img-carousel{
+        height: 30vh;
+        width: 40vh;
+    }
+}
+
 
 
 /* FOOTER */
