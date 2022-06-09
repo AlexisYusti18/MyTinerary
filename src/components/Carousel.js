@@ -1,5 +1,6 @@
 import React from 'react';
 import Carousel from 'react-grid-carousel';
+import '../styles/Style.css'
 //import '../components/Data'
 
 
@@ -13,7 +14,7 @@ const cities=[
       image:"https://images.unsplash.com/photo-1595190588814-ae94398addf7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80"
   },
   {
-      name:"Pas Casa, Andorra",
+      name:"Andorra",
       image:"https://images.unsplash.com/photo-1586508577371-677932dfae8b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1110&q=80"
   },
   {
@@ -49,8 +50,8 @@ const cities=[
       image:"https://images.unsplash.com/photo-1555993539-1732b0258235?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
   },
   {
-      name:"Grimentz, Switzerland",
-      image:"https://images.unsplash.com/photo-1594069758873-e79e9075eb7d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+      name:"Italy, Rome",
+      image:"https://img.freepik.com/foto-gratis/coliseo-roma-italia-noche_31965-4991.jpg?w=2000"
   }
 ];
 //console.log(cities);
@@ -68,25 +69,22 @@ function CarouselItem(){
           breakpoint: 1920,
             cols: 2,
             rows: 2,
-            gap: 2,
-            loop: true,  
-            autoplay:2000
+            gap: 2, 
+            autoplay:9000
           },
         {
           breakpoint: 1200,
           cols: 2,
           rows: 2,
           gap: 5,
-          loop: true,
-          autoplay:2000  
+          autoplay:9000 
         },
         {
           breakpoint: 1520,
           cols: 2,
           rows: 2,
           gap: 5,
-          loop: true,
-          autoplay:2000  
+          autoplay:9000 
         },
         
         {
@@ -94,12 +92,11 @@ function CarouselItem(){
             cols: 1,
             rows: 4,
             gap: 10,
-            loop: true,
-            autoplay:2000  
+            autoplay:9000 
           },
       ]}>
       {cities && cities.map(citys=>
-          <Carousel.Item>
+          <Carousel.Item key="index">
             <div className='carouselItem-ctn'>
                 <p className='title-cities'>{citys.name}</p>   
                 <img className='img-carousel' src={citys.image} alt={citys.name}/>
@@ -110,8 +107,6 @@ function CarouselItem(){
     </Carousel>
 
       </div>
-        
-  
     )
     
 }

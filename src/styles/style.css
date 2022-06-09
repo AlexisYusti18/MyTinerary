@@ -8,6 +8,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Baloo+Thambi+2:wght@400;500&family=Inter&family=Shadows+Into+Light&display=swap'); 
 /* LOGO */
 @import url('https://fonts.googleapis.com/css2?family=Baloo+Thambi+2:wght@400;500&family=Shadows+Into+Light&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Thambi+2:wght@400;500&family=Inter&family=Shadows+Into+Light&display=swap');
 
 /* NAVBAR HEADER */
 .MuiButton-root{
@@ -36,16 +37,16 @@
 .fondo{
     min-width: 100% !important;
     height: 100vh !important;
-    background-image: url(../assets/fondo4.jpg);
+    background-image: url(../assets/background.jpg);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
 }
 .titulo{
-    font-size: 7vh;
+    text-shadow: 2px 2px white, 2px 2px white;
+    font-size: 60px;
     color:#492c36;
-    font-family: 'Shadows Into Light', cursive !important;
-
+    font-family: 'Inter', sans-serif !important;
 }
 .subtitulo{
     color:white;
@@ -58,7 +59,6 @@
 
 /* CallToAction - boton*/
 .fondo-call{
-    
     min-height: 40vh;
     display: flex;
     flex-direction: column;
@@ -66,23 +66,28 @@
     justify-content: center;
 }
 .title-callToAction{
-    color: white;
-    font-size: 40px;
+    color: #492c36 !important;
+    font-size: 40px !important;
+}
+.css-ahj2mt-MuiTypography-root{
+    text-decoration: none !important;
 }
 button.callToAction {
-    margin: 12px 12px 12px 12px ;
-    padding: 0.8em 1.8em;
-    border: 2px solid #9f8b7b;
-    position: relative;
-    overflow: hidden;
-    background-color: #9f8b7b;
-    text-align: center;
-    text-transform: uppercase;
-    font-size: 17px;
-    transition: .3s;
-    z-index: 1;
-    font-family: 'Inter', sans-serif;
-    color: black;
+    margin: 25px 12px 12px 12px !important;;
+    padding: 0.8em 1.8em !important;;
+    border: 2px solid white !important;;
+    position: relative !important;;
+    overflow: hidden !important;;
+    background-color: #cf7126!important;;
+    text-align: center !important;;
+    text-transform: uppercase !important;;
+    font-size: 17px !important;;
+    transition: .3s !important;;
+    box-shadow: 0px 0px 15px 15px #492c36 !important;;
+    z-index: 1 !important;;
+    font-family: 'Inter', sans-serif !important;;
+    color: black !important;;
+    text-decoration: none !important;
 }
 button.callToAction::before {
     content: '';
@@ -92,7 +97,7 @@ button.callToAction::before {
     top: 50%;
     left: 50%;
     transform: translate(-80%, -40%) rotate(45deg);
-    background-color: #cf7126;
+    background-color: #492c36;
     transition: .5s ease;
     display: block;
     z-index: -1;
@@ -108,8 +113,7 @@ button.callToAction:hover {
 /* CARROUSEL */
 .carousel-ctn{
     min-height: 40vh;
-    background-color:#b5bcc4;
-    background-image: url('https://images.unsplash.com/photo-1488085061387-422e29b40080?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1631&q=80');
+    background-color:#1b1b1d;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -118,27 +122,36 @@ button.callToAction:hover {
 .title-carousel{
     padding: 2rem;
     font-size: 40px;
-    color:#492c36;
+    color:#cf7126;
     font-family: 'Shadows Into Light', cursive !important;
 }       
 .carouselItem-ctn{
      margin-top: 2rem;
-}
-.img-carousel{
-    height: 35vh;
-    width: 90vh;
-}
-.img-carousel:hover{
-    border: 3px solid white;
+     margin-bottom: 2rem;
 }
 .title-cities{
     transform: translateY(3.5rem);
     color: white;
     font-weight: 600;
     opacity: 90%;
-    font-size: 25px;
+    font-size: 30px;
 }
-
+.img-carousel{
+    height: 35vh;
+    width: 90vh;
+    box-shadow: 0px 0px 4px 4px #492c36 ;
+}
+.img-carousel:hover{
+    box-shadow: 0px 0px 14px 14px #492c36;
+    transform: rotate(360deg);
+    filter: saturate(200%);
+}
+.bhRnqO{
+    background-color: #cf7126 !important;
+}
+.kVtMtA{
+    background-color: #cf7126 !important;
+}
 
 @media screen and (max-width:1520px) {
     .img-carousel{
@@ -161,16 +174,42 @@ button.callToAction:hover {
 @media screen and (max-width:715px){
     .img-carousel{
         height: 20vh;
-        width: 30vh;
+        width: 35vh;
+    }
+    .title-cities{
+        transform: translateY(3.5rem);
+        color: white;
+        font-weight: 600;
+        opacity: 90%;
+        font-size: 25px;
     }
 }
-@media screen and (max-width:550px){
+@media screen and (max-width:595px){
     .img-carousel{
-        height: 25vh;
-        width: 29vh;
+        height: 20vh;
+        width:28vh;
+    }
+    .title-cities{
+        transform: translateY(3.5rem);
+        color: white;
+        font-weight: 600;
+        opacity: 90%;
+        font-size: 20px;
+    }
+}
+@media screen and (max-width:560px){
+    .img-carousel{
+        height: 20vh;
+        width:25vh;
     }
 }
 @media screen and (max-width:510px){
+    .titulo{
+        font-size: 40px;
+    }
+    .subtitulo{
+        margin-top: 20px
+    }
     .img-carousel{
         height: 40vh;
         width: 40vh;
@@ -182,6 +221,35 @@ button.callToAction:hover {
         width: 35vh;
     }
 }
-
-
 /* FOOTER */
+.footer-ctn{
+    min-height: 25vh;
+    background-color: #425750;
+    color: white !important;
+    display: flex !important;
+    justify-content: space-around !important;
+    flex-direction: column !important;
+}
+.colorA{
+    color: #492c36 !important;
+}
+.colorB{
+    color: #cf7126 !important;
+}
+.css-1kqj5y-MuiSvgIcon-root{
+    width: 25rem !important;
+}
+
+/* CITIES */
+.cities-ctn{
+    background-image: url("https://images.unsplash.com/photo-1494783367193-149034c05e8f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    min-height: 75vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 30px;
+}

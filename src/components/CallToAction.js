@@ -1,13 +1,15 @@
 import React from "react";
-import '../styles/style.css'
-//import Box from '@mui/material/Box';
+import '../styles/Style.css'
+import {Box, Typography} from '@mui/material';
+import {Link as LinkRouter} from "react-router-dom";
 
-function CalltoAction(){
+export default function CalltoAction(){
     return(
-        <div className='fondo-call'>
-            <h3 className="title-callToAction">Haven't you visited the city of your dreams yet?</h3>
-            <button className='callToAction'>Choose your next destination, now</button>
-        </div>
+        <Box className='fondo-call'>
+           <Typography className="title-callToAction" >Haven't you visited the city of your dreams yet?</Typography>
+           <LinkRouter to={'/cities'}>
+                <button className='callToAction'>Choose your next destination, now</button>
+           </LinkRouter>
+        </Box>
     );
 }
-export default CalltoAction
