@@ -50,7 +50,7 @@ const ResponsiveAppBar = () => {
               }}
             >
               {pages.map((page, index) => (
-                <LinkRouter key={index} to={page.to} onClick={handleCloseNavMenu}>
+                <LinkRouter key={index} to={page.to} onClick={handleCloseNavMenu}  style={{ textDecoration: 'none' }}>
                     <MenuItem>
                         <Typography textAlign="center">{page.name}</Typography>
                     </MenuItem>
@@ -62,7 +62,7 @@ const ResponsiveAppBar = () => {
           
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page, index) => (
-              <LinkRouter key={index} to={page.to} onClick={handleCloseNavMenu}>
+              <LinkRouter key={index} to={page.to} onClick={handleCloseNavMenu}  style={{ textDecoration: 'none' }}>
                 <Button sx={{ my: 2, color: 'white', display: 'block' }}>{page.name}</Button>
               </LinkRouter>
             ))}
