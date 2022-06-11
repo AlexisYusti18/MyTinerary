@@ -1,16 +1,15 @@
 import * as React from 'react';
 import {AppBar,Box,IconButton,Toolbar, Typography,Menu,Container,Button,Tooltip,MenuItem,} from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import '../styles/Style.css'
+import '../styles/style.css'
 import noregister from "../assets/register.png"
 import { Link as LinkRouter } from 'react-router-dom';
 
 const pages = [
   {to: '/index', name: 'Home'}, { to:'/cities', name:'Cities'}];
 
-
-
-const ResponsiveAppBar = () => {
+  const ResponsiveAppBar = () => {
+  
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -22,7 +21,7 @@ const ResponsiveAppBar = () => {
   return (
     <AppBar position="fixed" sx={{backgroundColor:"#b5bcc4", opacity:'75%',height:'8vh'}}>
       <Container maxWidth="xl">
-        <Toolbar className='nose'>
+        <Toolbar>
             <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
               <IconButton
               size="large"
@@ -32,12 +31,11 @@ const ResponsiveAppBar = () => {
               onClick={handleOpenNavMenu}
               color="inherit"
             >
-            <MenuIcon className='menu-color' />
+              <MenuIcon className='menu-color' />
             </IconButton>
             <Menu
               id="menu-appbar"
               anchorEl={anchorElNav}
-             
               keepMounted
               transformOrigin={{
                 vertical: 'top',
@@ -62,7 +60,7 @@ const ResponsiveAppBar = () => {
           
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page, index) => (
-              <LinkRouter key={index} to={page.to} onClick={handleCloseNavMenu}  style={{ textDecoration: 'none' }}>
+              <LinkRouter key={index} to={page.to}  style={{ textDecoration: 'none' }}>
                 <Button sx={{ my: 2, color: 'white', display: 'block' }}>{page.name}</Button>
               </LinkRouter>
             ))}

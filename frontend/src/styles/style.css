@@ -16,7 +16,8 @@
     font-size: 1.3rem !important;
 }
 .css-1uwgr7b-MuiTypography-root{
-    color: white;
+    color: black;
+    font-weight: bolder;
 }
 .MuiList-root{
     background-color: #b5bcc4 !important;
@@ -47,8 +48,8 @@
 }
 .titulo{
     text-shadow: 2px 2px white, 2px 2px white;
-    font-size: 60px;
     color:#492c36;
+    font-size: 60px;
     font-family: 'Inter', sans-serif !important;
 }
 .subtitulo{
@@ -133,8 +134,7 @@ button.callToAction:hover {
 .title-cities{
     transform: translateY(3.5rem);
     color: white;
-    font-weight: 600;
-    opacity: 90%;
+    font-weight: 900 !important;
     font-size: 30px;
 }
 .img-carousel{
@@ -225,17 +225,17 @@ button.callToAction:hover {
 /* FOOTER */
 .footer-ctn{
     min-height: 25vh;
-    background-color: #425750;
+    background-color: #8f949a;
     color: white !important;
     display: flex !important;
     justify-content: space-around !important;
     flex-direction: column !important;
 }
 .colorA{
-    color: #492c36 !important;
+    color: white !important;
 }
 .colorB{
-    color: #cf7126 !important;
+    color: #492c36 !important;
 }
 .css-1kqj5y-MuiSvgIcon-root{
     width: 25rem !important;
@@ -253,4 +253,9 @@ button.callToAction:hover {
     align-items: center;
     color: white;
     font-size: 30px;
+}
+.title-footer{
+    color: #492c36;
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 900 !important;
 }

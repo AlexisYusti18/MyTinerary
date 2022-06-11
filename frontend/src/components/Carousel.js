@@ -1,7 +1,6 @@
 import React from 'react';
 import Carousel from 'react-grid-carousel';
-import '../styles/Style.css'
-//import '../components/Data'
+import '../styles/style.css'
 
 
 const cities=[
@@ -54,7 +53,6 @@ const cities=[
       image:"https://img.freepik.com/foto-gratis/coliseo-roma-italia-noche_31965-4991.jpg?w=2000"
   }
 ];
-//console.log(cities);
 
 function CarouselItem(){
     //data.map()
@@ -62,7 +60,7 @@ function CarouselItem(){
     return (
       <div className='carousel-ctn'>
         <h3 className='title-carousel'>Popular MyTineraries</h3>
-          <Carousel loop mobileBreakpoint={300}
+        <Carousel loop mobileBreakpoint={0}
       
       responsiveLayout={[
         { 
@@ -70,21 +68,21 @@ function CarouselItem(){
             cols: 2,
             rows: 2,
             gap: 2, 
-            autoplay:9000
+            autoplay:3000
           },
         {
           breakpoint: 1200,
           cols: 2,
           rows: 2,
           gap: 5,
-          autoplay:9000 
+          autoplay:3000 
         },
         {
           breakpoint: 1520,
           cols: 2,
           rows: 2,
           gap: 5,
-          autoplay:9000 
+          autoplay:3000 
         },
         
         {
@@ -92,10 +90,10 @@ function CarouselItem(){
             cols: 1,
             rows: 4,
             gap: 10,
-            autoplay:9000 
+            autoplay:3000 
           },
       ]}>
-      {cities && cities.map(citys=>
+      {cities.map(citys=>
           <Carousel.Item key="index">
             <div className='carouselItem-ctn'>
                 <p className='title-cities'>{citys.name}</p>   
@@ -111,4 +109,3 @@ function CarouselItem(){
     
 }
 export default CarouselItem;
-//cuando cities sea true

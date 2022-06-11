@@ -1,5 +1,5 @@
 import React from "react";
-import '../styles/Style.css'
+import '../styles/style.css'
 import {Box, Typography} from '@mui/material';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
@@ -18,12 +18,12 @@ export default function Footer(){
                 </LinkRouter>
             </Box>
             <Box>
-                <FacebookIcon sx={{margin:'15px', color:'blue'}}/>
-                <InstagramIcon sx={{margin:'15px', color:'red' }}/>
-                <TwitterIcon sx={{margin:'15px', color:'lightblue'}}/>
+                <FacebookIcon sx={{margin:'15px', color:'white', fontSize:'50px'}}/>
+                <InstagramIcon sx={{margin:'15px', color:'white' , fontSize:'50px'}}/>
+                <TwitterIcon sx={{margin:'15px', color:'white', fontSize:'50px'}}/>
             </Box>
-            <Typography>©Copyright - All rights reserved - Alexis Yusti</Typography>
+            <Typography className="title-footer">©Copyright - All rights reserved - Alexis Yusti</Typography>
         </Box>
 
-    );
+  );
 }
