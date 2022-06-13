@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React , {useState} from 'react';
 import {AppBar,Box,IconButton,Toolbar, Typography,Menu,Container,Button,Tooltip,MenuItem,} from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import '../styles/style.css'
@@ -6,11 +6,11 @@ import noregister from "../assets/register.png"
 import { Link as LinkRouter } from 'react-router-dom';
 
 const pages = [
-  {to: '/index', name: 'Home'}, { to:'/cities', name:'Cities'}];
+  {to: '/home', name: 'Home'}, { to:'/cities', name:'Cities'}];
 
   const ResponsiveAppBar = () => {
   
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const [anchorElNav, setAnchorElNav] = useState(null);
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -19,7 +19,7 @@ const pages = [
   };
   
   return (
-    <AppBar position="fixed" sx={{backgroundColor:"#b5bcc4", opacity:'75%',height:'8vh'}}>
+    <AppBar position="fixed" sx={{backgroundColor:"white", minHeight:'8vh', display:'flex', justifyContent:'center', alignItems:'center'}}>
       <Container maxWidth="xl">
         <Toolbar>
             <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
