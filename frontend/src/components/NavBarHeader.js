@@ -6,7 +6,7 @@ import noregister from "../assets/register.png"
 import { Link as LinkRouter } from 'react-router-dom';
 
 const pages = [
-  {to: '/home', name: 'Home'}, { to:'/cities', name:'Cities'}];
+  {to: '/home', name: 'Home'}, { to:'/cities', name:'Cities'},{to:'/signUp' , name:'Sign Up'}, {to:'/lognIn', name:'Log In'}];
 
   const ResponsiveAppBar = () => {
   
@@ -19,7 +19,7 @@ const pages = [
   };
   
   return (
-    <AppBar position="fixed" sx={{backgroundColor:"white", minHeight:'8vh', display:'flex', justifyContent:'center', alignItems:'center'}}>
+    <AppBar position="static" sx={{backgroundColor:"white", minHeight:'8vh', display:'flex', justifyContent:'center', alignItems:'center'}}>
       <Container maxWidth="xl">
         <Toolbar>
             <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -60,7 +60,7 @@ const pages = [
           
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page, index) => (
-              <LinkRouter key={index} to={page.to}  style={{ textDecoration: 'none' }}>
+              <LinkRouter key={index} to={page.to}  style={{ textDecoration: 'none' }} onClick={() => window.scrollTo({top: 0,left: 0,behavior: 'smooth'})}>
                 <Button sx={{ my: 2, color: 'white', display: 'block' }}>{page.name}</Button>
               </LinkRouter>
             ))}

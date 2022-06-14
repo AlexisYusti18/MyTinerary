@@ -11,7 +11,7 @@ function CarouselItem(){
       
       responsiveLayout={[
         { 
-          breakpoint: 1920,
+          breakpoint:2160,
             cols: 2,
             rows: 2,
             gap: 2, 
@@ -33,7 +33,7 @@ function CarouselItem(){
         },
         
         {
-            breakpoint: 510,
+            breakpoint: 650,
             cols: 1,
             rows: 4,
             gap: 10,

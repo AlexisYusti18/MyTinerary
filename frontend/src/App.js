@@ -5,7 +5,6 @@ import Cities from './pages/Cities';
 import Error from './pages/Error'
 import NavBarHeader from './components/NavBarHeader';
 import Footer from './components/Footer';
-
 import ScrollToTop from "react-scroll-to-top";
 import { TbArrowBigTop } from "react-icons/tb";
 
