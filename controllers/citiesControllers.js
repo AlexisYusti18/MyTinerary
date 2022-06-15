@@ -1,17 +1,18 @@
 //importo el modelo de cities
-const Cities= require('../models/city')
+const City= require('../models/city')
 
 //creo una constante que tiene un objecto y que cada propiedad de ese objeto es un metodo de objeto
-const citiesControllers={
+const cityControllers={
+   
     
     getCities : async (req,res)=>{
         let cities
         let error=null
 
         try{
-        cities= await Cities.find()
+            cities= await City.find()
         } catch (err) {error= err}
-
+        //respuesta en formato JSON en donde response si no es error me duelve los datos que contenga cities , si es succes y no es error devulve true y si no hay un error devulve null
         res.json({
         response: error ? 'ERROR' : {cities},
         success: error ? false : true,
@@ -19,14 +20,13 @@ const citiesControllers={
         })
 
 },
-
     getOneCity: async (req, res)=>{
         const id= req.params.id
         let city
         let error= null
 
         try{
-            city= await Cities.findOne({_id: id})
+            city= await City.findOne({_id: id})
         } catch (err) {error= err}
 
         res.json({
@@ -36,19 +36,21 @@ const citiesControllers={
         })
 },
     addCity: async (req, res)=>{
-        //pide que enviar los datos por el body en nombre de variable data
+        console.log(req.body.data);
+        //solicita  enviar los datos por el body en nombre de variable data
         const{name, country,image,description}= req.body.data
         let city
         let error=null
         try{
-            city= await new Cities({
-                name: '',
-                country:'',
-                image:'',
-                description: '',
+            city= await new City({
+                name: name,
+                country:country,
+                description: description,
+                image:image,
             }).save()
-        }catch (err) {error= err}
-
+        }
+        catch (err) {error= err}
+        
         res.json({
         response: error ? 'ERROR' : city,
         success: error ? false : true,
@@ -62,7 +64,7 @@ const citiesControllers={
         let error= null
         
         try{
-            citydb= await Cities.findOneAndUpdate({_id:id}, city, {new: true})
+            citydb= await City.findOneAndUpdate({_id:id}, city, {new: true})
         } catch (err) {error= err}
 
         res.json({
@@ -76,7 +78,7 @@ const citiesControllers={
         let city
         let error= null
         try{
-            city= await Cities. findOneAndDelete({_id:id})
+            city= await City.findOneAndDelete({_id:id})
         } catch (err) {error= err}
 
         res.json({
@@ -86,4 +88,4 @@ const citiesControllers={
         })
     }
  }
-module.exports= citiesControllers
+module.exports= cityControllers
