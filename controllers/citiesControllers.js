@@ -17,7 +17,6 @@ const cityControllers={
         success: error ? false : true,
         error: error
         })
-
 },
     getOneCity: async (req, res)=>{
         const id= req.params.id
