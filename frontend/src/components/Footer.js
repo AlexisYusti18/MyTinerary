@@ -19,9 +19,9 @@ export default function Footer(){
                 </LinkRouter>
             </Box>
             <Box>
-                <FacebookIcon sx={{margin:'15px', color:'white', fontSize:'50px', cursor:'pointer'}}/>
-                <InstagramIcon sx={{margin:'15px', color:'white' , fontSize:'50px', cursor:'pointer'}}/>
-                <TwitterIcon sx={{margin:'15px', color:'white', fontSize:'50px', cursor:'pointer'}}/>
+                <FacebookIcon sx={{margin:'15px', color:'white', fontSize:'30px', cursor:'pointer'}}/>
+                <InstagramIcon sx={{margin:'15px', color:'white' , fontSize:'30px', cursor:'pointer'}}/>
+                <TwitterIcon sx={{margin:'15px', color:'white', fontSize:'30px', cursor:'pointer'}}/>
             </Box>
             <Typography className="title-footer">©Copyright - All rights reserved - Alexis Yusti</Typography>
         </Box>

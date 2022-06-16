@@ -6,17 +6,22 @@ import Error from './pages/Error'
 import NavBarHeader from './components/NavBarHeader';
 import Footer from './components/Footer';
 import ScrollToTop from "react-scroll-to-top";
-import { TbArrowBigTop } from "react-icons/tb";
+import Details from './pages/Details'
+import { TbArrowBigTop } from 'react-icons/tb';
 
 function App() {
   return (
     <div className="App">
         <NavBarHeader/>
-        <Routes>
+        <Routes> 
             <Route path='/' element={<Index/>}/>
             <Route path='/home' element={<Index/>}/>
+            
             <Route path='/cities' element={<Cities/>}/>
+            
             <Route path='/*' element={<Error/>}/>
+            
+            <Route path='/city/:id' element={<Details/>} />
         </Routes>
         <Footer/>
         <ScrollToTop smooth style={{backgroundColor:'#cf7126', color:'white', width:'50px'}} component={<TbArrowBigTop fontSize='large'/>}/>
@@ -25,3 +30,4 @@ function App() {
   );
 }
 export default App;
+ //le estas diciendo que primero enruta a details y despues le paso el parametro

@@ -1,45 +1,55 @@
 import React, { useState , useEffect} from "react";
-import data from '../components/data'
-
+import axios from 'axios'
+import ErrorSearch from '../components/ErrorSearch';
+import { Link as LinkRouter } from "react-router-dom";
 export default function CardsCities(){
 
     const[cities, setCities]=useState([])
-    const[search, setSearch]=useState("")
+    //creo un estado para la busqueda
+    const[search, setSearch]=useState('')
+    //filtro para limpiar busqueda
+    const[filtercities, setFilterCities]= useState([])
 
     useEffect(()=>{
-        setCities(data)
-        
-        const city = data.filter((city)=>{
-            if(city.name !== null){
-                return city.name.toLowerCase().startsWith(search.trim().toLowerCase())
-            }
-            else{ return <p style={{color:'white'}}>no hay</p>}
-        }) 
+        axios.get("http://localhost:4000/api/cities")
+        .then((info)=> setCities(info.data.response.cities))
+    },[]);
+    
+    useEffect(()=>{
+        let cityFilter = cities?.filter(city=>city.name.toLowerCase().startsWith(search.trim().toLowerCase()))
+        setFilterCities(cityFilter)
+    },[search, cities]);
 
-        setCities(city)
-
-    },[search])
-        
     return(
-        <>
-            <div>
-                <input type='text'
-                onKeyUp={(e)=>{
-                    setSearch (e.target.value)
+        <div className="cities-ctn">
+            <div className="cities-image">
+                <h1 className="title">Find your destination now!</h1>
+            </div>
+            <div className="input-ctn">
+                <input className="input-search" placeholder="Search city" type='text'
+                    onKeyUp={(e)=>{
+                        setSearch(e.target.value)
                 }}/>
             </div>
             <div className="ctn-cards">
-            {cities.map(city=>
-                <div key={city.id}>
-                    <div className='img-cards' style={{background: `url(${city.image})`}}>
-                        <div>
-                            <h1 className='title-cards'>{city.name}</h1>
-                        </div>    
-                    </div> 
-                </div>
-
-            )}
-            </div>
-        </>
+                    {filtercities.length > 0 ? filtercities.map(city=>(
+                        <div key={city._id} className="card-body">
+                            <div className="cards" style={{background: `url(${city.image})`}}>
+                                
+                                    <div className="cities-title-ctn">
+                                        <h1 className='title-cities'>{city.name}</h1>
+                                    </div>
+                                    <div className="cities-button-ctn">
+                                        <LinkRouter to={`/city/${city._id}`}>
+                                            <button className="details-button" >See more</button>
+                                        </LinkRouter>
+                                    </div>
+                            </div> 
+                        </div>
+                ))  
+                    : (<ErrorSearch></ErrorSearch>)
+                } 
+                </div> 
+        </div>
     )
 }

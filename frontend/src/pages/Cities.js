@@ -6,9 +6,9 @@ export default function Cities(){
     
     return(
        
-            <div className="cities-ctn"> 
+            <> 
                 <Cards/>
-            </div>       
+            </>       
      
     )
 }

@@ -45,8 +45,9 @@
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+    background-attachment: fixed;
 }
-.titulo{
+.title{
     text-shadow: 2px 2px white, 2px 2px white;
     color:#492c36;
     font-size: 60px;
@@ -120,7 +121,6 @@ button.callToAction:hover {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-
 }
 .title-carousel{
     padding: 2rem;
@@ -147,7 +147,7 @@ button.callToAction:hover {
 }
 .img-carousel{
     height: 35vh;
-    width: 80vh;
+    width: 40vw;
     box-shadow: 0px 0px 4px 4px #492c36 ;
     background-position: center !important;
     background-size: cover !important;
@@ -180,6 +180,13 @@ button.callToAction:hover {
     .img-carousel{
         height: 30vh;
         width: 40vh;
+    }
+    .ctn-cards{
+        flex-direction: column !important;
+    }
+    .cards{
+        width: 60vw !important;
+        height: 50vh !important;
     }
 }
 @media screen and (max-width:715px){
@@ -217,6 +224,10 @@ button.callToAction:hover {
         height: 40vh;
         width: 40vh;
     }
+    .cards{
+        width: 80vw !important;
+        height: 50vh !important;
+    }
 }
 @media screen and (max-width:470px){
     .img-carousel{
@@ -226,6 +237,19 @@ button.callToAction:hover {
     .title-cities{
         font-size: 22px !important;
     }
+    .input-search{
+        width: 60vw !important;
+    }
+    .flag{
+        width: 25vw !important;
+    }
+    .error-search{
+        height: 80vh !important;
+        width: 70vw !important;
+    }
+    .title-error{
+        font-size: 60px;
+    }
 }
 @media screen and (max-width:400px){
     .img-carousel{
@@ -234,6 +258,22 @@ button.callToAction:hover {
     }
     .title-cities{
         font-size: 22px !important;
+    }
+    .title{
+        font-size: 50px !important;
+    }
+    .subtitulo{
+        font-size: 25px;
+    }
+    .title-callToAction{
+        font-size: 30px !important;
+    }
+    .cards{
+        width: 80vw !important;
+        height: 50vh !important;
+    }
+    .title-pais{
+        font-size: 40px !important;
     }
 }
 /* FOOTER */
@@ -251,35 +291,165 @@ button.callToAction:hover {
 .title-footer{
     color: white;
 }
-/* .colorA{
-    color: white !important;
-}
-.colorB{
-    color: #492c36 !important;
-} */
 .css-1kqj5y-MuiSvgIcon-root{
     width: 25rem !important;
 }
 
 /* CITIES */
 .cities-ctn{
-    background-color: #1b1b1d;
     min-height: 75vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: #1b1b1d;
+}
+.cities-image{
+    width: 100%;
+    min-height: 70vh;
+    background-color: aliceblue !important;
+    background-image: url("https://images.unsplash.com/photo-1503221043305-f7498f8b7888?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1153&q=80");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition:all .5s ease-in-out;
+    overflow:hidden;
+    background-attachment: fixed;
+}
+
+.input-ctn{
+    background-color:white;
+    width:100%;
+    min-height: 15vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.input-search{
+    width:20rem;
+    height: 2rem;
 }
 .ctn-cards{
     margin-top: 10rem;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
+}
+.card-body{
+    margin: 15px 15px 70px 15px;
 }
 
-.img-cards{
+.cards{
     height: 35vh;
-    width: 80vh;
+    width: 40vw;
     background-position: center !important;
     background-size: cover !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: 1s;
+}
+.cards:hover{
+    transform: scale(1.3);
+
+}
+.cities-title-ctn{
+    background-color: rgba(0, 0, 0, 0.759) !important;
+    height: 6vh !important;
+    color: white;
+}
+.details-button{
+    padding: 1.3em 3em;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #000;
+    background-color: #fff;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+    transform: translateY(1rem);
+}
+
+/* DETAILS */
+.ctn-details{
+    background-color: white;
+    min-height: 75vh;
+}
+.details-description{
+    min-height: 100vh;
+}
+.img-card-details{
+    height: 60vh;
+    width: 100%;
+    background-position: center !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.title-pais{
+    text-shadow: 2px 2px white, 2px 2px white;
+    color:#492c36;
+    font-size: 60px;
+    font-family: 'Inter', sans-serif !important;
+}
+.datos-cities{
+    background-color: #cf7126;
+    min-height: 15vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.flag{
+    width:15vh;
+    border: 2px solid white;
+    box-shadow: 0 4px 8px 0 rgba(95, 97, 98, 0.3), 0 6px 20px 0 rgba(88, 92, 93, 0.41);
+}
+.back-cities-ctn{
+    margin-bottom: 30px;
+}
+.back-cities{
+    padding: 15px 25px;
+    border: unset;
+    border-radius: 15px;
+    color: #212121;
+    z-index: 1;
+    background: #e8e8e8;
+    position: relative;
+    font-weight: 1000;
+    font-size: 17px;
+    -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+    box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+    transition: all 250ms;
+    overflow: hidden;
+    cursor: pointer;
+}
+.error-search{
+    height: 40vh;
+    width: 70vw;
+    background-image: url("https://images.unsplash.com/photo-1504251344725-6f13ec70b5ae?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1051&q=80");
+    background-position: center;
+    background-size: cover;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.title-error{
+    text-shadow: 2px 2px white, 2px 2px white;
+    color:#492c36;
+    font-size: 60px;
+    font-family: 'Inter', sans-serif !important;
 }
