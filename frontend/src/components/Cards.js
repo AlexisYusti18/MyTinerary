@@ -2,6 +2,7 @@ import React, { useState , useEffect} from "react";
 import axios from 'axios'
 import ErrorSearch from '../components/ErrorSearch';
 import { Link as LinkRouter } from "react-router-dom";
+
 export default function CardsCities(){
 
     const[cities, setCities]=useState([])
@@ -40,7 +41,7 @@ export default function CardsCities(){
                                         <h1 className='title-cities'>{city.name}</h1>
                                     </div>
                                     <div className="cities-button-ctn">
-                                        <LinkRouter to={`/city/${city._id}`}>
+                                        <LinkRouter to={`/city/${city._id}`} onClick={() => window.scrollTo({top: 0,left: 0,behavior: 'smooth'})}>
                                             <button className="details-button" >See more</button>
                                         </LinkRouter>
                                     </div>

@@ -43,7 +43,7 @@ export default function CitiesDetails(){
                 ))}
             </div>
             <div className="back-cities-ctn">
-                <LinkRouter to="/cities">
+                <LinkRouter to="/cities" onClick={() => window.scrollTo({top: 0,left: 0,behavior: 'smooth'})}>
                     <button className="back-cities">BACK TO CITIES</button>
                 </LinkRouter>
             </div>
