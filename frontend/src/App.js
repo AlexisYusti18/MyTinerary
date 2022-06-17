@@ -24,7 +24,7 @@ function App() {
             <Route path='/city/:id' element={<Details/>} />
         </Routes>
         <Footer/>
-        <ScrollToTop smooth style={{backgroundColor:'#cf7126', color:'white', width:'50px'}} component={<TbArrowBigTop fontSize='large'/>}/>
+        <ScrollToTop smooth style={{backgroundColor:'#cf7126', color:'white', width:'50px',transform:'translateX(1rem)'}} component={<TbArrowBigTop fontSize='large'/>}/>
     </div>
      
   );

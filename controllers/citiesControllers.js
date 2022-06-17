@@ -4,14 +4,13 @@ const City= require('../models/city')
 //creo una constante que tiene un objecto y que cada propiedad de ese objeto es un metodo de objeto
 const cityControllers={
    
-    getCities : async (req,res)=>{
-        let cities
-        let error=null
+    getCities : async (req,res)=>{ //funciona asincrona que crear las city
+        let cities //variable que va a tener la nueva ciudad
+        let error=null // defino el error que en primer instancia en null
 
         try{
-            cities= await City.find()
+            cities= await City.find() //espero esa creacion y utilizo el metodo find() que acciona como un filtro y nos devuelve los datos de la coleccion
         } catch (err) {error= err}
-        //respuesta en formato JSON en donde response si no es error me duelve los datos que contenga cities , si es succes y no es error devulve true y si no hay un error devulve null
         res.json({
         response: error ? 'ERROR' : {cities},
         success: error ? false : true,
@@ -24,9 +23,8 @@ const cityControllers={
         let error= null
 
         try{
-            city= await City.findOne({_id: id})
+            city= await City.findOne({_id: id}) //finOne acciona como filtro y aca le indico un id que de la coleccion sea igual al id enviado por parametro ||METODO-MONGOOSE
         } catch (err) {error= err}
-
         res.json({
         response: error ? 'ERROR' : city,
         success: error ? false : true,
@@ -34,13 +32,11 @@ const cityControllers={
         })
 },
     addCity: async (req, res)=>{
-        let city //defino variable que va a contener la ciudad 
-        let error=null // defino el error y lo defino como nulo
-        //solicita  enviar los datos por el body en nombre de variable data
+        let city 
+        let error=null
         const{name, country,image,imagebanner,currency,language,description}= req.body.data
         try{
-            //new es un contructor , espero la creacion de un modelo
-            city= await new City({
+            city= await new City({ 
                 name: name,
                 country:country,
                 image:image,
@@ -51,8 +47,6 @@ const cityControllers={
             }).save()
         }catch(err){
             error= err}
-        //el metodo intenta crear una nueva ciudad entonces si no puede crear tengo que hagarra el error que me muestra para poder reparalo
-        
         res.json({
         response: error ? 'ERROR' : city,
         success: error ? false : true,
@@ -66,9 +60,8 @@ const cityControllers={
         let error= null
         
         try{
-            citydb= await City.findOneAndUpdate({_id:id}, city, {new: true})
+            citydb= await City.findOneAndUpdate({_id:id}, city, {new: true}) //
         } catch (err) {error= err}
-
         res.json({
         response: error ? 'ERROR' : city,
         success: error ? false : true,

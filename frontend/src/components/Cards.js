@@ -3,8 +3,9 @@ import axios from 'axios'
 import ErrorSearch from '../components/ErrorSearch';
 import { Link as LinkRouter } from "react-router-dom";
 
-export default function CardsCities(){
 
+export default function CardsCities(){
+    //estado de cada ciudad=> funcion que cambia el estado
     const[cities, setCities]=useState([])
     //creo un estado para la busqueda
     const[search, setSearch]=useState('')
@@ -15,6 +16,7 @@ export default function CardsCities(){
         axios.get("http://localhost:4000/api/cities")
         .then((info)=> setCities(info.data.response.cities))
     },[]);
+    //console.log(cities);
     
     useEffect(()=>{
         let cityFilter = cities?.filter(city=>city.name.toLowerCase().startsWith(search.trim().toLowerCase()))

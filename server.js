@@ -1,21 +1,19 @@
-require('dotenv').config()//dotenv es una libreria que 
+require('dotenv').config()
 require('./config/dataBase')
-const express= require('express') //requiero modelu express
-const Router= require('./routes/routes')
-const cors= require('cors')
+const express= require('express') 
+const Router= require('./routes/routes') 
+const cors= require('cors') 
+
 //se le pone 4000 para que no tenga conflicto
-const PORT=4000 
-const app= express()
+//const PORT=process.env.PORT ||4000 
+const PORT=4000
 
+const app= express() //ejecuto express para crear una app
 
-//midelworr
-//middleware =>use es un middleware que sirve como servicio intermedio
-// se usa app(que es nuetro servidor).use(le pedimos que use de express el metodo json para que pueda enviar y recibir info en ese formato ya que es mas facil de manipular desde front)
+app.use(express.json()) 
 
-app.use(express.json())
-//
-app.use(cors())
-// y luego en el use pongo  Router y el /api es la parte intermedia de la difinicon de la ruta  {/api/cities}
+app.use(cors()) 
+
 app.use('/api', Router)
 
 app.listen(PORT, ()=>{
@@ -24,5 +22,5 @@ app.listen(PORT, ()=>{
 
 
 // app.get('/', (req,res)=>{
-//     res.send("ud42342hw")
+//     res.send("funcionando")
 // })

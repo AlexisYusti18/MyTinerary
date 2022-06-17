@@ -16,6 +16,7 @@ export default function CitiesDetails(){
             setCities(info.data.response.cities)
             //console.log(cities);
         })
+        //disabled dependencias
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
@@ -23,7 +24,8 @@ export default function CitiesDetails(){
     return(
         <div className="ctn-details">
             <div className="details-description">
-                {card.length > 0 && card.map((city,index)=>(
+                {card.map((city,index)=>(
+
                     <div key={index}>
                         <div className='img-card-details' style={{background: `url(${city.image})`}}>
                                 <h1 className="title-pais">{city.name} , {city.country}</h1>
@@ -49,5 +51,4 @@ export default function CitiesDetails(){
             </div>
         </div>
     )
-
 }
