@@ -28,7 +28,7 @@ export default function CitiesDetails(){
 
                     <div key={index}>
                         <div className='img-card-details' style={{background: `url(${city.image})`}}>
-                                <h1 className="title-pais">{city.name} , {city.country}</h1>
+                                <h1 className="title-error">{city.name} , {city.country}</h1>
                         </div>
                         <div className="datos-cities">
                             <img className="flag" src={city.imagebanner} alt="flag"/>

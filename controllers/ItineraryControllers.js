@@ -13,7 +13,7 @@ const itineraryControllers={
         success: error ? false : true,
         error: error
         })
-},
+    },
     getOneItinerary: async (req, res)=>{
         const id= req.params.id
         let itinerary
@@ -27,11 +27,11 @@ const itineraryControllers={
         success: error ? false : true,
         error: error
         })
-},
+    },
     addItinerary: async (req, res)=>{
         let itinerary 
         let error=null
-        const{title, userimage,name,price,time,hashtags,likes}= req.body.data
+        const{title, userimage,name,price,time,hashtags,likes}= req.body
         try{
             itinerary= await new Itinerary({ 
                 title:title,
@@ -40,7 +40,7 @@ const itineraryControllers={
                 price:price,
                 time:time,
                 hashtags:hashtags,
-                likes: likes,
+                likes: likes
             }).save()
 
         }catch(err){
@@ -50,10 +50,10 @@ const itineraryControllers={
         success: error ? false : true,
         error: error
         })
-},
+    },
     modifyItinerary: async (req,res)=>{
         const id= req.params.id
-        const itinerary= req.body.data
+        const itinerary= req.body
         let itinerarydb
         let error= null
         
@@ -65,7 +65,7 @@ const itineraryControllers={
         success: error ? false : true,
         error: error
         })
-},  
+    },  
     removeItinerary: async (req, res)=>{
         const id=  req.params.id
         let itinerary
@@ -79,6 +79,6 @@ const itineraryControllers={
         success: error ? false : true,
         error: error
         })
-}
+    }
 }
 module.exports= itineraryControllers

@@ -6,12 +6,14 @@ import Error from './pages/Error'
 import NavBarHeader from './components/NavBarHeader';
 import Footer from './components/Footer';
 import ScrollToTop from "react-scroll-to-top";
-import Details from './pages/Details'
+import Details from './pages/Details';
+import Theme from './components/Theme'
 import { TbArrowBigTop } from 'react-icons/tb';
 
 function App() {
   return (
     <div className="App">
+        <Theme></Theme>
         <NavBarHeader/>
         <Routes> 
             <Route path='/' element={<Index/>}/>
