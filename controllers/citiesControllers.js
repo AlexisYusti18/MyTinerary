@@ -9,7 +9,7 @@ const cityControllers={
         let error=null // defino el error que en primer instancia en null
 
         try{
-            cities= await City.find() //espero esa creacion y utilizo el metodo find() que acciona como un filtro y nos devuelve los datos de la coleccion
+            cities= await City.find().populate("itineraries")  //espero esa creacion y utilizo el metodo find() que acciona como un filtro y nos devuelve los datos de la coleccion
         } catch (err) {error= err}
         res.json({
         response: error ? 'ERROR' : {cities},
@@ -23,7 +23,7 @@ const cityControllers={
         let error= null
 
         try{
-            city= await City.findOne({_id: id}) //finOne acciona como filtro y aca le indico un id que de la coleccion sea igual al id enviado por parametro ||METODO-MONGOOSE
+            city= await City.findOne({_id: id}).populate("itineraries").populate("itineraries2") //finOne acciona como filtro y aca le indico un id que de la coleccion sea igual al id enviado por parametro ||METODO-MONGOOSE
         } catch (err) {error= err}
         res.json({
         response: error ? 'ERROR' : city,

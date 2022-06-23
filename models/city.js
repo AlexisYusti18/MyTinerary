@@ -8,6 +8,8 @@ const citySchema= new mongoose.Schema({ //creo el nuevo esquema de mongoose
     currency:{type:String, required: true}, //le pasamos un objeto con los nombres de las propiedades y las caracteristicas de cada una
     language:{type:String, required: true},
     description:{type:String, required: true},
+    itineraries:[{type: mongoose.Types.ObjectId, ref:"itineraries"}],
+    itineraries2:[{type: mongoose.Types.ObjectId, ref:"itineraries"}],
 })
 const City= mongoose.model('cities', citySchema) //utilizo el metodo que crea un modelo al cual le paso dos parámetros => el nombre de la colección y el esquema
 module.exports=City //exportamos el modelo
