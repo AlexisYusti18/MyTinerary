@@ -15,8 +15,9 @@ const citiesActions={
     },
     getOneCity:(id)=>{
         return async (dispatch, getState)=>{
-            const response = await axios.get(`${host}/api/cities/${id}`)
-            dispatch({ type:"ONE_CITY", payload: response.data.response})
+            const response= await axios.get(`${host}/api/cities/${id}`)
+            //console.log(response.data.response);
+            dispatch({type:"ONE_CITY", payload: response.data.response})
         }
     },
     //VALUE PARAMETRO DE REFERENCIA PARA LUEGO USARLO EN EL FILTRO DE REDUCER

@@ -485,6 +485,7 @@ button.callToAction:hover {
     background-color: #cf7126;
     height: 2vw;
     color: white;
+    cursor: pointer;
 }
 
 

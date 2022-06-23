@@ -23,7 +23,7 @@ const cityControllers={
         let error= null
 
         try{
-            city= await City.findOne({_id: id}).populate("itineraries").populate("itineraries2") //finOne acciona como filtro y aca le indico un id que de la coleccion sea igual al id enviado por parametro ||METODO-MONGOOSE
+            city= await City.findOne({_id: id}).populate("itineraries") //finOne acciona como filtro y aca le indico un id que de la coleccion sea igual al id enviado por parametro ||METODO-MONGOOSE
         } catch (err) {error= err}
         res.json({
         response: error ? 'ERROR' : city,

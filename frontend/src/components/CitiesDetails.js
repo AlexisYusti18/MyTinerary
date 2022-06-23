@@ -10,6 +10,7 @@ import background from "../assets/activities.png"
 import Collapsible from 'react-collapsible';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
+import ErrorSearch from '../components/ErrorSearch';
 
 export default function CitiesDetails(){
     const {id}= useParams()
@@ -20,8 +21,8 @@ export default function CitiesDetails(){
         // eslint-disable-next-line react-hooks/exhaustive-deps
       },[])
     const city= useSelector(store=> store.citiesReducer.oneCity)
-    console.log(city.itineraries);
-    //console.log(card)
+   //console.log(city);
+    //console.log(city.itineraries);
 
     return(
         <>
@@ -45,7 +46,7 @@ export default function CitiesDetails(){
                     </div>
         </div>
         <div className="asd">
-            {city.itineraries?.map((itinerary,index)=>
+            {city.itineraries?.length > 0 ?  city.itineraries?.map((itinerary,index)=>
                 <div key={index} className="itineraries-card">
                     <div>
                         <div>
@@ -63,36 +64,14 @@ export default function CitiesDetails(){
                         <div>
                             <p>#{itinerary.tag}  #{itinerary.tag2}  #{itinerary.tag3}</p>
                         </div>
+                    </div>
+                    <Collapsible trigger="View More" className="view-more">
+                        <div style={{height:"5rem", backgroundColor:"yellow", color:"orange"}}>ACTIVIDADES</div>
+                        <img src={background} alt="back-activities" style={{width:"40vw", height:"35vh"}}/>                                                                   
+                    </Collapsible>
                 </div>
-                <Collapsible trigger="View More" className="view-more">
-                    <div style={{height:"5rem", backgroundColor:"yellow", color:"orange"}}>ACTIVIDADES</div>
-                    <img src={background} alt="back-activities" style={{width:"40vw", height:"35vh"}}/>                                                                   
-                </Collapsible>
-                </div>)}
-            {city.itineraries2?.map((itinerary, index)=>
-                 <div key={index} className="itineraries-card">
-                 <div>
-                     <div>
-                         <h1>{itinerary.title}</h1>
-                         0<FavoriteBorderIcon/>
-                      </div>
-                     <div>
-                         <p>{itinerary.name}</p>
-                         <img src={itinerary.userimage} style={{borderRadius:"100%", height:"6rem"}} alt="img-user"/>
-                     </div>
-                     <div>
-                         <p>${itinerary.price}</p>
-                         <p>{itinerary.time} Hours</p>
-                     </div>
-                     <div>
-                         <p>#{itinerary.tag}  #{itinerary.tag2}  #{itinerary.tag3}</p>
-                     </div>
-             </div>
-             <Collapsible trigger="View More" className="view-more">
-                 <div style={{height:"5rem", backgroundColor:"yellow", color:"orange"}}>ACTIVIDADES</div>
-                 <img src={background} alt="back-activities" style={{width:"40vw", height:"35vh"}}/>                                                                   
-             </Collapsible>
-             </div>)}
+                ) : (<ErrorSearch/>)
+            }
         </div>
         <div className="back-cities-ctn">
         <LinkRouter to="/cities" onClick={() => window.scrollTo({top: 0,left: 0,behavior: 'smooth'})}>

@@ -6,7 +6,7 @@ const itineraryControllers={
         let error=null // defino el error que en primer instancia en null
 
         try{
-            itinerarys= await Itinerary.find().populate("cities", {name:1}) //espero esa creacion y utilizo el metodo find() que acciona como un filtro y nos devuelve los datos de la coleccion
+            itinerarys= await Itinerary.find() //espero esa creacion y utilizo el metodo find() que acciona como un filtro y nos devuelve los datos de la coleccion
         } catch (err) {error= err}
         res.json({
         response: error ? 'ERROR' : {itinerarys},

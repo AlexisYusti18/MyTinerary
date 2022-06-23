@@ -8,9 +8,9 @@ const itinerariesReducer=(state=initialState, action)=>{
         case "GET_ITINERARIES":
             return{
                 ...state,
-                itineraries: action.payload
+                itineraries:action.payload
             }
-        default: return state
+            default: return state
     }
 }
 export default itinerariesReducer

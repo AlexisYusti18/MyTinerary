@@ -20,9 +20,8 @@ const citiesReducer=( state=initialState, action)=>{
             //PAYLOAD: ES EL VALOR DE CARGA=> PUEDE IR CUALQUIER NOMBRE PERO ES BUENA PRACTICA USARLO ASI
         }
         case "ONE_CITY":
-            console.log(action.payload);    
+        //console.log(action.payload);    
         return{
-                
                 ...state,
                 oneCity:action.payload
             }

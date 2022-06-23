@@ -11,7 +11,6 @@ const itinerarySchema= new mongoose.Schema({ //creo el nuevo esquema de mongoose
     tag3:{type:String, required: true},
     likes:{type:Array, required: true},
     activities:{type:String, required:false},
-    cities:{type: mongoose.Types.ObjectId, ref:'cities'}
 })
 const Itinerary= mongoose.model('itineraries', itinerarySchema) //utilizo el metodo que crea un modelo al cual le paso dos parámetros => el nombre de la colección y el esquema
 module.exports=Itinerary //exportamos el modelo
