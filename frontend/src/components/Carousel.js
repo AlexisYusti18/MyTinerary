@@ -1,16 +1,20 @@
 import React, { useEffect } from "react";
-import { connect } from "react-redux";
-import citiesAction from "../redux/actions/citiesActions";
 import Carousel from 'react-grid-carousel';
 import '../styles/style.css'
+import {useDispatch, useSelector} from 'react-redux';
+import citiesActions from '../redux/actions/citiesActions'
 
-const CarouselCiudades=(props)=>{
+export default function CarouselCiudades(){
+
+    const dispatch= useDispatch()
 
     useEffect(()=>{
-        props.getAllCities()
-        console.log(props);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+      dispatch(citiesActions.getAllCities())
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
+
+    const cities= useSelector(store=> store.citiesReducer.cities)
+    console.log(cities);
 
     return(
             <div className='carousel-ctn'>
@@ -48,8 +52,8 @@ const CarouselCiudades=(props)=>{
                   autoplay:3000 
                 },
             ]}>
-            {props.allCities?.map((city,index)=>
-                <Carousel.Item key="index">
+            {cities?.map((city,index)=>
+                <Carousel.Item key={index}>
                   <div className='carouselItem-ctn'>
                       <div className='img-carousel' style={{background: `url(${city.image})`}}>
                             <div className='ctn-title'>
@@ -64,16 +68,16 @@ const CarouselCiudades=(props)=>{
     )
     
 }
-//lo usamos para enviar acciones a la store. Dispatche una función de Redux para desencadenar un cambio de estado.
-//mapDispatchToProps: permite crear funciones que se envían cuando se las llama y pasar esas funciones como accesorios a su componente.
-const mapDispatchToProps= {
-  getAllCities: citiesAction.getAllCities
-}
+//LO USAMOS PARA ENVIAR ACCIONES A LA STORE.
+//DISPATCH ES UNA FUNCION DE REDUX QUE SIRVE PARA REALIZAR UN CAMBIO DE ESTADO.
+//mapDispatchToProps: PERMITE CREAR FUNCIONES QUE SE ENVIAN CUANDO SE LAS LLAMA Y PASAR ESAS FUNCIONES COMO ACCESORIOS AL COMPONENTE.
+// const mapDispatchToProps= {
+//   getAllCities: citiesAction.getAllCities
+// }
 
-//devuelve un objeto simple que contenga los datos que necesita el componente:
-const mapStateToPros = (state)=>{
-  return{
-      allCities: state.citiesReducer.cities
-  }
-} 
-export default connect (mapStateToPros, mapDispatchToProps) (CarouselCiudades)
+// //DEVUELVE UN OBJETO CON LOS DATOS QUE NECESITA EL COMPONENTE
+// const mapStateToPros = (state)=>{
+//   return{
+//       allCities: state.citiesReducer.cities
+//   }
+// } 

@@ -31,7 +31,7 @@ const itineraryControllers={
     addItinerary: async (req, res)=>{
         let itinerary 
         let error=null
-        const{title, userimage,name,price,time,hashtags,likes}= req.body
+        const{title, userimage,name,price,time,tag,tag2,tag3,likes,cities}= req.body
         try{
             itinerary= await new Itinerary({ 
                 title:title,
@@ -39,11 +39,12 @@ const itineraryControllers={
                 name: name,
                 price:price,
                 time:time,
-                hashtags:hashtags,
-                likes: likes
-            }).save()
-
-        }catch(err){
+                tag:tag,
+                tag2:tag2,
+                tag3:tag3,
+                likes: likes,
+                cities:cities}).save()
+            }catch(err){
             error= err}
         res.json({
         response: error ? 'ERROR' : itinerary,

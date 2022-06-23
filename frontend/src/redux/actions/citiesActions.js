@@ -5,13 +5,18 @@ const citiesActions={
 
     getAllCities:()=>{
         //LA FUNCION RECIBE EL DISPATCH DESDE EL FRONT PORQUE ES UN HOOK. LOS HOOKS NO SE PUEDEN PASAR ACA PORQUE NO ES UN COMPONENTE
-        return async ( dispatch)=>{
-            //CREO EL AXIOS
+        return async ( dispatch, getState)=>{
+            //CREO EL AXIOS- ESPERO Y OBTENGO LA API
             const response = await axios.get(`${host}/api/cities`)
             //HAGO UN DISPATCH DE TIPO CITIES Y A PAYLOAD(EL-DATO) LE PASO LA RUTA DEL OBJETO
-            dispatch({ type:"cities", paylaod: response.data.response.cities})
-            
-            console.log(response.data.response.cities);
+            dispatch({ type:"GET_CITIES", payload: response.data.response.cities})
+            //console.log(response.data.response.cities);
+        }
+    },
+    //VALUE PARAMETRO DE REFERENCIA PARA LUEGO USARLO EN EL FILTRO DE REDUCER
+    filterCities:(value)=>{
+        return(dispatch, getState)=>{
+            dispatch({type:"FILTER_CITIES", payload:value})
         }
     }
 }

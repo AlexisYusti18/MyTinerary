@@ -1,24 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect} from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
+import {useDispatch, useSelector} from 'react-redux';
+import citiesActions from '../redux/actions/citiesActions'
 import { Link as LinkRouter } from "react-router-dom";
 import InterpreterModeIcon from '@mui/icons-material/InterpreterMode';
 import LocalAtmIcon from '@mui/icons-material/LocalAtm';
 
+//import {useDispatch, useSelector} from 'react-redux';
+//import citiesActions from '../redux/actions/citiesActions'
+
 export default function CitiesDetails(){
-
     const {id}= useParams()
-    const[cities, setCities]= useState([])
-
+    
+    const dispatch= useDispatch()
     useEffect(()=>{
-        axios.get("http://localhost:4000/api/cities")
-        .then((info)=> {
-            setCities(info.data.response.cities)
-            //console.log(cities);
-        })
-        //disabled dependencias
+        dispatch(citiesActions.getAllCities())
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[])
+      },[])
+    const cities= useSelector(store=> store.citiesReducer.cities)
 
     let card= cities.filter(city=>city._id === id)
     return(

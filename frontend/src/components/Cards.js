@@ -1,27 +1,28 @@
-import React, { useState , useEffect} from "react";
-import axios from 'axios'
+import React, {useEffect} from "react";
 import ErrorSearch from '../components/ErrorSearch';
 import { Link as LinkRouter } from "react-router-dom";
 
+import {useDispatch, useSelector} from 'react-redux';
+import citiesActions from '../redux/actions/citiesActions'
 
 export default function CardsCities(){
-    //estado de cada ciudad=> funcion que cambia el estado
-    const[cities, setCities]=useState([])
-    //creo un estado para la busqueda
-    const[search, setSearch]=useState('')
-    //filtro para limpiar busqueda
-    const[filtercities, setFilterCities]= useState([])
+    //const [citiesFilter ,setCitiesFilter]= useState([])
+    
+    const dispatch= useDispatch()
 
     useEffect(()=>{
-        axios.get("http://localhost:4000/api/cities")
-        .then((info)=> setCities(info.data.response.cities))
-    },[]);
+      dispatch(citiesActions.getAllCities())
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[])   
+    //const cities= useSelector(store=> store.citiesReducer.cities)
     //console.log(cities);
-    
-    useEffect(()=>{
-        let cityFilter = cities?.filter(city=>city.name.toLowerCase().startsWith(search.trim().toLowerCase()))
-        setFilterCities(cityFilter)
-    },[search, cities]);
+   
+    const search=(e)=>{
+        dispatch(citiesActions.filterCities(e.target.value))
+        //console.log(e.target.value);
+    }
+    const filter=useSelector(store=>store.citiesReducer.filterCities)
+    //console.log(filter);
 
     return(
         <div className="cities-ctn">
@@ -30,15 +31,12 @@ export default function CardsCities(){
             </div>
             <div className="input-ctn">
                 <input className="input-search" placeholder="Search city" type='text'
-                    onKeyUp={(e)=>{
-                        setSearch(e.target.value)
-                }}/>
+                    onKeyUp={search}/>
             </div>
             <div className="ctn-cards">
-                    {filtercities.length > 0 ? filtercities.map(city=>(
+                    {filter.length > 0 ? filter.map(city=>(
                         <div key={city._id} className="card-body">
                             <div className="cards" style={{background: `url(${city.image})`}}>
-                                
                                     <div className="cities-title-ctn">
                                         <h1 className='title-cities'>{city.name}</h1>
                                     </div>
@@ -50,7 +48,7 @@ export default function CardsCities(){
                             </div> 
                         </div>
                 ))  
-                    : (<ErrorSearch></ErrorSearch>)
+                    : (<ErrorSearch/>)
                 } 
                 </div> 
         </div>

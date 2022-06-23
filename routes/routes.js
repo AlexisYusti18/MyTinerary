@@ -1,15 +1,8 @@
 //defino router de la cual voy a solicitar de express la funcionalidad Router que nos permite crear y definir rutas
 const Router= require("express").Router();
-
 //IMPORTO MIS CONTRALDORES Y LOS DESECTRUCTOR
 const citiesControllers= require("../controllers/citiesControllers");
 const {getCities, getOneCity, addCity, modifyCity, removeCity}= citiesControllers
-
-const itineraryControllers= require("../controllers/ItineraryControllers")
-const {getItinerarys,getOneItinerary,addItinerary,modifyItinerary,removeItinerary}=itineraryControllers
-
-
-
 // una cities sin parametro=> son las que no tiene parametros desde citiesControllers
 //get=> obtener datos
 //post=> agregar datos
@@ -25,7 +18,10 @@ Router.route('/cities/:id')
 .put(modifyCity)
 .get(getOneCity)
 
-Router.route('/itinerarys')
+const itineraryControllers= require("../controllers/ItineraryControllers")
+const {getItinerarys,getOneItinerary,addItinerary,modifyItinerary,removeItinerary}=itineraryControllers
+
+Router.route('/itineraries')
 .get(getItinerarys)
 .post(addItinerary)
 
