@@ -16,7 +16,7 @@ const citiesActions={
     getOneCity:(id)=>{
         return async (dispatch, getState)=>{
             const response= await axios.get(`${host}/api/cities/${id}`)
-            //console.log(response.data.response);
+            //console.log(response);
             dispatch({type:"ONE_CITY", payload: response.data.response})
         }
     },

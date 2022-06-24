@@ -5,8 +5,7 @@ import citiesActions from '../redux/actions/citiesActions'
 import { Link as LinkRouter } from "react-router-dom";
 import InterpreterModeIcon from '@mui/icons-material/InterpreterMode';
 import LocalAtmIcon from '@mui/icons-material/LocalAtm';
-
-import background from "../assets/activities.png"
+import '../styles/style.css'
 import Collapsible from 'react-collapsible';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
@@ -21,16 +20,15 @@ export default function CitiesDetails(){
         // eslint-disable-next-line react-hooks/exhaustive-deps
       },[])
     const city= useSelector(store=> store.citiesReducer.oneCity)
-   //console.log(city);
+    //console.log(city);
     //console.log(city.itineraries);
-
     return(
-        <>
+    <>
         <div className="ctn-details">
             <div className="details-description">
                     <div>
                         <div className='img-card-details' style={{background: `url(${city.image})`}}>
-                                <h1 className="title-error">{city.name} , {city.country}</h1>
+                                <h1 className="title">{city.name} , {city.country}</h1>
                         </div>
                         <div className="datos-cities">
                             <img className="flag" src={city.imagebanner} alt="flag"/>
@@ -44,42 +42,48 @@ export default function CitiesDetails(){
                             </div>
                         </div>
                     </div>
-        </div>
-        <div className="asd">
-            {city.itineraries?.length > 0 ?  city.itineraries?.map((itinerary,index)=>
-                <div key={index} className="itineraries-card">
-                    <div>
-                        <div>
-                            <h1>{itinerary.title}</h1>
-                            0<FavoriteBorderIcon/>
-                         </div>
-                        <div>
-                            <p>{itinerary.name}</p>
-                            <img src={itinerary.userimage} style={{borderRadius:"100%", height:"6rem"}} alt="img-user"/>
-                        </div>
-                        <div>
-                            <p>${itinerary.price}</p>
-                            <p>{itinerary.time} Hours</p>
-                        </div>
-                        <div>
-                            <p>#{itinerary.tag}  #{itinerary.tag2}  #{itinerary.tag3}</p>
-                        </div>
-                    </div>
+            </div>
+            <div className="itineraries-ctn">
+                {city.itineraries?.length > 0 ?  city.itineraries?.map((itinerary,index)=>
+                    <div key={index} className="itineraries-card">
+                             <div className="title-itinerary">
+                                <h1 className="title-cards">{itinerary.title}</h1>
+                            </div>
+                            <div className="likes">
+                                {itinerary.likes}
+                                0 <FavoriteBorderIcon sx={{color:"white", cursor:"pointer"}}/>
+                            </div>
+                            <div className="name-image">
+                                <p className="title-cards">{itinerary.name}</p>
+                                <img src={itinerary.userimage} style={{borderRadius:"100%", height:"6rem"}} alt="img-user"/>
+                            </div>
+                            <div className="price-time"> Price:
+                                <div className="title-cards">{Array(itinerary.price).fill(itinerary.price).map((price, index)=>{
+                                    return(
+                                        <h1 key={index}>💵</h1>
+                                    )
+                                })}</div>
+                                <p className="title-cards">⌚: {itinerary.time}hs</p>
+                            </div>
+                            <div className="tags">
+                                <p className="title-cards">#{itinerary.tag}  #{itinerary.tag2}  #{itinerary.tag3}</p>
+                            </div>
+                  
                     <Collapsible trigger="View More" className="view-more">
-                        <div style={{height:"5rem", backgroundColor:"yellow", color:"orange"}}>ACTIVIDADES</div>
-                        <img src={background} alt="back-activities" style={{width:"40vw", height:"35vh"}}/>                                                                   
+                        <div className="img-activities">                                                                   
+                            <h3 className="activities-title">ACTIVITIES</h3>
+                        </div>
                     </Collapsible>
-                </div>
-                ) : (<ErrorSearch/>)
-            }
+                    </div>
+                        ) : (<ErrorSearch/>)
+                }
+            </div>
+            <div className="back-cities-ctn">
+                <LinkRouter to="/cities" onClick={() => window.scrollTo({top: 0,left: 0,behavior: 'smooth'})}>
+                    <button className="back-cities">BACK TO CITIES</button>
+                </LinkRouter>
+            </div>
         </div>
-        <div className="back-cities-ctn">
-        <LinkRouter to="/cities" onClick={() => window.scrollTo({top: 0,left: 0,behavior: 'smooth'})}>
-            <button className="back-cities">BACK TO CITIES</button>
-        </LinkRouter>
-    </div>
-
-    </div>
    </>
     )
 }

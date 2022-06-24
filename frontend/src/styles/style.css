@@ -41,7 +41,7 @@
 .fondo{
     min-width: 100% !important;
     height: 100vh !important;
-    background-image: url(../assets/background.jpg);
+    background-image: url(../assets/backgroundHome.jpg);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -175,6 +175,9 @@ button.callToAction:hover {
         height: 30vh;
         width: 50vh;
     }
+    .itineraries-card{
+        width: 60vw !important;
+    }
 }
 @media screen and (max-width:870px) {
     .img-carousel{
@@ -188,6 +191,12 @@ button.callToAction:hover {
         width: 60vw !important;
         height: 50vh !important;
     }
+    .itineraries-card{
+        width: 80vw !important;
+    }
+    .view-more{
+        height: 4vh !important;
+    }
 }
 @media screen and (max-width:715px){
     .img-carousel{
@@ -199,6 +208,15 @@ button.callToAction:hover {
         font-weight: 600;
         opacity: 90%;
         font-size: 10px;
+    }
+    .itineraries-card{
+        width: 70vw !important;
+    }
+    .view-more{
+        height: 4vh !important;
+    }
+    .tags{
+        align-items: center !important;
     }
 }
 @media screen and (max-width:650px){
@@ -226,6 +244,9 @@ button.callToAction:hover {
     }
     .cards{
         width: 80vw !important;
+        height: 50vh !important;
+    }
+    .img-activities{
         height: 50vh !important;
     }
 }
@@ -277,6 +298,13 @@ button.callToAction:hover {
     }
     .title-footer{
         font-size: 13px !important;
+    }
+    .itineraries-card{
+        width: 85vw !important;
+        min-height: 100% !important;
+    }
+    .title-error{
+        font-size: 40px !important;
     }
 }
 /* FOOTER */
@@ -393,10 +421,6 @@ button.callToAction:hover {
 /* DETAILS */
 .ctn-details{
     background-color: white;
-    min-height: 75vh;
-}
-.details-description{
-    min-height: 80vh;
 }
 .img-card-details{
     height: 60vh;
@@ -427,7 +451,11 @@ button.callToAction:hover {
     box-shadow: 0 4px 8px 0 rgba(95, 97, 98, 0.3), 0 6px 20px 0 rgba(88, 92, 93, 0.41);
 }
 .back-cities-ctn{
-    margin-bottom: 30px;
+    background-color: #1b1b1d;
+    min-height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .back-cities{
     padding: 15px 25px;
@@ -448,9 +476,9 @@ button.callToAction:hover {
 .error-search{
     height: 40vh;
     width: 70vw;
-    background-image: url("https://images.unsplash.com/photo-1504251344725-6f13ec70b5ae?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1051&q=80");
+    background-image: url("../assets//fondo-error.png");
+    background-repeat: no-repeat;
     background-position: center;
-    background-size: cover;
     margin-bottom: 20px;
     display: flex;
     justify-content: center;
@@ -458,34 +486,65 @@ button.callToAction:hover {
 
 }
 .title-error{
-    text-shadow: 2px 2px white, 2px 2px white;
     color:white;
-    font-size: 60px;
+    font-size: 50px;
     font-family: 'Inter', sans-serif !important;
+    opacity: 90%;
 }
+/* ITINERARIES */
+/* ITINERARIES */
 
 .itineraries-ctn{
-    display: flex !important;
-    justify-content: center !important;
-    text-align: center !important;
-    flex-direction: column !important;
-}
-.itineraries-card{
-    border: 2px solid black !important;
-    width: 40vw;
-    margin: 15px 15px;
-}
-.asd{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    background-color: #1b1b1d;
+}
+.itineraries-card{
+    border: 2px solid white !important;
+    width: 40vw;
+    margin: 30px 15px;
+    box-shadow: 0px 0px 4px 4px #492c36 ;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.title-cards{
+    color: white;
+}
+.likes{
+    display: flex;
+    color: white;
+}
+.tags{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
 }
 .view-more{
     background-color: #cf7126;
     height: 2vw;
     color: white;
     cursor: pointer;
+}
+.img-activities{
+    height: 20vw;
+    width: 100%;
+    background-image: url("../assets/background.jpg");
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.activities-title{
+    color: white;
+    font-size: 40px;
+}
+.price-time{
+    color: white;
 }
 
 

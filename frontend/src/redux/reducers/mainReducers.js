@@ -1,14 +1,11 @@
-//main reducer importa todos los reducers para poder combinarlos en uno solo
-//importo todos los reducers 
+//MAINREDUCER IMPORTA TODOS LOS REDUCER PARA PODER USARLOS. CONTIENE TODA LA INFO DE LOS DEMAS RECUER
+//REDUCER: MANTIENE EL ESTADO Y CON QUE ACCION LO VAMOS A MODIFICA
 
-//un reducer mantiene los estados y con que accion lo vamos a modificar
 import {combineReducers} from 'redux'
 import citiesReducer from '../reducers/citiesReducer';
-import itinerariesReducer from '../reducers/itinerariesReducer'
-//mainReducer contiene toda la info de los demas reducer
 
 const mainReducer= combineReducers({
     citiesReducer,
-    itinerariesReducer
+
 })
 export default mainReducer
