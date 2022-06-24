@@ -529,6 +529,11 @@ button.callToAction:hover {
     color: white;
     cursor: pointer;
 }
+.Collapsible{
+    background-color: #cf7126;
+    color: white;
+    cursor: pointer;
+}
 .img-activities{
     height: 20vw;
     width: 100%;

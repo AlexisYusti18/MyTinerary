@@ -6,9 +6,9 @@ const citiesActions={
     getAllCities:()=>{
         //LA FUNCION RECIBE EL DISPATCH DESDE EL FRONT PORQUE ES UN HOOK. LOS HOOKS NO SE PUEDEN PASAR ACA PORQUE NO ES UN COMPONENTE
         return async ( dispatch, getState)=>{
-            //CREO EL AXIOS- ESPERO Y OBTENGO LA API
+            //CREO EL AXIOS- ESPERO Y OBTENGO LA API HACIENDO UNA LLAMADA ASINCRONA MEDIANTE UNA FUNCION ANONIMA
             const response = await axios.get(`${host}/api/cities`)
-            //HAGO UN DISPATCH DE TIPO CITIES Y A PAYLOAD(EL-DATO) LE PASO LA RUTA DEL OBJETO
+            //HAGO UN DISPATCH DE TIPO CITIES Y A PAYLOAD HACE LA CARGA DE DATA DE LA API
             dispatch({ type:"GET_CITIES", payload: response.data.response.cities})
             //console.log(response.data.response.cities);
         }
@@ -17,6 +17,7 @@ const citiesActions={
         return async (dispatch, getState)=>{
             const response= await axios.get(`${host}/api/cities/${id}`)
             //console.log(response);
+            //DISPATCH: HERRAMIENTA DE ENVIO DE DATOS HACIA LOS REDUCER O HACIA LAS ACTIONS
             dispatch({type:"ONE_CITY", payload: response.data.response})
         }
     },

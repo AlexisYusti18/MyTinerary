@@ -8,18 +8,24 @@ import LocalAtmIcon from '@mui/icons-material/LocalAtm';
 import '../styles/style.css'
 import Collapsible from 'react-collapsible';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-
 import ErrorSearch from '../components/ErrorSearch';
 
 export default function CitiesDetails(){
     const {id}= useParams()
-
+    //CONST DISPATCH:LO DECLARO EN UNA CONSTANTE PARA USARLO GLOBAL Y SE USAN EN LA CABEZERA DE LA FUNCION- GENERA UN ENVIO
+    //PERMITE TRAES LAS ACCIONES Y USARLAS
+    
+    //SI LO USO DIRECTO EN EL USEEFFECT NO ME DEJARIA PORQUE SE DEBE DECLARAR FUERA DE LA CABECERA DE LA FUNCION Y ADENTRO SE REUSA
     const dispatch= useDispatch()
+
+    //MEDIANTE UN useEffect LAMO A CITIESACTIONS Y AL MEDOTO DEL OBJETO GetOneCity QUE TIENE COMO PARAMETRO EL id
     useEffect(()=>{
         dispatch(citiesActions.getOneCity(id))
         // eslint-disable-next-line react-hooks/exhaustive-deps
       },[])
+
     const city= useSelector(store=> store.citiesReducer.oneCity)
+    //EXTRAE LOS DATOS QUE LE PIDAMOS DEL DEL STORE
     //console.log(city);
     //console.log(city.itineraries);
     return(
@@ -58,7 +64,8 @@ export default function CitiesDetails(){
                                 <img src={itinerary.userimage} style={{borderRadius:"100%", height:"6rem"}} alt="img-user"/>
                             </div>
                             <div className="price-time"> Price:
-                                <div className="title-cards">{Array(itinerary.price).fill(itinerary.price).map((price, index)=>{
+                                <div className="title-cards">{Array(itinerary.price).fill().map((price, index)=>{
+                                    //PASO EL NUMERO A ARRAY MEDIANTE EL METODO Array, CON EL METODO FILL ME MODIFICA ESE ARRAY Y MAPEO ESE ARRAY TRANSFORMADO. HAGO UN RETURN Y DEVUELVO IN BILLETE
                                     return(
                                         <h1 key={index}>💵</h1>
                                     )
@@ -69,7 +76,7 @@ export default function CitiesDetails(){
                                 <p className="title-cards">#{itinerary.tag}  #{itinerary.tag2}  #{itinerary.tag3}</p>
                             </div>
                   
-                    <Collapsible trigger="View More" className="view-more">
+                    <Collapsible trigger="View More" triggerWhenOpen="Close" transitionTime="1000" transitionCloseTime="300" className="view-more">
                         <div className="img-activities">                                                                   
                             <h3 className="activities-title">ACTIVITIES</h3>
                         </div>

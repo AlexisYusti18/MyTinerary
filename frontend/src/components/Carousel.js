@@ -9,12 +9,15 @@ export default function CarouselCiudades(){
     const dispatch= useDispatch()
 
     useEffect(()=>{
+      //DESPACHO EL GET ALL CITIES
       dispatch(citiesActions.getAllCities())
       // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
-
+    
+    //LE PIDO DE CITIESREDUCER QUE ME TRAIGA EL ESTADO CITIES
     const cities= useSelector(store=> store.citiesReducer.cities)
-    console.log(cities);
+    //USESELECTOR= EXTRAE LOS DATOS QUE LE PIDAMOS DEL DEL STORE
+    //console.log(cities);
 
     return(
             <div className='carousel-ctn'>
@@ -23,7 +26,7 @@ export default function CarouselCiudades(){
             
             responsiveLayout={[
               { 
-                breakpoint:2160,
+                breakpoint:4160,
                   cols: 2,
                   rows: 2,
                   gap: 2, 
