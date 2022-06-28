@@ -3,23 +3,19 @@ const Router= require("express").Router();
 //IMPORTO MIS CONTRALDORES Y LOS DESECTRUCTOR
 const citiesControllers= require("../controllers/citiesControllers");
 const {getCities, getOneCity, addCity, modifyCity, removeCity}= citiesControllers
-// una cities sin parametro=> son las que no tiene parametros desde citiesControllers
-//get=> obtener datos
-//post=> agregar datos
+
 Router.route('/cities')
 .get(getCities)
 .post(addCity)
 
-//cities pero con parametro id=> son las que tienen como parametro el id desde citiesControllers
-//put=> para agregar datos
-//delete=> para eliminar datos
+
 Router.route('/cities/:id')
 .delete(removeCity)
 .put(modifyCity)
 .get(getOneCity)
 
-const itineraryControllers= require("../controllers/ItineraryControllers")
-const {getItinerarys,getOneItinerary,addItinerary,modifyItinerary,removeItinerary}=itineraryControllers
+const itinerarysControllers= require("../controllers/ItineraryControllers")
+const {getItinerarys,getOneItinerary,addItinerary,modifyItinerary,removeItinerary}=itinerarysControllers
 
 Router.route('/itineraries')
 .get(getItinerarys)
@@ -29,5 +25,12 @@ Router.route('/itinerarys/:id')
 .delete(removeItinerary)
 .put(modifyItinerary)
 .get(getOneItinerary)
+
+const usersControllers= require('../controllers/usersControllers')
+const {signUpUsers} = usersControllers
+
+Router.route('/signUp')
+.post(signUpUsers)
+
 
 module.exports= Router // EXPORTO EL MODULO ROUTER   

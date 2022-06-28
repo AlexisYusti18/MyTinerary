@@ -1,21 +1,32 @@
 import React , {useState} from 'react';
-import {AppBar,Box,IconButton,Toolbar, Typography,Menu,Container,Button,Tooltip,MenuItem,} from '@mui/material';
+import {AppBar,Box,IconButton,Toolbar, Tooltip,Typography,Menu,Container,Button,MenuItem,} from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import '../styles/style.css'
 import noregister from "../assets/register.png"
 import { Link as LinkRouter } from 'react-router-dom';
 
-const pages = [
-  {to: '/home', name: 'Home'}, { to:'/cities', name:'Cities'},{to:'/signUp' , name:'Sign Up'}, {to:'/lognIn', name:'Log In'}];
+  const pages = [ {to: '/home', name: 'Home'}, { to:'/cities', name:'Cities'}];
+  const user=[{to:'/signUp' , name:'Sign Up'}, {to:'/logIn', name:'Log In'}];
 
-  const ResponsiveAppBar = () => {
+  const ResponsiveAppBar=()=>{
   
   const [anchorElNav, setAnchorElNav] = useState(null);
+  const [anchorElUser, setAnchorElUser] =useState(null);
+
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
+  
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
+  };
+
+  const handleOpenUserMenu = (event) => {
+    setAnchorElUser(event.currentTarget);
+  };
+
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
   };
   
   return (
@@ -52,7 +63,6 @@ const pages = [
                     <MenuItem>
                         <Typography textAlign="center">{page.name}</Typography>
                     </MenuItem>
-                
                 </LinkRouter>
               ))}
             </Menu>
@@ -66,15 +76,39 @@ const pages = [
             ))}
           </Box>
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <Box>
-                <img className='usuario-noregistrado' src={noregister} alt='persona'/>
-              </Box>
-            </Tooltip>
+          <Tooltip title="Open settings">
+            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+              <img className='usuario-noregistrado' src={noregister} alt='persona'/>
+            </IconButton>
+          </Tooltip>
+            <Menu
+              sx={{ mt: '45px' }}
+              id="menu-appbar"
+              anchorEl={anchorElUser}
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              open={Boolean(anchorElUser)}
+              onClose={handleCloseUserMenu}
+            >
+             {user.map((page, index) => (
+                <LinkRouter key={index} to={page.to} onClick={handleCloseNavMenu}  style={{ textDecoration: 'none' }}>
+                    <MenuItem>
+                        <Typography textAlign="center">{page.name}</Typography>
+                    </MenuItem>
+                </LinkRouter>
+              ))}
+            </Menu>
           </Box>
         </Toolbar>
       </Container>
     </AppBar>
   );
 };
-export default ResponsiveAppBar;
+export default ResponsiveAppBar

@@ -17,7 +17,7 @@ export default function CitiesDetails(){
     
     //SI LO USO DIRECTO EN EL USEEFFECT NO ME DEJARIA PORQUE SE DEBE DECLARAR FUERA DE LA CABECERA DE LA FUNCION Y ADENTRO SE REUSA
     const dispatch= useDispatch()
-
+   
     //MEDIANTE UN useEffect LAMO A CITIESACTIONS Y AL MEDOTO DEL OBJETO GetOneCity QUE TIENE COMO PARAMETRO EL id
     useEffect(()=>{
         dispatch(citiesActions.getOneCity(id))
@@ -70,7 +70,7 @@ export default function CitiesDetails(){
                                         <h1 key={index}>💵</h1>
                                     )
                                 })}</div>
-                                <p className="title-cards">⌚: {itinerary.time}hs</p>
+                                <p className="title-cards">Duration: {itinerary.time}hs</p>
                             </div>
                             <div className="tags">
                                 <p className="title-cards">#{itinerary.tag}  #{itinerary.tag2}  #{itinerary.tag3}</p>

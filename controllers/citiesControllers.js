@@ -4,9 +4,9 @@ const City= require('../models/city')
 //creo una constante que tiene un objecto y que cada propiedad de ese objeto es un metodo de objeto
 const cityControllers={
    
-    getCities : async (req,res)=>{ //funciona asincrona que crear las city
-        let cities //variable que va a tener la nueva ciudad
-        let error=null // defino el error que en primer instancia en null
+    getCities : async (req,res)=>{ //FUNCIONA ASINCRONA QUE OBTIENE LAS CIUDADES
+        let cities
+        let error=null // DEFINO UNA VARIABLE ERROR QUE EN PRIMER INSTANCIA EN NULL
 
         try{
             cities= await City.find().populate("itineraries")  //espero esa creacion y utilizo el metodo find() que acciona como un filtro y nos devuelve los datos de la coleccion
@@ -18,13 +18,14 @@ const cityControllers={
         })
 },
     getOneCity: async (req, res)=>{
-        const id= req.params.id
+        const id= req.params.id //REQUIERE PARAMETRO ID
         let city
         let error= null
 
         try{
             city= await City.findOne({_id: id}).populate("itineraries") //finOne acciona como filtro y aca le indico un id que de la coleccion sea igual al id enviado por parametro ||METODO-MONGOOSE
         } catch (err) {error= err}
+        //DEVUELVE UNA RESPUESTA LA CUAL DEVUELVE Y ES CAPTURADA EN EL FRONTEND
         res.json({
         response: error ? 'ERROR' : city,
         success: error ? false : true,
@@ -34,7 +35,7 @@ const cityControllers={
     addCity: async (req, res)=>{
         let city 
         let error=null
-        const{name, country,image,imagebanner,currency,language,description}= req.body.data
+        const{name, country,image,imagebanner,currency,language,description}= req.body.data //REQUIERE EL BODY
         try{
             city= await new City({ 
                 name: name,
@@ -47,6 +48,7 @@ const cityControllers={
             }).save()
         }catch(err){
             error= err}
+            console.log(err);
         res.json({
         response: error ? 'ERROR' : city,
         success: error ? false : true,
