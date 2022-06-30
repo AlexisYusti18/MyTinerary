@@ -10,6 +10,7 @@ import Details from './pages/Details';
 import { TbArrowBigTop } from 'react-icons/tb';
 import SignUp from './components/SignUp';
 import LogIn from './components/LogIn';
+import Alert from './components/Alert';
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
       <div className="App">
         
         <NavBar/>
+        <Alert/>
         <Routes> 
             <Route path='/' element={<Index/>}/>
             <Route path='/home' element={<Index/>}/>

@@ -64,19 +64,18 @@ export default function CitiesDetails(){
                                 <img src={itinerary.userimage} style={{borderRadius:"100%", height:"6rem"}} alt="img-user"/>
                             </div>
                             <div className="price-time"> Price:
-                                <div className="title-cards">{Array(itinerary.price).fill().map((price, index)=>{
+                                <div className="title-cards">{Array(itinerary.price).fill().map((index)=> (
                                     //PASO EL NUMERO A ARRAY MEDIANTE EL METODO Array, CON EL METODO FILL ME MODIFICA ESE ARRAY Y MAPEO ESE ARRAY TRANSFORMADO. HAGO UN RETURN Y DEVUELVO IN BILLETE
-                                    return(
-                                        <h1 key={index}>💵</h1>
+                                        <p key={index}>💵</p>
                                     )
-                                })}</div>
+                                    )}</div>
                                 <p className="title-cards">Duration: {itinerary.time}hs</p>
                             </div>
                             <div className="tags">
                                 <p className="title-cards">#{itinerary.tag}  #{itinerary.tag2}  #{itinerary.tag3}</p>
                             </div>
                   
-                    <Collapsible trigger="View More" triggerWhenOpen="Close" transitionTime="1000" transitionCloseTime="300" className="view-more">
+                    <Collapsible  trigger="View More" triggerWhenOpen="Close" transitionTime="1000" transitionCloseTime="300" className="view-more">
                         <div className="img-activities">                                                                   
                             <h3 className="activities-title">ACTIVITIES</h3>
                         </div>

@@ -5,29 +5,29 @@ import '../styles/style.css'
 import noregister from "../assets/register.png"
 import { Link as LinkRouter } from 'react-router-dom';
 
-  const pages = [ {to: '/home', name: 'Home'}, { to:'/cities', name:'Cities'}];
-  const user=[{to:'/signUp' , name:'Sign Up'}, {to:'/logIn', name:'Log In'}];
 
-  const ResponsiveAppBar=()=>{
+const ResponsiveAppBar=()=>{
+    const pages = [ {to: '/home', name: 'Home'}, { to:'/cities', name:'Cities'}];
+    const user=[{to:'/signUp' , name:'Sign Up'}, {to:'/logIn', name:'Log In'}];
   
-  const [anchorElNav, setAnchorElNav] = useState(null);
-  const [anchorElUser, setAnchorElUser] =useState(null);
+    const [anchorElNav, setAnchorElNav] = useState(null);
+    const [anchorElUser, setAnchorElUser] =useState(null);
 
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
+    const handleOpenNavMenu = (event) => {
+      setAnchorElNav(event.currentTarget);
+    };
   
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
+    const handleCloseNavMenu = () => {
+      setAnchorElNav(null);
+    };
 
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
+    const handleOpenUserMenu = (event) => {
+      setAnchorElUser(event.currentTarget);
+    };
 
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
+    const handleCloseUserMenu = () => {
+      setAnchorElUser(null);
+    };
   
   return (
     <AppBar position="static" sx={{backgroundColor:"white", minHeight:'8vh', display:'flex', justifyContent:'center', alignItems:'center'}}>

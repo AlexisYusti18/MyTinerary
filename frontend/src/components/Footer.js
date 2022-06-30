@@ -8,15 +8,15 @@ import { Link as LinkRouter } from 'react-router-dom';
 //import logo from '../assets/logo.png'
 
 export default function Footer(){
+    const pages= [{to: '/home', name: 'Home'}, { to:'/cities', name:'Cities'},{to:'/signUp' , name:'Sign Up'}, {to:'/logIn', name:'Log In'}]
     return(
         <Box className="footer-ctn">
             <Box sx={{display:'flex', justifyContent:'center', flexDirection:'row'}} >
-                <LinkRouter to={"/home"} style={{ textDecoration: 'none'}} onClick={() => window.scrollTo({top: 0,left: 0, behavior: 'smooth'})}>
-                   <Typography sx={{color:'white', textDecoration:'none', fontSize:'30px', bgcolor:'#492c36', padding:'2px 5px', borderRadius:'2px'}}>Home</Typography>
-                </LinkRouter>
-                <LinkRouter to={"/cities"} style={{ textDecoration: 'none' }} onClick={() => window.scrollTo({top: 0,left: 0,behavior: 'smooth'})}>
-                    <Typography sx={{color:'white', textDecoration:'none', fontSize:'30px' ,bgcolor:'#492c36', padding:'2px 5px', borderRadius:'2px'}}>Cities</Typography>
-                </LinkRouter>
+                {pages.map((page, index)=>(
+                    <LinkRouter key={index} to={page.to} onClick={() => window.scrollTo({top: 0,left: 0,behavior: 'smooth'})}>
+                        <button className="back-cities">{page.name}</button>
+                    </LinkRouter>
+                ))}
             </Box>
             <Box>
                 <FacebookIcon sx={{margin:'15px', color:'white', fontSize:'30px', cursor:'pointer'}}/>
