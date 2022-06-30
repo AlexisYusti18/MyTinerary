@@ -57,7 +57,7 @@ export default function CitiesDetails(){
                             </div>
                             <div className="likes">
                                 {itinerary.likes}
-                                0 <FavoriteBorderIcon sx={{color:"white", cursor:"pointer"}}/>
+                                0 <FavoriteBorderIcon sx={{color:'black', cursor:"pointer"}}/>
                             </div>
                             <div className="name-image">
                                 <p className="title-cards">{itinerary.name}</p>
@@ -75,7 +75,7 @@ export default function CitiesDetails(){
                                 <p className="title-cards">#{itinerary.tag}  #{itinerary.tag2}  #{itinerary.tag3}</p>
                             </div>
                   
-                    <Collapsible  trigger="View More" triggerWhenOpen="Close" transitionTime="1000" transitionCloseTime="300" className="view-more">
+                    <Collapsible  trigger="View More" triggerWhenOpen="Close" transitionTime="1000" transitionCloseTime="100" className="view-more">
                         <div className="img-activities">                                                                   
                             <h3 className="activities-title">ACTIVITIES</h3>
                         </div>

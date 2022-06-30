@@ -48,9 +48,11 @@ const verificacion = async (email, string) => {
         subject: 'VERIFY ACOUNT',
         //CONTIENE EL CUERPO DEL MENSAJE=> LA URL CONTIENE EL CONTROLADOR QUE VERIFICA LA CUENTA(PEDIDO GET)
         html: `
-            <a href=http://localhost:4000/api/verify/${string}>CLICK ACA</a>
-            <h3>TO CONFIRM !</h3>`
-    }
+        
+                <a href=http://localhost:4000/api/verify/${string}>CLICK ACA</a>
+                <h3>TO CONFIRM !</h3>
+               `
+    }   
 
     //SEND MAIL METODO DE NODEMAIL QUE DEPENDE DE EMAILOPTIONS Y DE UNA FUNCION QUE DEPENDE DE LA RESPUESTA Y EL ERROR
     transporter.sendMail(emailOptions, function (error, response){

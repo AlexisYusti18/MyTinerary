@@ -14,7 +14,7 @@ export default function Footer(){
             <Box sx={{display:'flex', justifyContent:'center', flexDirection:'row'}} >
                 {pages.map((page, index)=>(
                     <LinkRouter key={index} to={page.to} onClick={() => window.scrollTo({top: 0,left: 0,behavior: 'smooth'})}>
-                        <button className="back-cities">{page.name}</button>
+                        <button style={{padding:'15px', margin:'10px'}} className="back-cities">{page.name}</button>
                     </LinkRouter>
                 ))}
             </Box>

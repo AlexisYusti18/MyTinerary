@@ -41,7 +41,7 @@ export default function SignUpGoogle(){
         google.accounts.id.renderButton(
             document.getElementById("buttonDiv"),
             //ref.buttonDiv,
-            {theme:'outline', size:'small'}
+            {theme:'outline', size:'medium'}
         )
         //google.accounts.id.prompt();
     }

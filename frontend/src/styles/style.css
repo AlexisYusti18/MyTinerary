@@ -45,17 +45,17 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    --opacidad-negro: 0.5;
+    background-image: linear-gradient(rgba(0, 0, 0, var(--opacidad-negro)), rgba(0, 0, 0, var(--opacidad-negro))), url("../assets//backgroundHome.jpg");
 }
 .title{
-    text-shadow: 2px 2px white, 2px 2px white;
-    color:#492c36;
+    color:white;
     font-size: 60px;
     font-family: 'Inter', sans-serif !important;
 }
 .subtitulo{
     color:white;
     font-size: 4vh;
-    opacity: 90%;
 }
 .menu-color{
     color: black !important;
@@ -176,9 +176,10 @@ button.callToAction:hover {
     }
 }
 @media screen and (max-width:1430px) {
+
     .img-carousel{
         height: 30vh;
-        width: 50vh;
+        width: 68vh;
     }
     .itineraries-card{
         width: 60vw !important;
@@ -320,6 +321,10 @@ button.callToAction:hover {
     display: flex !important;
     justify-content: space-around !important;
     flex-direction: column !important;
+    background-image: url('https://images.unsplash.com/photo-1645989333767-01c44e15e4bf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');
+
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 .logo-footer{
     height: 24vh;
@@ -530,13 +535,18 @@ button.callToAction:hover {
     display: flex;
     justify-content: center;
     flex-direction: column;
+    background-color: white;
+ border: #212121 0.2rem solid;
+ transition: all 0.4s ease-in;
+ box-shadow: 0.4rem 0.4rem 0.6rem #00000040;
+    
 }
 .title-cards{
-    color: white;
+    color: black;
 }
 .likes{
     display: flex;
-    color: white;
+    color: black;
 }
 .tags{
     display:flex;
@@ -547,12 +557,12 @@ button.callToAction:hover {
 .view-more{
     background-color: #cf7126;
     height: 2vw;
-    color: white;
+    color: black;
     cursor: pointer;
 }
 .Collapsible{
     background-color: #cf7126;
-    color: white;
+    color: black;
     cursor: pointer;
 }
 .img-activities{
@@ -566,11 +576,11 @@ button.callToAction:hover {
     align-items: center;
 }
 .activities-title{
-    color: white;
+    color: black;
     font-size: 40px;
 }
 .price-time{
-    color: white;
+    color: black;
 }
 
 /* FORMS */
@@ -580,14 +590,109 @@ button.callToAction:hover {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-image: url('../assets/backgroundHome.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 .form-signup{
     display: flex;
     flex-direction: column;
-    width: 20vw;
+    width: 30vw;
+    background-color: white;
+    margin: 2em 2em 2em 2em;
+    padding: 4.5em 3em;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px -5px rgb(0 0 0 / 30%);
+    text-align: center;
 }
-.input-form{
-    margin: 20px;
-    height: 5vh;
+/* ESTO */
+.input-form {
+    color: black;
+    width: 100%;
+    height: 44px;
+    margin-bottom: 2rem;
+    background-color: #05060f0a;
+    border-radius: .5rem;
+    padding: .6em .3em;
+    border: 2px solid transparent;
+    font-size: 1rem;
+    transition: border-color .3s cubic-bezier(.25,.01,.25,1) 0s, color .3s cubic-bezier(.25,.01,.25,1) 0s,background .2s cubic-bezier(.25,.01,.25,1) 0s;
+   }
+   
+   .input-form:hover {
+    color: black !important;
+    border-top-width: 0.2em;
+    background-color: #452c359c;
+   }
+   
+   .input-form:focus {
+    border-top-width: 0.2em;
+    background-color: #452c359c;
+    color: black !important;
+   }
+   .input-form::placeholder{
+    color: black !important;
+   }
+
+.form-env{
+    background-color:#492c36;
+    color: #fff;
+    font-weight: 300;
+    font-size: 1rem;
+    padding: .8em 0;
+    border: none;
+    border-radius: .5em;
+    cursor: pointer;
 }
+.btn-login {
+    display: inline-block;
+    width: 150px;
+    height: 50px;
+    border-radius: 10px;
+    border: 1px solid #03045e;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s ease-in;
+    z-index: 1;
+   }
+   
+   .btn-login::before,
+   .btn-login::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 0;
+    height: 100%;
+    transform: skew(15deg);
+    transition: all 0.5s;
+    overflow: hidden;
+    z-index: -1;
+   }
+   
+   .btn-login:before {
+    left: -10px;
+    background: #240046;
+   }
+   
+   .btn-login::after {
+    right: -10px;
+    background: #5a189a;
+   }
+   
+   .btn-login:hover::before,
+   .btn-login:hover::after {
+    width: 58%;
+   }
+   
+   .btn-login:hover span {
+    color: #e0aaff;
+    transition: 0.3s;
+   }
+   
+   .btn-login span {
+    color: #03045e;
+    font-size: 18px;
+    transition: all 0.3s ease-in;
+   }
 

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import userActions from '../redux/actions/userActions';
 import { Link as LinkRouter } from 'react-router-dom';
 import LogInGoogle from './LogInGoogle';
+import logo from '../assets/logo.png'
 
 function LogIn(props){
 
@@ -21,18 +22,20 @@ function LogIn(props){
     
     return(
         <div className='signup-ctn'>
-            <h1>LogIn</h1>
-            <form onSubmit={handleSubmit}>
+            <form className='form-signup' onSubmit={handleSubmit}>
+                <img src={logo} style={{height:'50px', width:'50px'}}/>
+                <h1 style={{fontWeight:'900', color:'black', marginBottom:'10px'}}>Sign in MyTinerary now</h1>
                 <input className='input-form'  name='email' type="email"  placeholder='Email'/>
                 <input className='input-form'  name='password' type="text"  placeholder='Password'/>
-                <button type="submit" value="submit">log in</button>
+                <button className='form-env' type="submit" value="submit">log in</button>
+                <div style={{marginTop:'1rem'}}>
+                    <LogInGoogle/>
+                </div>
+                <p>Do not you have an account yet?</p>
+                <LinkRouter to="/signUp">
+                    <span>create one now!</span>
+                </LinkRouter>
             </form>
-            <div>
-                <LogInGoogle/>
-            </div>
-            <LinkRouter to="/signUp">
-            <button>Do not you have an account yet? create one now!</button>
-          </LinkRouter>
         </div>
     )
 
