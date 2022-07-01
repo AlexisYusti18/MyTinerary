@@ -45,13 +45,13 @@ const verificacion = async (email, string) => {
         //HACIA EL EMAIL QUE LE PASO COMO PARAMETRO
         to: email,
         //LO QUE APARECE ANTES DE ABRIR EL EMAIL
-        subject: 'VERIFY ACOUNT',
+        subject: 'VERIFY ACCOUNT',
         //CONTIENE EL CUERPO DEL MENSAJE=> LA URL CONTIENE EL CONTROLADOR QUE VERIFICA LA CUENTA(PEDIDO GET)
         html: `
-        
-                <a href=http://localhost:4000/api/verify/${string}>CLICK ACA</a>
-                <h3>TO CONFIRM !</h3>
-               `
+        <div style="background-image:url(https://images.unsplash.com/photo-1472213984618-c79aaec7fef0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=855&q=80); height: 100vh; display: flex; justify-content: center; align-items: center; flex-direccion:column; background-repeat: no-repeat; background-size: cover; background-position: center;">
+                <a style="color:white; font-size: 5rem; font-weight: 800;" href=http://localhost:4000/api/verify/${string}>CLICK NOW!</a>
+                <h3 style="color:white; font-size: 5rem; font-weight: 800;">TO CONFIRM!</h3>
+          </div> `
     }   
 
     //SEND MAIL METODO DE NODEMAIL QUE DEPENDE DE EMAILOPTIONS Y DE UNA FUNCION QUE DEPENDE DE LA RESPUESTA Y EL ERROR

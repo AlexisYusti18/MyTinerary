@@ -15,14 +15,14 @@ export default function SignUpGoogle(){
 
         //USO LA ACTION DE SIGNUP Y DESPACHO UN OBJETO HACIA EL BACK DEL CONTROLADOR 
         dispatch(userActions.signUp({
-            userData:{
                 name: userObject.given_name,
                 lastName: userObject.family_name,
                 email:userObject.email,
                 password: userObject.sub,
                 imageUser: userObject.picture,
+                country:'argentina',
+                role: 'user',
                 from:'google'
-            }
         }))
     }
     //INICIALIZO EL SERVICIO DE GOOGLE ACCOUNTS
@@ -41,7 +41,7 @@ export default function SignUpGoogle(){
         google.accounts.id.renderButton(
             document.getElementById("buttonDiv"),
             //ref.buttonDiv,
-            {theme:'outline', size:'medium'}
+            {theme:'outline', size:'medium', text:'signup_with' ,locale:'en-IN'}
         )
         //google.accounts.id.prompt();
     }

@@ -14,16 +14,15 @@ export default function LogInGoogle(){
 
         //USO LA ACTION DE SIGNUP Y DESPACHO UN OBJETO HACIA EL BACK DEL CONTROLADOR 
         dispatch(userActions.logIn({
-            logInUser:{
                 email:userObject.email,
                 password: userObject.sub,
                 from:'google'
-            }
         }))
     }
     //INICIALIZO EL SERVICIO DE GOOGLE ACCOUNTS
     useEffect(()=>{
         /* global google */
+        window.onload =function(){
         google.accounts.id.initialize({
             client_id:'756989628379-agrhbg2tkjaa328te0j5nipgqfh6iopg.apps.googleusercontent.com',
             //CLIENT_ID: CLIENT_ID QUE CREE DESDE GOOGLE CLOUD
@@ -33,9 +32,10 @@ export default function LogInGoogle(){
         //AGARRO EL BOTON Y LO RENDERIZO CON ALGUNAS CONFIGURACIONES DE ESTILO
         google.accounts.id.renderButton(
             document.getElementById('buttonDiv'),
-            {theme:'outline', size:'small'}
+            {theme:'outline', size:'medium', text:'signup_with' ,locale:'en-IN'}
         )
         // eslint-disable-next-line react-hooks/exhaustive-deps
+    }
     })
     
     return(

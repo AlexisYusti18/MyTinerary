@@ -8,7 +8,7 @@ import SignUpGoogle from './SignUpGoogle';
 import logo from '../assets/logo.png'
 
 function SignUp(props){
-  
+  const roles= ["Select rol", "user"]
   const countrys= ["Select Country","Argentina", "Uruguay","Chile","Bolivia","Peru","Brazil","Colombia","Venezuela","Paraguay","Ecuador"]
   //CADA VEZ QUE HAGO SUBMIT SE LLAMA A ESTA FUNCION
   const handleSubmit=(event)=>{
@@ -20,7 +20,8 @@ function SignUp(props){
       password:event.target[3].value,
       country:event.target[4].value,
       imageUser:event.target[5].value,
-      from:'singUp'
+      role:event.target[6].value,
+      from:'signUp'
     }
     console.log(event);
     props.signUp(userData)
@@ -30,7 +31,7 @@ function SignUp(props){
   return (
     <div className='signup-ctn'>
       <form className='form-signup' onSubmit={handleSubmit}>
-        <img src={logo} style={{height:'50px', width:'50px'}}/>
+        <img src={logo} style={{height:'50px', width:'50px'}} alt="logo"/>
         <h1 style={{fontWeight:'900', color:'black'}}>Sign up</h1>
         <div style={{display:'flex', alignItems:'center', justifyContent:'center'}}>
           <p>Do you already have an account?</p>
@@ -42,10 +43,15 @@ function SignUp(props){
         <input className='input-form'  name='password' type="text"  placeholder='Password'/>
         <select className='input-form' style={{cursor:'pointer'}} name='country'>
                   {countrys.map((country,index)=>
-                      <option key={index}>{country}</option>
+                      <option style={{cursor:'pointer'}} key={index}>{country}</option>
                     )}
         </select>
         <input className='input-form'  name='imageUser' type="text"  placeholder='Profile Pic'/>
+        <select className='input-form' style={{cursor:'pointer'}} name='country'>
+                  {roles.map((rol,index)=>
+                      <option key={index}>{rol}</option>
+                    )}
+        </select>
         <button className='form-env' type="submit" value="submit">Create Account</button>
         <div style={{marginTop:'1rem'}}>
           <SignUpGoogle/>

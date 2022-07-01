@@ -30,7 +30,7 @@ const ResponsiveAppBar=()=>{
     };
   
   return (
-    <AppBar position="static" sx={{backgroundColor:"white", minHeight:'8vh', display:'flex', justifyContent:'center', alignItems:'center'}}>
+    <AppBar position="static" sx={{backgroundColor:'white' ,minHeight:'8vh', display:'flex', justifyContent:'center', alignItems:'center'}}>
       <Container maxWidth="xl">
         <Toolbar>
             <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>

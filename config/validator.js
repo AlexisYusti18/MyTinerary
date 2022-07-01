@@ -1,6 +1,7 @@
 const joi= require('joi') //IMPORTO JOI
 
 const validator= (req, res , next) =>{
+    console.log(req.body.userData);
     const schema = joi.object({ //CREO UNA CONSTANTE Y CON EL METODO JOI.OBJET CREO UN OBJETO DONDE VOY A GUARDAR LAS VALIDACIONES
         name: joi.string()
         .min(4)
@@ -26,7 +27,7 @@ const validator= (req, res , next) =>{
         
         password: joi.string()
         .min(5)
-        .max(20)
+        .max(40)
         .required()
         .messages({
             'string.min':'"password": error min 5 characters',
@@ -44,6 +45,12 @@ const validator= (req, res , next) =>{
         .min(3)
         .messages({
             'string.min':'"imageUser": error min 3 characters',
+        }),
+        role:joi.string()
+        .required()
+        .min(2)
+        .messages({
+            'string.min':'"role": error min 2 characters',
         }),
                 
         from: joi.string().required()
