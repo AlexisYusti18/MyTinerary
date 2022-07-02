@@ -6,10 +6,26 @@ import noregister from "../assets/register.png"
 import { Link as LinkRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import LogOut from '../components/LogOut';
+import userActions from '../redux/actions/userActions';
 
 const ResponsiveAppBar=(props)=>{
+  async function logOut(){
+    await props.logOut(props.user.email)
+  }
+
+
+
+
+
+
+
+
+
+
+
+
     const pages = [ {to: '/home', name: 'Home'}, { to:'/cities', name:'Cities'}];
-    const form=[{to:'/signUp' , name:'Sign Up'}, {to:'/logIn', name:'Log In'}];
+    const settings=[{to:'/signUp' , name:'Sign Up'}, {to:'/logIn', name:'Log In'}];
   
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorElUser, setAnchorElUser] =useState(null);
@@ -77,12 +93,15 @@ const ResponsiveAppBar=(props)=>{
             ))}
           </Box>
           <Box sx={{ flexGrow: 0 }}>
-          <Tooltip title="Open settings">
+          <Tooltip title="Open" sx={{borderRadius:'0%'}}>
           
-                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                <IconButton onClick={handleOpenUserMenu}>
                   {props.user ?
-                      <Avatar src={props.user.imageUser}/>
-                      :<img className='usuario-noregistrado' src={noregister} alt='persona'/>
+                      <div style={{display:'flex', justifyContent:'center', alignItems:'center', flexDirection:'row'}}>
+                          <p>{props.user.name}</p>
+                          <Avatar className='usuario-noregistrado' src={props.user.imageUser} alt='imgUsuario'/>
+                      </div>
+                      :<img className='usuario-noregistrado' src={noregister} alt='imgUsuario'/>
                   }
                 </IconButton>
             
@@ -103,13 +122,21 @@ const ResponsiveAppBar=(props)=>{
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}>
                {props.user ? 
-                <LogOut onClose={handleCloseUserMenu}/>
-                : form.map((page, index) => (
+               
+                <LinkRouter to='/home' style={{textDecoration:'none'}}>
+                  <MenuItem>
+                      <Typography textAlign="center" onClick={logOut}>LogOut</Typography>
+                  </MenuItem>
+                </LinkRouter>
+               : 
+                
+               settings.map((page, index) => (
                 <LinkRouter key={index} to={page.to} onClick={handleCloseNavMenu}  style={{ textDecoration: 'none' }}>
                     <MenuItem>
                         <Typography textAlign="center">{page.name}</Typography>
                     </MenuItem>
-                </LinkRouter>))
+                </LinkRouter>
+                ))
               
               }
             </Menu>
@@ -120,9 +147,12 @@ const ResponsiveAppBar=(props)=>{
   );
 };
 
+const mapDispatchToProps={
+  logOut:userActions.logOut
+}
 const mapStateToProps=(state)=>{
   return{
     user:state.userReducer.user
   }
 }
-export default connect(mapStateToProps, null)(ResponsiveAppBar)
+export default connect(mapStateToProps,mapDispatchToProps)(ResponsiveAppBar)

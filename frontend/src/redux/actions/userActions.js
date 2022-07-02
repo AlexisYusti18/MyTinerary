@@ -22,6 +22,7 @@ const userActions={
     logIn:(logInUser)=>{
         return async (dispatch, getState)=>{
             const user= await axios.post(`${url}/api/logIn`,{logInUser})
+            console.log(user);
             //console.log(user.data.response.userData);
             //console.log(user.data.response.token);
             //VERIFICO QUE EL SUCCESS SEA TRUE
@@ -42,7 +43,7 @@ const userActions={
                 
             })
         }
-        //console.log(user.data.message);
+        console.log(user.data.message);
         }
     },
     logOut:(closeUser)=>{
@@ -50,6 +51,7 @@ const userActions={
             const user= await axios.post(`${url}/api/logOut`,{closeUser})
             localStorage.removeItem('token')
             dispatch({type:'USER', payload:null})
+
             return user
         }
     },
@@ -67,7 +69,6 @@ const userActions={
                     if(user.data.success) {
                         //SI LA RESPUESTA ES SUCCES HACE EL DISPTACH CON LOS DATOS DEL USUARIO Y EL MENSAJE 
                         dispatch({type:'USER', payload:user.data.response})
-                        //dispatch({type:'USERLIST'})
                         dispatch({
                             type:'MESSAGE',
                             payload:{
@@ -81,7 +82,7 @@ const userActions={
                             localStorage.removeItem('token')
                         }
                 }).catch(error=>{
-                    //console.log(error);
+                    console.log(error);
                     //AL CACHEAR EL ERROR ESTABLESCO UN CONDICIONAL Y ME FIJO EL STATUS DEL ERROR, SI ES 401 SIGNIFICA QUE EL TOKEN ESTABA PERO NO ERA CORRECTO ENTONCES DOY UN MENSAJE Y ELIMINO EL TOKEN
                     if(error.status === 401){
                         dispatch({

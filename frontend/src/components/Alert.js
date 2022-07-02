@@ -19,7 +19,7 @@ function Alert(props) {
         <div style={{
             width: '100%',
             fontWeight: '400'}}>
-            {(typeof props.alert.message) === "string" ?
+            {typeof(props.alert.message) === "string" ?
                 (<p style={{backgroundColor:'green'}}>{props.alert.message}</p>) :
                 <div>{props.alert.message.map((message,index) =><p key={index} style={{backgroundColor:'red'}}>{message.message}</p>)}</div>
             }

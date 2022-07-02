@@ -2,7 +2,7 @@ import { useReducer } from 'react';
 import { connect } from 'react-redux';
 import userActions from '../redux/actions/userActions';
 import {Link as LinkRouter} from "react-router-dom"
-
+import {MenuItem,Typography} from '@mui/material';
 function LogOut(props){
 
     const logOut=()=>{
@@ -10,8 +10,11 @@ function LogOut(props){
     }
     return(
         <div>
-            <LinkRouter to="/home">
-                <h1 onClick={logOut}>LogOut</h1>
+        
+            <LinkRouter to="/home" style={{textDecoration:'none'}}>
+                <MenuItem>
+                    <Typography textAlign="center">LogOut</Typography>
+                </MenuItem>
             </LinkRouter>
         </div>
 

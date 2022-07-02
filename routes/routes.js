@@ -43,7 +43,7 @@ Router.route('/logIn')
 Router.route('/logOut')
 .post(logOut)
 
-Router.route('/verify/:string')
+Router.route('/verify/:uniqueString')
 .get(verifyEmail)
 
 Router.route('/logInToken')

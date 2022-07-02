@@ -13,7 +13,7 @@ function LogIn(props){
         const logInUser= {
             email: event.target[0].value,
             password: event.target[1].value,
-            from: "logIn"
+            from: "signUp"
         }
         console.log(event)
         props.logIn(logInUser)

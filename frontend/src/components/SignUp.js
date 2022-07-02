@@ -40,7 +40,9 @@ function SignUp(props){
         </div>
         <input className='input-form'  name='name' type="text" placeholder='Name' />
         <input className='input-form'  name='lastName' type="text"  placeholder='LastName'/>
-        <input className='input-form'  name='email' type="email"  placeholder='Email'/>
+      
+        <input className='input-form'  name='email' type="email"  placeholder='email'/>
+        
         <input className='input-form'  name='password' type="text"  placeholder='Password'/>
         <select className='input-form' style={{cursor:'pointer'}} name='country'>
                   {countrys.map((country,index)=>

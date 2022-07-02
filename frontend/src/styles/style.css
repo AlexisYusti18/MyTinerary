@@ -29,6 +29,9 @@
     border: 2px solid black;
     border-radius: 50%;
     background-color: white;
+    object-fit: cover;
+    object-position: center;
+    margin-left: .5rem;
 }
 
 /* WelcomeMain */

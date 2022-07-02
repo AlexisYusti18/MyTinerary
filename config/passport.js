@@ -19,23 +19,25 @@ module.exports= passport.use(new jwtStrategy({
     //VA A BUSCAR EN MI BASE DE DATOS DE USUARIO, UN USUARIO DONDE SU ID CONCIDA CON EL ID QUE YO LE HAYA PASADO EN EL PAYLOAD
     User.findOne({_id:jtw_payload.id})
 
-    .then(user=>{
-        if(user){
+    .then((user)=>{
+        //console.log(user)
+        if(!user){
             //SI EL USUARIO EXISTE VA A PASAR HACIA EL CONTROLADOR ERROR NULL Y EL DATO DEL USUARIO
-            return done(null, user)
+            return done(null, false)
         }
-        else if(error) {
-            //SI NO EXISTE VA A PASAR ERROR Y FALSE
-            return done(error, false) 
-        }
+        // else if(error) {
+        //     console.log(error)
+        //     //SI NO EXISTE VA A PASAR ERROR Y FALSE
+        //     return done(error,false) 
+        // }
         else {
             //Y SI NO PASA NINGUNO DE LAS CONDICIONES ANTERIORES VA A PARAR ERROR NUL Y FALSE 
-            return done(null, false)
+            return done(null,user)
         }
     })
     .catch(error=>{
         //Y SI CACHEO UN ERROR EN EL PROCESO ME VA A RETORNAR EL ERROR
-        console.log(error)
+        console.log(error.status)
         return done(error, false)
         //ERROR QUE LEUGO LLEGA COMO 401
     })
