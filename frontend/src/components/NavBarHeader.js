@@ -1,14 +1,15 @@
 import React , {useState} from 'react';
-import {AppBar,Box,IconButton,Toolbar, Tooltip,Typography,Menu,Container,Button,MenuItem,} from '@mui/material';
+import {AppBar,Box,IconButton,Toolbar, Tooltip,Typography,Menu,Container,Button,MenuItem, Avatar,} from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import '../styles/style.css'
 import noregister from "../assets/register.png"
 import { Link as LinkRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import LogOut from '../components/LogOut';
 
-
-const ResponsiveAppBar=()=>{
+const ResponsiveAppBar=(props)=>{
     const pages = [ {to: '/home', name: 'Home'}, { to:'/cities', name:'Cities'}];
-    const user=[{to:'/signUp' , name:'Sign Up'}, {to:'/logIn', name:'Log In'}];
+    const form=[{to:'/signUp' , name:'Sign Up'}, {to:'/logIn', name:'Log In'}];
   
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorElUser, setAnchorElUser] =useState(null);
@@ -77,9 +78,14 @@ const ResponsiveAppBar=()=>{
           </Box>
           <Box sx={{ flexGrow: 0 }}>
           <Tooltip title="Open settings">
-            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-              <img className='usuario-noregistrado' src={noregister} alt='persona'/>
-            </IconButton>
+          
+                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                  {props.user ?
+                      <Avatar src={props.user.imageUser}/>
+                      :<img className='usuario-noregistrado' src={noregister} alt='persona'/>
+                  }
+                </IconButton>
+            
           </Tooltip>
             <Menu
               sx={{ mt: '45px' }}
@@ -95,15 +101,17 @@ const ResponsiveAppBar=()=>{
                 horizontal: 'right',
               }}
               open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-             {user.map((page, index) => (
+              onClose={handleCloseUserMenu}>
+               {props.user ? 
+                <LogOut onClose={handleCloseUserMenu}/>
+                : form.map((page, index) => (
                 <LinkRouter key={index} to={page.to} onClick={handleCloseNavMenu}  style={{ textDecoration: 'none' }}>
                     <MenuItem>
                         <Typography textAlign="center">{page.name}</Typography>
                     </MenuItem>
-                </LinkRouter>
-              ))}
+                </LinkRouter>))
+              
+              }
             </Menu>
           </Box>
         </Toolbar>
@@ -111,4 +119,10 @@ const ResponsiveAppBar=()=>{
     </AppBar>
   );
 };
-export default ResponsiveAppBar
+
+const mapStateToProps=(state)=>{
+  return{
+    user:state.userReducer.user
+  }
+}
+export default connect(mapStateToProps, null)(ResponsiveAppBar)

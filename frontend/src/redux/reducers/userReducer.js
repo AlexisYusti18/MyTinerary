@@ -1,4 +1,5 @@
 const initialState={
+    user:null,
     alert:{
         view:false, //PARA QUE MUESTRA EL MENSAJE
         message:'', //MENSAJE
@@ -8,7 +9,11 @@ const initialState={
 
 const usersReducer=(state= initialState, action)=>{
     switch (action.type) {
-        
+        case 'USER' :
+            return {
+                ...state,
+                user: action.payload
+            }
         case 'MESSAGE':
             return {
                 ...state,

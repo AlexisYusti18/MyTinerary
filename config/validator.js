@@ -1,7 +1,7 @@
 const joi= require('joi') //IMPORTO JOI
 
 const validator= (req, res , next) =>{
-    console.log(req.body.userData);
+    //console.log(req.body.userData);
     const schema = joi.object({ //CREO UNA CONSTANTE Y CON EL METODO JOI.OBJET CREO UN OBJETO DONDE VOY A GUARDAR LAS VALIDACIONES
         name: joi.string()
         .min(4)

@@ -167,3 +167,106 @@ const userControllers ={
         }
 }
 module.exports= userControllers
+
+
+// logIn: async (req, res)=>{
+//     const {password, email, from}= req.body.logInUser
+
+//     try{
+//         //BUSCO UN USUARIO DONDE ME COINCIDA EL EMAIL
+//         const userExists = await User.findOne({email})
+
+//         //SI NO EXISTE EL USUARIO LE DIGO QUE PRIMERO DEBE REGISTRARSE
+//         if(!userExists) {
+//             res.json({
+//                 success: false,
+//                 message: "The user with which you are trying to enter does not exist, verify the data or create a new one" //El usuario con el que estas intentado ingresar no existe, verifica los datos o crea uno nuevo !
+//             })
+//         }
+//         else {
+//             //VERIFICO SI ES DIFERENTE A EL SIGNUP
+//             if(from !== "singUp") {
+                
+//                 let passwordCoincide = userExists.password.filter(pass=>bcryptjs.compareSync(password, pass))
+
+//                 //ME DEVUELVE TRUE ENTONCES DEFINO LOS DATOS QUE VOY A MANDAR AL FRONTEND
+//                 if(passwordCoincide.length > 0){
+        
+//                     const userData = {
+//                         name:userExists.name,
+//                         lastName: userExists.lastName,
+//                         email:userExists.email,
+//                         country: userExists.country,
+//                         imageUser: userExists.imageUser,
+//                         role:userExists.role,
+//                         id:userExists._id,
+//                         from: from
+//                     }
+//                     await userExists.save()
+//                     //userExists.isConected= true
+//                     //LLAMO A JTW, UTILIZO EL METODO sign() Y LE PASO COMO PAYLOAD USERDATA, SECRET KEY Y EL TIEMPO DE EXPIRACION DEL TOKEN
+//                     const token= jwt.sign({...userData}, process.env.SECRET_KEY, {expiresIn:60*60*24})
+                    // res.json({
+                    //     success:true,
+                    //     from:from,
+                    //     //LE MANDO COMO RESPUESTA AL FRON EL TOKEN Y USERDATA
+                    //     response:{token, userData},
+                    //     message:"Welcome" + " " +userData.name + " " +userData.lastName
+                    // })
+                    
+//                 } else{
+//                     res.json({
+//                         success: false, 
+//                         from: from, 
+//                         message:'You have not registered with'+ from +'if you want to enter with this method you must do the signup with'+ from //'No has realizado el registro con'+from+'si quieres ingresar con este metodo debes hacer el signUp con' +from
+//                       })
+//                 }
+//             } else{
+//                     if(userExists.userVerification){
+//                         let passwordCoincide = userExists.password.filter(pass=>bcryptjs.compareSync(password, pass))
+
+//                         if(passwordCoincide.length>0){
+//                             const userData = {
+//                                 name:userExists.name,
+//                                 lastName: userExists.lastName,
+//                                 email:userExists.email,
+//                                 country: userExists.country,
+//                                 imageUser: userExists.imageUser,
+//                                 role:userExists.role,
+//                                 id:userExists._id,
+//                                 from: from
+//                         }
+                       
+//                         const token= jwt.sign({...userData}, process.env.SECRET_KEY, {expiresIn:60*60*24})
+
+//                         res.json({
+//                             success:true,
+//                             from:from,
+//                             //LE MANDO COMO RESPUESTA AL FRON EL TOKEN Y USERDATA
+//                             response:{token, userData},
+//                             message:"Welcome" + " " +userData.name + " " +userData.lastName
+//                         })
+//                        } else{
+//                         res.json({
+//                             success: false, 
+//                             from: from,  
+//                             message:"El usuario o el password no coinciden",
+//                           })
+//                        }
+//                     } else{
+//                         res.json({
+//                             success: false, 
+//                             from: from, 
+//                             message:'You have not verified your email, please check your email box to complete your signUp' //"No has verificado tu email, por favor verifica ti casilla de emails para completar tu signUp"
+//                           }) 
+//                     }
+//             } 
+//         }
+//     }catch(error){
+//         console.log(error)
+//         res.json({
+//             success: false,
+//             message:'Something went wrong, please try again later' //Algo ha salido mal, intenta de nuevo mas tarde
+//         })
+//     }
+// },
