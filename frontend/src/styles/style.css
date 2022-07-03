@@ -26,7 +26,6 @@
 }
 .usuario-noregistrado{
     height: 3rem;
-    border: 2px solid black;
     border-radius: 50%;
     background-color: white;
     object-fit: cover;
@@ -77,7 +76,7 @@
     font-size: 40px !important;
 }
 
-button.callToAction {
+/* button.callToAction {
     cursor: pointer;
     margin: 25px 12px 12px 12px !important;;
     padding: 0.8em 1.8em !important;;
@@ -102,19 +101,90 @@ button.callToAction::before {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-80%, -40%) rotate(45deg);
-    background-color: #492c36;
+    transform: translate(-50%, -50%) rotate(45deg);
+    background: #492c36;
     transition: .5s ease;
     display: block;
     z-index: -1;
-}
+   }
 button.callToAction:hover::before {
-         width: 60%;
+    width: 105%;
 }
 button.callToAction:hover {
-    color: white;
-    background-color: #492c36;
-}
+    color: #111;
+} */
+/* button.callToAction {
+    --glow-color: #492c3685;
+    --glow-spread-color: #492c3685;
+    --enhanced-glow-color: #492c3685;
+    --btn-color: #492c3685;
+    border: .25em solid var(--glow-color);
+    padding: 1em 3em;
+    color: var(--glow-color);
+    font-size: 15px;
+    font-weight: bold;
+    background-color: var(--btn-color);
+    border-radius: 1em;
+    outline: none;
+    box-shadow: 0 0 1em .25em var(--glow-color),
+           0 0 4em 1em var(--glow-spread-color),
+           inset 0 0 .75em .25em var(--glow-color);
+    text-shadow: 0 0 .5em var(--glow-color);
+    position: relative;
+    transition: all 0.3s;
+   }
+   
+   button.callToAction::after {
+    pointer-events: none;
+    content: "";
+    position: absolute;
+    top: 120%;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: var(--glow-spread-color);
+    filter: blur(2em);
+    opacity: .7;
+    transform: perspective(1.5em) rotateX(35deg) scale(1, .6);
+   }
+   
+   button.callToAction:hover {
+    color: var(--btn-color);
+    background-color: var(--glow-color);
+    box-shadow: 0 0 1em .25em var(--glow-color),
+           0 0 4em 2em var(--glow-spread-color),
+           inset 0 0 .75em .25em var(--glow-color);
+   }
+   
+   button.callToAction:active {
+    box-shadow: 0 0 0.6em .25em var(--glow-color),
+           0 0 2.5em 2em var(--glow-spread-color),
+           inset 0 0 .5em .25em var(--glow-color);
+   } */
+   .callToAction{
+    padding: 10px 20px;
+    border: none;
+    font-size: 17px;
+    color: #fff;
+    border-radius: 7px;
+    letter-spacing: 4px;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: 0.5s;
+    transition-property: box-shadow;
+  }
+  
+  .callToAction {
+    background: rgb(255, 128, 0);
+    box-shadow: 0 0 25px rgb(255, 136, 0);
+  }
+  
+  .callToAction:hover {
+    box-shadow: 0 0 5px rgb(255, 174, 0),
+                0 0 25px rgb(255, 162, 0),
+                0 0 50px rgb(255, 162, 0),
+                0 0 100px rgb(255, 162, 0);
+  }
 
 /* CARROUSEL */
 .carousel-ctn{

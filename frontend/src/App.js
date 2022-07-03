@@ -13,7 +13,6 @@ import LogIn from './components/LogIn';
 import Alert from './components/Alert';
 import userActions from "./redux/actions/userActions";
 import { connect } from 'react-redux';
-import LogOut from "./components/LogOut";
 
 function App(props) {
   
@@ -42,7 +41,6 @@ function App(props) {
             <Route path='/logIn' element={<LogIn/>}/> */}
             {!props.user && <Route path='/signUp' element={<SignUp/>}/>}
             {!props.user && <Route path='/logIn' element={<LogIn/>}/>}
-            <Route path='/logout' element={<LogOut/>}/>
         </Routes>
         <Footer/>
         <ScrollToTop smooth style={{backgroundColor:'#cf7126', color:'white', width:'50px',transform:'translateX(1rem)'}} component={<TbArrowBigTop fontSize='large'/>}/>

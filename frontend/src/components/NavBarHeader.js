@@ -5,7 +5,6 @@ import '../styles/style.css'
 import noregister from "../assets/register.png"
 import { Link as LinkRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import LogOut from '../components/LogOut';
 import userActions from '../redux/actions/userActions';
 
 const ResponsiveAppBar=(props)=>{
@@ -47,7 +46,7 @@ const ResponsiveAppBar=(props)=>{
     };
   
   return (
-    <AppBar position="static" sx={{backgroundColor:'white' ,minHeight:'8vh', display:'flex', justifyContent:'center', alignItems:'center'}}>
+    <AppBar position="static" sx={{backgroundColor:'white',minHeight:'8vh', display:'flex', justifyContent:'center', alignItems:'center'}}>
       <Container maxWidth="xl">
         <Toolbar>
             <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -123,7 +122,7 @@ const ResponsiveAppBar=(props)=>{
               onClose={handleCloseUserMenu}>
                {props.user ? 
                
-                <LinkRouter to='/home' style={{textDecoration:'none'}}>
+                <LinkRouter to='/login' style={{textDecoration:'none'}}>
                   <MenuItem>
                       <Typography textAlign="center" onClick={logOut}>LogOut</Typography>
                   </MenuItem>
