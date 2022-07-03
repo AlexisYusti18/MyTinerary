@@ -24,12 +24,12 @@ function SignUp(props){
   const handleSubmit=(event)=>{
     event.preventDefault() //PARA QUE NO RECARGUE LA APGINA
     const userData ={
-      name:event.target[0].value,
-      lastName:event.target[1].value,
-      email:event.target[2].value,
-      password:event.target[3].value,
-      imageUser:event.target[4].value,
-      role:event.target[5].value,
+      name:event.target[2].value,
+      lastName:event.target[3].value,
+      email:event.target[4].value,
+      password:event.target[5].value,
+      imageUser:event.target[6].value,
+      role:event.target[7].value,
       from:'signUp',
       country:selectCountry
     }
@@ -42,12 +42,15 @@ function SignUp(props){
   return (
     <>
       <div className='signup-ctn'>
+      <form className='form-signup' onSubmit={handleSubmit}>
          <img src={logo} style={{height:'50px', width:'50px'}} alt="logo"/>
          <h1 style={{fontWeight:'900', color:'black'}}>Sign up</h1>
-        <div style={{display:'flex', alignItems:'center', justifyContent:'center'}}>
-           <p>Do you already have an account?</p>
-           <LinkRouter to="/logIn"><span>Log In</span></LinkRouter>
-         </div>
+          <div className='title-form' style={{display:'flex', alignItems:'center', justifyContent:'center', marginBottom:'20px'}}>
+            <p>Do you already have an account?</p>
+              <LinkRouter to="/logIn">
+                <button className='button-sigin-log'>LogIn</button>
+              </LinkRouter>
+          </div>
          <div>
            <select className='input-form' style={{cursor:'pointer'}} name='country' onChange={selected}>
                    {countrys.map((country,index)=>
@@ -57,31 +60,26 @@ function SignUp(props){
         </div>
         {selectCountry !== "unselected" ?
           <>
-        <SignUpGoogle country={selectCountry}/>
-      <form className='form-signup' onSubmit={handleSubmit}>
-        <input className='input-form'  name='name' type="text" placeholder='Name' />
-        <input className='input-form'  name='lastName' type="text"  placeholder='LastName'/>
-      
-        <input className='input-form'  name='email' type="email"  placeholder='email'/>
-        
-        <input className='input-form'  name='password' type="text"  placeholder='Password'/>
-        <input className='input-form'  name='imageUser' type="text"  placeholder='Profile Pic'/>
-        <select className='input-form' style={{cursor:'pointer'}} name='country'>
+            <input className='input-form'  name='name' type="text" placeholder='Name' />
+            <input className='input-form'  name='lastName' type="text"  placeholder='LastName'/>
+            <input className='input-form'  name='email' type="email"  placeholder='Email'/>
+            <input className='input-form'  name='password' type="text"  placeholder='Password'/>
+            <input className='input-form'  name='imageUser' type="text"  placeholder='Profile Pic'/>
+            <select className='input-form' style={{cursor:'pointer'}} name='country'>
                   {roles.map((rol,index)=>
                       <option key={index}>{rol}</option>
-                    )}
-        </select>
-        <button className='form-env' type="submit" value="submit">Create Account</button>
-        <div style={{marginTop:'1rem'}}>
-        </div>
-      </form>
-        </>
-        
-        
-        :
-        <h1>selecciona para continuar</h1>
-        }
+                      )}
+            </select>
+            <button className='form-env' type="submit" value="submit">Create Account</button>
+            <p style={{textAlign:'center'}}>or</p>
+            <div style={{marginTop:'1rem', textAlign:'center'}}>
+              <SignUpGoogle country={selectCountry}/>
+            </div>
       
+          </>
+        :   <h1 className='title-all'>Select a country to continue</h1>
+        }
+      </form>
     </div>
       {/* <div>
           <select className='input-form' style={{cursor:'pointer'}} name='country' onChange={selected}>

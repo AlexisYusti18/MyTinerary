@@ -23,8 +23,8 @@ function LogIn(props){
     return(
         <div className='signup-ctn'>
             <form className='form-signup' onSubmit={handleSubmit}>
-                <img src={logo} style={{height:'50px', width:'50px'}}/>
-                <h1 style={{fontWeight:'900', color:'black', marginBottom:'10px'}}>Sign in MyTinerary now</h1>
+                <img src={logo} style={{height:'50px', width:'50px'}} alt='img'/>
+                <h1 style={{fontWeight:'900', color:'black', marginBottom:'10px'}}>Log In with your account!</h1>
                 <input className='input-form'  name='email' type="email"  placeholder='Email'/>
                 <input className='input-form'  name='password' type="text"  placeholder='Password'/>
                 <button className='form-env' type="submit" value="submit">log in</button>
@@ -33,7 +33,7 @@ function LogIn(props){
                 </div>
                 <p>Do not you have an account yet?</p>
                 <LinkRouter to="/signUp">
-                    <span>create one now!</span>
+                    <button className='button-log'>create one now!</button>
                 </LinkRouter>
             </form>
         </div>

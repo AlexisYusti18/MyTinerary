@@ -60,8 +60,9 @@ import React,{useEffect} from "react";
 import jwt_decode from 'jwt-decode'; //IMPORTO LIBRERIA JWT CODE
 import userActions from "../redux/actions/userActions";
 import { useDispatch } from "react-redux";
+import { connect } from 'react-redux';
 
-export default function SignUpGoogle(){
+function SignUpGoogle(props){
     const dispatch= useDispatch(); //EN UNA CONSTANTE GUARDO EL USEDISPATCH()
     //const ref= useRef(null)
 
@@ -78,9 +79,9 @@ export default function SignUpGoogle(){
                 email:userObject.email,
                 password: userObject.sub,
                 imageUser: userObject.picture,
-                country:'argentina',
                 role: 'user',
-                from:'google'
+                from:'google',
+                country: props.country,
         }))
     }
     //INICIALIZO EL SERVICIO DE GOOGLE ACCOUNTS
@@ -111,3 +112,7 @@ export default function SignUpGoogle(){
         //<div ref={ref}></div>
     )
 }
+const mapDispatchToProps={
+    signUp: userActions.signUp
+}
+export default connect(null, mapDispatchToProps)(SignUpGoogle)

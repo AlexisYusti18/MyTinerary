@@ -6,25 +6,18 @@ import noregister from "../assets/register.png"
 import { Link as LinkRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import userActions from '../redux/actions/userActions';
+import LoginIcon from '@mui/icons-material/Login';
+import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
+import LogoutIcon from '@mui/icons-material/Logout';
+
 
 const ResponsiveAppBar=(props)=>{
   async function logOut(){
     await props.logOut(props.user.email)
   }
-
-
-
-
-
-
-
-
-
-
-
-
+    
     const pages = [ {to: '/home', name: 'Home'}, { to:'/cities', name:'Cities'}];
-    const settings=[{to:'/signUp' , name:'Sign Up'}, {to:'/logIn', name:'Log In'}];
+    const settings=[{to:'/signUp' , name:'Sign Up', icon:<PersonAddAlt1Icon/>}, {to:'/logIn', name:'Log In',icon:<LoginIcon/>}];
   
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorElUser, setAnchorElUser] =useState(null);
@@ -125,6 +118,7 @@ const ResponsiveAppBar=(props)=>{
                 <LinkRouter to='/login' style={{textDecoration:'none'}}>
                   <MenuItem>
                       <Typography textAlign="center" onClick={logOut}>LogOut</Typography>
+                      <LogoutIcon sx={{marginLeft:'5px'}}/>
                   </MenuItem>
                 </LinkRouter>
                : 
@@ -133,6 +127,8 @@ const ResponsiveAppBar=(props)=>{
                 <LinkRouter key={index} to={page.to} onClick={handleCloseNavMenu}  style={{ textDecoration: 'none' }}>
                     <MenuItem>
                         <Typography textAlign="center">{page.name}</Typography>
+                        <span style={{marginLeft:'5px'}}>{page.icon}</span>
+
                     </MenuItem>
                 </LinkRouter>
                 ))

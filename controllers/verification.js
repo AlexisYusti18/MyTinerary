@@ -50,9 +50,17 @@ const verificacion = async (email, uniqueString) => {
         subject: 'VERIFY ACCOUNT',
         //CONTIENE EL CUERPO DEL MENSAJE=> LA URL CONTIENE EL CONTROLADOR QUE VERIFICA LA CUENTA(PEDIDO GET)
         html: `
-        <div style="background-image:url(https://images.unsplash.com/photo-1472213984618-c79aaec7fef0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=855&q=80); height: 100vh; display: flex; justify-content: center; align-items: center; flex-direction:column; background-repeat: no-repeat; background-size: cover; background-position: center;">
-                <a style="color:white; font-size: 3rem; font-weight: 800;" href=http://localhost:4000/api/verify/${uniqueString}>Click here to confirm!</a>
-          </div> `
+        
+        <div style="background-image: url(https://images.unsplash.com/photo-1500485035595-cbe6f645feb1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80); background-position: center; background-size: cover; background-repeat: no-repeat; height: 40vh; width: 20vw;">
+        <div>
+          <h1 style="color:white; text-align: center; height: 15vh;">MyTinerary</h1>
+        </div>
+       <div style="text-align:center;">
+        <a href=http://localhost:4000/api/verify/${uniqueString} style="height: 10vh; background-color: yellow; text-align:center; padding: 1.3em 3em; font-size: 12px; text-transform: uppercase; letter-spacing: 2.5px; font-weight: 500; border: none; border-radius: 45px; box-shadow:0px 8px 15px rgba(0, 0, 0, 0.1); transition: all 0.3s ease 0s; cursor: pointer; outline: none; text-decoration: none;">Click here!</a>
+       </div>
+      </div>
+         
+     `
     }   
 
     //SEND MAIL METODO DE NODEMAIL QUE DEPENDE DE EMAILOPTIONS Y DE UNA FUNCION QUE DEPENDE DE LA RESPUESTA Y EL ERROR

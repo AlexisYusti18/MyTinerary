@@ -21,8 +21,9 @@ function App(props) {
   //Y LLAMA A UNA ACCION VERIFYTOKEN
   useEffect(()=>{
     if(localStorage.getItem('token') !== null){
-      const token= localStorage.getItem('token')
+      const token=localStorage.getItem('token')
       props.verifyToken(token)
+      //console.log(token)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])

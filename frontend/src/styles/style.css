@@ -2,14 +2,10 @@
     padding: 0%;
     margin: 0%;
     box-sizing: border-box;
-    font-family: 'Inter', sans-serif !important;
+    font-family: 'Gentium Book Plus', serif !important; 
 }
-/* TODA LA PAG */
-@import url('https://fonts.googleapis.com/css2?family=Baloo+Thambi+2:wght@400;500&family=Inter&family=Shadows+Into+Light&display=swap'); 
-/* LOGO */
-@import url('https://fonts.googleapis.com/css2?family=Baloo+Thambi+2:wght@400;500&family=Shadows+Into+Light&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Baloo+Thambi+2:wght@400;500&family=Inter&family=Shadows+Into+Light&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Thambi+2:wght@400;500&family=Gentium+Book+Plus&family=Inter&family=Roboto:wght@100&family=Shadows+Into+Light&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Thambi+2:wght@400;500&family=Gentium+Book+Plus&family=Inter&family=Roboto:ital,wght@0,100;1,700&family=Shadows+Into+Light&display=swap');
 /* NAVBAR HEADER */
 .MuiButton-root{
     color: black !important;
@@ -53,7 +49,6 @@
 .title{
     color:white;
     font-size: 60px;
-    font-family: 'Inter', sans-serif !important;
 }
 .subtitulo{
     color:white;
@@ -76,92 +71,8 @@
     font-size: 40px !important;
 }
 
-/* button.callToAction {
-    cursor: pointer;
-    margin: 25px 12px 12px 12px !important;;
-    padding: 0.8em 1.8em !important;;
-    border: 2px solid white !important;;
-    position: relative !important;;
-    overflow: hidden !important;;
-    background-color: #cf7126!important;;
-    text-align: center !important;;
-    text-transform: uppercase !important;;
-    font-size: 17px !important;;
-    transition: .3s !important;;
-    box-shadow: 0px 0px 15px 15px #492c36 !important;;
-    z-index: 1 !important;;
-    font-family: 'Inter', sans-serif !important;;
-    color: black !important;;
-    text-decoration: none !important;
-}
-button.callToAction::before {
-    content: '';
-    width: 0;
-    height: 300%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) rotate(45deg);
-    background: #492c36;
-    transition: .5s ease;
-    display: block;
-    z-index: -1;
-   }
-button.callToAction:hover::before {
-    width: 105%;
-}
-button.callToAction:hover {
-    color: #111;
-} */
-/* button.callToAction {
-    --glow-color: #492c3685;
-    --glow-spread-color: #492c3685;
-    --enhanced-glow-color: #492c3685;
-    --btn-color: #492c3685;
-    border: .25em solid var(--glow-color);
-    padding: 1em 3em;
-    color: var(--glow-color);
-    font-size: 15px;
-    font-weight: bold;
-    background-color: var(--btn-color);
-    border-radius: 1em;
-    outline: none;
-    box-shadow: 0 0 1em .25em var(--glow-color),
-           0 0 4em 1em var(--glow-spread-color),
-           inset 0 0 .75em .25em var(--glow-color);
-    text-shadow: 0 0 .5em var(--glow-color);
-    position: relative;
-    transition: all 0.3s;
-   }
-   
-   button.callToAction::after {
-    pointer-events: none;
-    content: "";
-    position: absolute;
-    top: 120%;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    background-color: var(--glow-spread-color);
-    filter: blur(2em);
-    opacity: .7;
-    transform: perspective(1.5em) rotateX(35deg) scale(1, .6);
-   }
-   
-   button.callToAction:hover {
-    color: var(--btn-color);
-    background-color: var(--glow-color);
-    box-shadow: 0 0 1em .25em var(--glow-color),
-           0 0 4em 2em var(--glow-spread-color),
-           inset 0 0 .75em .25em var(--glow-color);
-   }
-   
-   button.callToAction:active {
-    box-shadow: 0 0 0.6em .25em var(--glow-color),
-           0 0 2.5em 2em var(--glow-spread-color),
-           inset 0 0 .5em .25em var(--glow-color);
-   } */
    .callToAction{
+    margin-top: 20px;
     padding: 10px 20px;
     border: none;
     font-size: 17px;
@@ -212,6 +123,11 @@ button.callToAction:hover {
      flex-direction:  column !important;
      align-items: center !important;
 }
+#buttonDiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .ctn-title{
     background-color: rgba(0, 0, 0, 0.759) !important;
     height: 6vh !important;
@@ -242,26 +158,33 @@ button.callToAction:hover {
     background-color: #cf7126 !important;
 }
 
-@media screen and (max-width:1520px) {
+@media screen and (max-width:1150px) {
     .img-carousel{
-        height: 30vh;
-        width: 70vh;
+        width: 37vw !important;
     }
 }
 @media screen and (max-width:1430px) {
-
-    .img-carousel{
-        height: 30vh;
-        width: 68vh;
+    .button-log{
+        width: 15vw !important;
     }
     .itineraries-card{
         width: 60vw !important;
     }
+    .form-signup{
+        width: 50vw !important;
+    }
+}
+@media screen and (max-width:1150px) {
+    .form-signup{
+        width: 60vw !important;
+    }
+    .button-sigin-log{
+        width: 15vw !important;
+    }
 }
 @media screen and (max-width:870px) {
-    .img-carousel{
-        height: 30vh;
-        width: 40vh;
+    .button-log{
+        width: 30vw !important;
     }
     .ctn-cards{
         flex-direction: column !important;
@@ -277,11 +200,13 @@ button.callToAction:hover {
         height: 4vh !important;
     }
 }
-@media screen and (max-width:715px){
-    .img-carousel{
-        height: 20vh;
-        width: 35vh;
+@media screen and (max-width:810px) {
+    .title-form{
+        display: flex !important;
+        flex-direction: column !important;
     }
+}
+@media screen and (max-width:715px){
     .title-cities{
         color: white;
         font-weight: 600;
@@ -300,8 +225,7 @@ button.callToAction:hover {
 }
 @media screen and (max-width:650px){
     .img-carousel{
-        height: 40vh;
-        width:50vh;
+       width: 65vw !important;
     }
     .title-cities{
         color: white;
@@ -311,15 +235,15 @@ button.callToAction:hover {
     }
 }
 @media screen and (max-width:610px){
+    .footer-ctn{
+        display: flex !important;
+        flex-direction: column !important;
+    }
     .titulo{
         font-size: 40px;
     }
     .subtitulo{
         margin-top: 20px
-    }
-    .img-carousel{
-        height: 40vh;
-        width: 40vh;
     }
     .cards{
         width: 80vw !important;
@@ -328,11 +252,13 @@ button.callToAction:hover {
     .img-activities{
         height: 50vh !important;
     }
+    .form-signup{
+        width: 90vw !important;
+    }
 }
 @media screen and (max-width:470px){
-    .img-carousel{
-        height: 30vh;
-        width: 35vh;
+    .button-log{
+        width: 30vw !important;
     }
     .title-cities{
         font-size: 22px !important;
@@ -351,11 +277,12 @@ button.callToAction:hover {
         font-size: 60px;
     }
 }
-@media screen and (max-width:400px){
-    .img-carousel{
-        height: 20vh;
-        width: 30vh;
+@media screen and (max-width:440px) {
+    .button-log{
+        width: 50vw !important;
     }
+}
+@media screen and (max-width:400px){
     .title-cities{
         font-size: 22px !important;
     }
@@ -391,21 +318,15 @@ button.callToAction:hover {
 /* FOOTER */
 .footer-ctn{
     min-height: 25vh;
-    background-color: #492c36;
+    background-color: white;
     color: white !important;
-    display: flex !important;
-    justify-content: space-around !important;
-    flex-direction: column !important;
-    background-image: url('https://images.unsplash.com/photo-1645989333767-01c44e15e4bf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');
-
-    background-repeat: no-repeat;
-    background-size: cover;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
 }
 .logo-footer{
-    height: 24vh;
-}
-.title-footer{
-    color: white;
+    height: 10vw;
 }
 .css-1kqj5y-MuiSvgIcon-root{
     width: 25rem !important;
@@ -663,27 +584,54 @@ button.callToAction:hover {
 }
 
 /* FORMS */
+
 .signup-ctn{
-    min-height:70vh ;
+    min-height:100vh ;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-image: url('../assets/backgroundHome.jpg');
+    background-image: url('https://img.freepik.com/foto-gratis/formulario-solicitud-visa-mesa-madera-procesamiento-visa-registro-endecha-plana_169016-16160.jpg?w=2000');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+    --opacidad-negro: 0.5;
+    background-image: linear-gradient(rgba(0, 0, 0, var(--opacidad-negro)), rgba(0, 0, 0, var(--opacidad-negro))), url("https://img.freepik.com/foto-gratis/formulario-solicitud-visa-mesa-madera-procesamiento-visa-registro-endecha-plana_169016-16160.jpg?w=2000");
 }
 .form-signup{
     display: flex;
     flex-direction: column;
-    width: 30vw;
+    width: 40vw;
     background-color: white;
     margin: 2em 2em 2em 2em;
     padding: 4.5em 3em;
     border-radius: 10px;
     box-shadow: 0 5px 10px -5px rgb(0 0 0 / 30%);
     text-align: center;
+}
+.button-sigin-log{
+    background-color:#492c36;
+    color: #fff;
+    font-weight: 300;
+    font-size: 1rem;
+    padding: .4em 0;
+    border: none;
+    margin-left: 10px;
+    border-radius: .5em;
+    width: 4vw;
+    cursor: pointer;
+}
+.button-log{
+    background-color:#492c36;
+    color: #fff;
+    font-weight: 300;
+    font-size: 1rem;
+    padding: .4em 0;
+    border: none;
+    margin-left: 10px;
+    border-radius: .5em;
+    width: 10vw;
+    cursor: pointer;
 }
 
 /* ESTO */
@@ -700,18 +648,18 @@ button.callToAction:hover {
     transition: border-color .3s cubic-bezier(.25,.01,.25,1) 0s, color .3s cubic-bezier(.25,.01,.25,1) 0s,background .2s cubic-bezier(.25,.01,.25,1) 0s;
    }
    
-   .input-form:hover {
+.input-form:hover {
     color: black !important;
     border-top-width: 0.2em;
     background-color: #452c359c;
    }
    
-   .input-form:focus {
+.input-form:focus {
     border-top-width: 0.2em;
     background-color: #452c359c;
     color: black !important;
    }
-   .input-form::placeholder{
+.input-form::placeholder{
     color: black !important;
    }
 
@@ -737,8 +685,8 @@ button.callToAction:hover {
     z-index: 1;
    }
    
-   .btn-login::before,
-   .btn-login::after {
+.btn-login::before,
+.btn-login::after {
     content: '';
     position: absolute;
     top: 0;
@@ -748,31 +696,34 @@ button.callToAction:hover {
     transition: all 0.5s;
     overflow: hidden;
     z-index: -1;
-   }
+}
    
-   .btn-login:before {
+.btn-login:before {
     left: -10px;
     background: #240046;
    }
    
-   .btn-login::after {
+.btn-login::after {
     right: -10px;
     background: #5a189a;
    }
    
-   .btn-login:hover::before,
-   .btn-login:hover::after {
+.btn-login:hover::before,
+.btn-login:hover::after {
     width: 58%;
    }
    
-   .btn-login:hover span {
+.btn-login:hover span {
     color: #e0aaff;
     transition: 0.3s;
    }
    
-   .btn-login span {
+.btn-login span {
     color: #03045e;
     font-size: 18px;
     transition: all 0.3s ease-in;
-   }
+}
+/* .title-all{
+    font
+} */
 

@@ -26,11 +26,11 @@ const validator= (req, res , next) =>{
         }),
         
         password: joi.string()
-        .min(5)
+        .min(2)
         .max(40)
         .required()
         .messages({
-            'string.min':'"password": error min 5 characters',
+            'string.min':'"password": error min 2 characters',
             'string.max':'"password": error max 20 characters'
         }),
         country:joi.string()

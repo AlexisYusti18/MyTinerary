@@ -66,9 +66,11 @@ const userActions={
                 }
             })
                 .then(user=>{
+                    console.log(user);
                     if(user.data.success) {
                         //SI LA RESPUESTA ES SUCCES HACE EL DISPTACH CON LOS DATOS DEL USUARIO Y EL MENSAJE 
                         dispatch({type:'USER', payload:user.data.response})
+                        console.log(user.data.response);
                         dispatch({
                             type:'MESSAGE',
                             payload:{

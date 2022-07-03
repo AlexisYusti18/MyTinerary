@@ -22,7 +22,7 @@ export default function LogInGoogle(){
     //INICIALIZO EL SERVICIO DE GOOGLE ACCOUNTS
     useEffect(()=>{
         /* global google */
-        window.onload =function(){
+        
         google.accounts.id.initialize({
             client_id:'756989628379-agrhbg2tkjaa328te0j5nipgqfh6iopg.apps.googleusercontent.com',
             //CLIENT_ID: CLIENT_ID QUE CREE DESDE GOOGLE CLOUD
@@ -35,7 +35,7 @@ export default function LogInGoogle(){
             {theme:'outline', size:'medium', text:'signup_with' ,locale:'en-IN'}
         )
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }
+    
     })
     
     return(
