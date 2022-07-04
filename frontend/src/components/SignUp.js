@@ -15,7 +15,7 @@ function SignUp(props){
   const[selectCountry, setSelectCountry]= useState("unselected")
 
   function selected(event){
-    console.log(event.target.value)
+    //console.log(event.target.value)
     setSelectCountry(event.target.value)
   }
 
@@ -34,9 +34,9 @@ function SignUp(props){
       country:selectCountry
     }
     event.target.reset()
-    console.log(event);
+    //console.log(event);
     props.signUp(userData)
-    console.log(userData);
+    //console.log(userData);
   }
 
   return (
