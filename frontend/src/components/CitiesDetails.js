@@ -12,13 +12,8 @@ import ErrorSearch from '../components/ErrorSearch';
 
 export default function CitiesDetails(){
     const {id}= useParams()
-    //CONST DISPATCH:LO DECLARO EN UNA CONSTANTE PARA USARLO GLOBAL Y SE USAN EN LA CABEZERA DE LA FUNCION- GENERA UN ENVIO
-    //PERMITE TRAES LAS ACCIONES Y USARLAS
-    
-    //SI LO USO DIRECTO EN EL USEEFFECT NO ME DEJARIA PORQUE SE DEBE DECLARAR FUERA DE LA CABECERA DE LA FUNCION Y ADENTRO SE REUSA
     const dispatch= useDispatch()
    
-    //MEDIANTE UN useEffect LAMO A CITIESACTIONS Y AL MEDOTO DEL OBJETO GetOneCity QUE TIENE COMO PARAMETRO EL id
     useEffect(()=>{
         dispatch(citiesActions.getOneCity(id))
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -65,7 +60,6 @@ export default function CitiesDetails(){
                             </div>
                             <div className="price-time"> Price:
                                 <div className="title-cards">{Array(itinerary.price).fill().map((index)=> (
-                                    //PASO EL NUMERO A ARRAY MEDIANTE EL METODO Array, CON EL METODO FILL ME MODIFICA ESE ARRAY Y MAPEO ESE ARRAY TRANSFORMADO. HAGO UN RETURN Y DEVUELVO IN BILLETE
                                         <p key={index}>💵</p>
                                     )
                                     )}</div>

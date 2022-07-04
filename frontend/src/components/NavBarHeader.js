@@ -12,10 +12,10 @@ import LogoutIcon from '@mui/icons-material/Logout';
 
 
 const ResponsiveAppBar=(props)=>{
+  
   async function logOut(){
     await props.logOut(props.user.email)
   }
-    
     const pages = [ {to: '/home', name: 'Home'}, { to:'/cities', name:'Cities'}];
     const settings=[{to:'/signUp' , name:'Sign Up', icon:<PersonAddAlt1Icon/>}, {to:'/logIn', name:'Log In',icon:<LoginIcon/>}];
   
@@ -96,7 +96,6 @@ const ResponsiveAppBar=(props)=>{
                       :<img className='usuario-noregistrado' src={noregister} alt='imgUsuario'/>
                   }
                 </IconButton>
-            
           </Tooltip>
             <Menu
               sx={{ mt: '45px' }}
@@ -114,13 +113,16 @@ const ResponsiveAppBar=(props)=>{
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}>
                {props.user ? 
-               
+                <>
                 <LinkRouter to='/login' style={{textDecoration:'none'}}>
                   <MenuItem>
                       <Typography textAlign="center" onClick={logOut}>LogOut</Typography>
                       <LogoutIcon sx={{marginLeft:'5px'}}/>
                   </MenuItem>
                 </LinkRouter>
+                
+                
+                </>
                : 
                 
                settings.map((page, index) => (

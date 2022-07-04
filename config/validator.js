@@ -2,8 +2,9 @@ const joi= require('joi') //IMPORTO JOI
 
 const validator= (req, res , next) =>{
     //console.log(req.body.userData);
-    const schema = joi.object({ //CREO UNA CONSTANTE Y CON EL METODO JOI.OBJET CREO UN OBJETO DONDE VOY A GUARDAR LAS VALIDACIONES
+    const schema = joi.object({
         name: joi.string()
+        .alphanum() 
         .min(4)
         .max(20)
         .required()
@@ -12,6 +13,7 @@ const validator= (req, res , next) =>{
             'string.max':'"name": error max 20 characters'
         }),
         lastName: joi.string()
+        .alphanum() 
         .min(4)
         .max(20)
         .required()
@@ -55,17 +57,16 @@ const validator= (req, res , next) =>{
                 
         from: joi.string().required()
     })
-        //LEUGO DE ESTABLECER LOS CRITERIOS DE VALIDACION, USAMOS METODO VALIDATE() Y LE PASAMOS POR PARAMETRO LOS DATOS QUE VIENEN POR BODY DESDE EL FRONTEND Y CON abortEarly LO INDICAMOS EN FALSE PARA QUE REALIZE TODAS LAS VERIFICAIONES Y NOS DE UNA RESPUESTA EN ARRAY
         const validation= schema.validate(req.body.userData, {abortEarly:false})
             if(validation.error) {
                 //console.log(validation);
                 return res.json({
                     success: false,
                     from:"validator",
-                    message: validation.error.details, test: validation
-
+                    message: validation.error.details,
+                    test: validation
                 })
-        }
-    next() //SI ESTA TODO OK, EJECUTA EL NEXT, ENTONCES PASA AL CONTROLADOR
+            }
+    next()
 }
 module.exports= validator

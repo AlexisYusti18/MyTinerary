@@ -6,9 +6,12 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 import { Link as LinkRouter } from 'react-router-dom';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import EmailIcon from '@mui/icons-material/Email';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
 
 export default function Footer(){
     const pages= [{to: '/home', name: 'Home'}, { to:'/cities', name:'Cities'},{to:'/signUp' , name:'Sign Up'}, {to:'/logIn', name:'Log In'}]
+    const icons=[<FacebookIcon/>,<InstagramIcon/>,<TwitterIcon/>,<LinkedInIcon/>,<GitHubIcon/>]
     return(
         <div className="footer-ctn">
             <div className="datos">
@@ -23,10 +26,10 @@ export default function Footer(){
             </div>
 
             <div>
-                <div>
-                    <FacebookIcon sx={{margin:'15px', color:'#1a2221', fontSize:'30px', cursor:'pointer'}}/>
-                    <InstagramIcon sx={{margin:'15px', color:'#1a2221' , fontSize:'30px', cursor:'pointer'}}/>
-                    <TwitterIcon sx={{margin:'15px', color:'#1a2221', fontSize:'30px', cursor:'pointer'}}/>
+                <div style={{display:'flex'}}>
+                    {icons.map((icon, index)=>(
+                        <span key={index} style={{margin:'7px', color:'#1a2221', fontSize:'4rem', cursor:'pointer'}}>{icon}</span>
+                    ))}
                 </div>
             </div>
 

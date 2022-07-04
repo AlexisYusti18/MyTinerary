@@ -16,9 +16,6 @@ import { connect } from 'react-redux';
 
 function App(props) {
   
-  //CUANDO CARGA APP VERIFICA SI EXISTE ALGUN TOKEN EN EL LOCAL STORAGE => SI ES DIFERENTE A NULL QUIERE DECIR QUE EXISTE
-  //ENTONCES LO TRAE Y LO GUARDA EN LA CONSTANTE
-  //Y LLAMA A UNA ACCION VERIFYTOKEN
   useEffect(()=>{
     if(localStorage.getItem('token') !== null){
       const token=localStorage.getItem('token')
@@ -38,8 +35,6 @@ function App(props) {
             <Route path='/cities' element={<Cities/>}/>
             <Route path='/*' element={<Home/>}/>
             <Route path='/city/:id' element={<Details/>} />
-            {/* <Route path='/signUp' element={<SignUp/>}/>
-            <Route path='/logIn' element={<LogIn/>}/> */}
             {!props.user && <Route path='/signUp' element={<SignUp/>}/>}
             {!props.user && <Route path='/logIn' element={<LogIn/>}/>}
         </Routes>
@@ -57,4 +52,3 @@ const mapStateToProps=(state)=>{
   }
 }
 export default connect (mapStateToProps, mapDispatchToProps)(App);
- //le estas diciendo que primero enruta a details y despues le paso el parametro

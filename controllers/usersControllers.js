@@ -1,19 +1,17 @@
 const User= require('../models/user')
-const bcryptjs= require('bcryptjs') //PAQUETE PARA ENCRIPTAR Y DESENCRIPTAR CONTRASEÑAS DE bcryptjs (bicriptjs)
-const crypto= require('crypto') //IMPORTO CRYPTO PAQUETE DE NODE
+const bcryptjs= require('bcryptjs')
+const crypto= require('crypto') //IMPORTO CRYPTO =>PAQUETE DE NODE
 const verification = require('./verification')
 const jwt = require('jsonwebtoken')//REQUIERO JWT
 
 const userControllers ={
     signUp:async (req,res)=>{
-        let {name,lastName,email,password,country,imageUser,role,from}= req.body.userData//RECIBE DATOS DESDE EL BODY
+        let {name,lastName,email,password,country,imageUser,role,from}= req.body.userData
 
         try{
-           
-            const userExists = await User.findOne({email})
-            
+           const userExists = await User.findOne({email})
             if(userExists) {
-                //SI ES DIFERENTE A -1 SIGNIFICA QUE EL USUARIO YA HIZO EL REGISTRO CON ESE METODO
+                
                 if(userExists.from.indexOf(from) !== -1){
                     res.json({
                         success:false,
@@ -21,7 +19,7 @@ const userControllers ={
                         message: 'You are already registered with'+' '+from+' '+',LOG IN!' //ya estas registrado con from, inicia sesion!
                     })
                 }
-                //SI ME DEVUELVE -1 QUIERE DECIR QUE NO ESTA REGISTRADO CON ESE METODO
+               
                 else{
                     const passwordHash= bcryptjs.hashSync(password, 10)
                     userExists.from.push(from)
@@ -157,22 +155,18 @@ logIn: async (req, res)=>{
                         response:{token, userData},
                         message:'WELCOME' + userData.name + userData.lastName
                     })
-                }
-                
-                else {
+                }else {
                     res.json({
                         success:false,
                         from:from,
                         message:'verify email'
                     })
                 }
-                
-                
             } else{
                 res.json({
                     success:false,
                     from:from,
-                    message:'el usurio o password no coinciden'
+                    message:'the password or the email does not match, verify the data'
                 })
         }
         } 
@@ -211,8 +205,6 @@ logIn: async (req, res)=>{
         },
 
         verifyToken: async (req,res)=>{
-            //EL REQUERIMIENTO VIENE COMO REQ.USER PORQUE ASI LO MANDE DESDE PASSPORT
-            //EN LA RESPUESTA LE PASO LOS DATOS DEL USUARIO Y ESTO VA A LAS ACTIONS
             if(req.user) {
                 res.json({
                     success:true,

@@ -72,6 +72,7 @@
 }
 
    .callToAction{
+    cursor: pointer;
     margin-top: 20px;
     padding: 10px 20px;
     border: none;
@@ -100,10 +101,12 @@
 /* CARROUSEL */
 .carousel-ctn{
     min-height: 40vh;
-    background-color:#1b1b1d;
+    background-color:#1a2221;
+    /* background-image: url("https://images6.alphacoders.com/691/thumb-1920-691500.jpg"); */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    background-attachment: fixed;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -146,6 +149,7 @@
     width: 38vw;
     background-position: center !important;
     background-size: cover !important;
+    background-repeat: no-repeat;
 }
 .img-carousel:hover{
     transform: rotate(360deg);
@@ -238,6 +242,9 @@
     .footer-ctn{
         display: flex !important;
         flex-direction: column !important;
+    }
+    .css-i4bv87-MuiSvgIcon-root{
+        font-size: 10px !important;
     }
     .titulo{
         font-size: 40px;
@@ -722,6 +729,9 @@
     color: #03045e;
     font-size: 18px;
     transition: all 0.3s ease-in;
+}
+.css-i4bv87-MuiSvgIcon-root{
+    font-size: 35px !important;
 }
 /* .title-all{
     font

@@ -58,7 +58,7 @@ export default function CarouselCiudades(){
             {cities?.map((city,index)=>
                 <Carousel.Item key={index}>
                   <div className='carouselItem-ctn'>
-                      <div className='img-carousel' style={{background: `url(${city.image})`}}>
+                      <div className='img-carousel' style={{background: `url(${city.image})`, backgroundPosition:'center'}}>
                             <div className='ctn-title'>
                                 <h1 className='title-cities'>{city.name}</h1>
                             </div>    

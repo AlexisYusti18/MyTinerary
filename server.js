@@ -4,7 +4,7 @@ const express= require('express')
 const Router= require('./routes/routes') 
 const cors= require('cors') 
 const passport= require('passport') //REQUIERO PASSPORT DEL PAQUETE PASSPORT
-//se le pone 4000 para que no tenga conflicto
+
 //const PORT=process.env.PORT ||4000 
 const PORT=4000
 
@@ -21,7 +21,3 @@ app.use('/api', Router)
 app.listen(PORT, ()=>{
     console.log('SERVER READY ON PORT:' + PORT);
 })
-
-// app.get('/', (req,res)=>{
-//     res.send("funcionando")
-// })
