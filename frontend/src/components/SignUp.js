@@ -60,11 +60,11 @@ function SignUp(props){
         </div>
         {selectCountry !== "unselected" ?
           <>
-            <input className='input-form'  name='name' type="text" placeholder='Name' />
-            <input className='input-form'  name='lastName' type="text"  placeholder='LastName'/>
-            <input className='input-form'  name='email' type="email"  placeholder='Email'/>
-            <input className='input-form'  name='password' type="text"  placeholder='Password'/>
-            <input className='input-form'  name='imageUser' type="text"  placeholder='Profile Pic'/>
+            <input className='input-form'  autoComplete='off' name='name' type="text" placeholder='Name' />
+            <input className='input-form'  autoComplete='off' name='lastName' type="text"  placeholder='LastName'/>
+            <input className='input-form'  autoComplete='off' name='email' type="email"  placeholder='Email'/>
+            <input className='input-form'  autoComplete='off' name='password' type="password"  placeholder='Password'/>
+            <input className='input-form'  autoComplete='off' name='imageUser' type="text"  placeholder='Profile Pic'/>
             <select className='input-form' style={{cursor:'pointer'}} name='country'>
                   {roles.map((rol,index)=>
                       <option key={index}>{rol}</option>
@@ -77,7 +77,7 @@ function SignUp(props){
             </div>
       
           </>
-        :   <h1 className='title-all'>Select a country to continue</h1>
+              : <h1 className='title-all'>Select a country to continue</h1>
         }
       </form>
     </div>

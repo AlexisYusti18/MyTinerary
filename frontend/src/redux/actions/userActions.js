@@ -22,7 +22,7 @@ const userActions={
     logIn:(logInUser)=>{
         return async (dispatch, getState)=>{
             const user= await axios.post(`${url}/api/logIn`,{logInUser})
-            console.log(user);
+            //console.log(user);
             //console.log(user.data.response.userData);
             //console.log(user.data.response.token);
             if(user.data.success) {

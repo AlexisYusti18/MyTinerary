@@ -113,7 +113,7 @@ const ResponsiveAppBar=(props)=>{
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}>
                {props.user ? 
-                <>
+                
                 <LinkRouter to='/login' style={{textDecoration:'none'}}>
                   <MenuItem>
                       <Typography textAlign="center" onClick={logOut}>LogOut</Typography>
@@ -121,8 +121,6 @@ const ResponsiveAppBar=(props)=>{
                   </MenuItem>
                 </LinkRouter>
                 
-                
-                </>
                : 
                 
                settings.map((page, index) => (
@@ -130,7 +128,6 @@ const ResponsiveAppBar=(props)=>{
                     <MenuItem>
                         <Typography textAlign="center">{page.name}</Typography>
                         <span style={{marginLeft:'5px'}}>{page.icon}</span>
-
                     </MenuItem>
                 </LinkRouter>
                 ))
