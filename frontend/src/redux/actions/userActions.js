@@ -28,19 +28,19 @@ const userActions={
             if(user.data.success) {
                 localStorage.setItem('token', user.data.response.token)
                 dispatch({type:'USER', payload: user.data.response.userData})
-            } else{
-                dispatch({
-                    type:"MESSAGE" ,
-                    payload: {
-                        //ALERT
-                        view:true, //MOSTRAR LA VISTA
-                        message:user.data.message, //MUESTRA MENSAJE 
-                        success:user.data.success //COLOR DE ALERT
+            }   
+            else{
+                        dispatch({
+                            type:"MESSAGE" ,
+                            payload: {
+                                //ALERT
+                                view:true, //MOSTRAR LA VISTA
+                                message:user.data.message, //MUESTRA MENSAJE 
+                                success:user.data.success //COLOR DE ALERT
+                        }
+                        
+                    })
                 }
-                
-            })
-        }
-        //console.log(user.data.message);
         }
     },
     logOut:(closeUser)=>{

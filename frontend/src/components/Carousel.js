@@ -29,7 +29,8 @@ export default function CarouselCiudades(){
                 breakpoint:4160,
                   cols: 2,
                   rows: 2,
-                  gap: 2, 
+                  gap: 2,
+                  loop: true,
                   autoplay:3000
                 },
               {
@@ -37,6 +38,7 @@ export default function CarouselCiudades(){
                 cols: 2,
                 rows: 2,
                 gap: 5,
+                loop: true,
                 autoplay:3000 
               },
               {
@@ -44,6 +46,7 @@ export default function CarouselCiudades(){
                 cols: 2,
                 rows: 2,
                 gap: 5,
+                loop: true,
                 autoplay:3000 
               },
               
@@ -52,13 +55,14 @@ export default function CarouselCiudades(){
                   cols: 1,
                   rows: 4,
                   gap: 10,
+                  loop: true,
                   autoplay:3000 
                 },
             ]}>
             {cities?.map((city,index)=>
                 <Carousel.Item key={index}>
                   <div className='carouselItem-ctn'>
-                      <div className='img-carousel' style={{background: `url(${city.image})`, backgroundPosition:'center'}}>
+                      <div className='img-carousel' style={{background: `url(${city.image})`, backgroundPosition:'center', backgroundSize:'cover'}}>
                             <div className='ctn-title'>
                                 <h1 className='title-cities'>{city.name}</h1>
                             </div>    

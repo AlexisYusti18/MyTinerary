@@ -145,15 +145,11 @@
     width: 80vw !important;
 }
 .img-carousel{
-    height: 30vh;
+    height: 43vh;
     width: 38vw;
     background-position: center !important;
     background-size: cover !important;
     background-repeat: no-repeat;
-}
-.img-carousel:hover{
-    transform: rotate(360deg);
-    filter: saturate(200%);
 }
 .bhRnqO{
     background-color: #cf7126 !important;

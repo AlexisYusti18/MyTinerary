@@ -84,7 +84,7 @@ const userControllers ={
                         }
                     } 
             } catch(error){
-                console.log(error)
+                //console.log(error)
                 res.json({
                     success: false,
                     message:'Something went wrong, please try again later' //Algo ha salido mal, intenta de nuevo mas tarde
@@ -103,6 +103,7 @@ logIn: async (req, res)=>{
         if(from !== 'signUp'){
             
             if(passwordCoincide.length > 0){
+                
                 const userData = {
                     id:userExists._id,
                     name: userExists.name,

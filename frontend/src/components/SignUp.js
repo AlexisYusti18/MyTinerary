@@ -64,6 +64,7 @@ function SignUp(props){
             <input className='input-form'  autoComplete='off' name='lastName' type="text"  placeholder='LastName'/>
             <input className='input-form'  autoComplete='off' name='email' type="email"  placeholder='Email'/>
             <input className='input-form'  autoComplete='off' name='password' type="password"  placeholder='Password'/>
+            {/* <input className='input-form'  autoComplete='off' name='imageUser' type="file"  placeholder='Profile Pic'/> */}
             <input className='input-form'  autoComplete='off' name='imageUser' type="text"  placeholder='Profile Pic'/>
             <select className='input-form' style={{cursor:'pointer'}} name='country'>
                   {roles.map((rol,index)=>

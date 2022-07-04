@@ -59,7 +59,7 @@ export default function CitiesDetails(){
                                 <img src={itinerary.userimage} style={{borderRadius:"100%", height:"6rem"}} alt="img-user"/>
                             </div>
                             <div className="price-time"> Price:
-                                <div className="title-cards">{Array(itinerary.price).fill().map((index)=> (
+                                <div className="title-cards">{Array(itinerary.price).fill().map(index=> (
                                         <p key={index}>💵</p>
                                     )
                                     )}</div>

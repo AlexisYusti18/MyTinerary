@@ -27,7 +27,7 @@ export default function LogInGoogle(){
         });
         google.accounts.id.renderButton(
             document.getElementById('buttonDiv'),
-            {theme:'outline', size:'medium', text:'signup_with' ,locale:'en-IN'}
+            {theme:'outline', size:'medium', text:'login_with' ,locale:'en-IN'}
         )
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])

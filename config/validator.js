@@ -4,7 +4,6 @@ const validator= (req, res , next) =>{
     //console.log(req.body.userData);
     const schema = joi.object({
         name: joi.string()
-        .alphanum() 
         .min(4)
         .max(20)
         .required()
@@ -13,7 +12,6 @@ const validator= (req, res , next) =>{
             'string.max':'"name": error max 20 characters'
         }),
         lastName: joi.string()
-        .alphanum() 
         .min(4)
         .max(20)
         .required()

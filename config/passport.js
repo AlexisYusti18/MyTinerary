@@ -15,7 +15,6 @@ module.exports= passport.use(new jwtStrategy({
    
 },(jtw_payload, done)=>{
     
-  
     User.findOne({_id:jtw_payload.id})
 
     .then((user)=>{

@@ -15,6 +15,7 @@ const ResponsiveAppBar=(props)=>{
   
   const logOut=()=>{
     props.logOut(props.user.email)
+    //console.log(props.user);
   }
     const pages = [{to: '/home', name: 'Home'}, { to:'/cities', name:'Cities'}];
     const settings=[{to:'/signUp' , name:'Sign Up', icon:<PersonAddAlt1Icon/>}, {to:'/logIn', name:'Log In',icon:<LoginIcon/>}];
@@ -93,7 +94,8 @@ const ResponsiveAppBar=(props)=>{
                           <p>{props.user.name}</p>
                           <Avatar className='usuario-noregistrado' src={props.user.imageUser} alt='imgUsuario'/>
                       </div>
-                      :<img className='usuario-noregistrado' src={noregister} alt='imgUsuario'/>
+                      :
+                        <img className='usuario-noregistrado' src={noregister} alt='imgUsuario'/>
                   }
                 </IconButton>
           </Tooltip>
@@ -113,13 +115,13 @@ const ResponsiveAppBar=(props)=>{
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}>
                {props.user ? 
-                
                 <LinkRouter to='/login' style={{textDecoration:'none'}}>
                   <MenuItem>
                       <Typography textAlign="center" onClick={logOut}>LogOut</Typography>
                       <LogoutIcon sx={{marginLeft:'5px'}}/>
                   </MenuItem>
                 </LinkRouter>
+                
                 
                : 
                 
