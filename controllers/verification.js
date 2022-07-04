@@ -10,7 +10,7 @@ const verificacion = async (email, uniqueString) => {
         process.env.SECRET_CLIENT,
         "https://developers.google.com/oauthplayground"
     )
-    console.log('myOAuth2Client'+ myOAuth2Client)
+    //console.log('myOAuth2Client'+ myOAuth2Client)
 
     myOAuth2Client.setCredentials({
         refresh_token:process.env.REFRESH_TOKEN
@@ -58,9 +58,8 @@ const verificacion = async (email, uniqueString) => {
         if(error){
             console.log(error);
         } else {
-            console.log(`check ${email}`);
+            //console.log(`check ${email}`);
         }
     })
-
 }
 module.exports=verificacion

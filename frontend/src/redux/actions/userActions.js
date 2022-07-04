@@ -48,7 +48,6 @@ const userActions={
             const user= await axios.post(`${url}/api/logOut`,{closeUser})
             localStorage.removeItem('token')
             dispatch({type:'USER', payload:null})
-
             return user
         }
     },

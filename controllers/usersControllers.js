@@ -50,9 +50,7 @@ const userControllers ={
                     //QUE EL USUARIO NO HAYA SIDO ENCONTRADO EN LA BASE DE DATOS => USUARIO NUEVO
                     else {
                         const passwordHash= bcryptjs.hashSync(password, 10)
-                       
                         const uniqueString = crypto.randomBytes(15).toString('hex')
-                     
                         const newUser= await new User({
                             name,
                             lastName,
@@ -66,7 +64,7 @@ const userControllers ={
                             from : [from]
 
                         })
-                        // VERIFICO SI EL FROM ES DIFERENTE A MI FORMULARIO DE REGISTRO
+                        //VERIFICO SI EL FROM ES DIFERENTE A MI FORMULARIO DE REGISTRO
                         if(from !== 'signUp'){
                             await newUser.save()
                             res.json({

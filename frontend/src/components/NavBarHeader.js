@@ -13,10 +13,10 @@ import LogoutIcon from '@mui/icons-material/Logout';
 
 const ResponsiveAppBar=(props)=>{
   
-  async function logOut(){
-    await props.logOut(props.user.email)
+  const logOut=()=>{
+    props.logOut(props.user.email)
   }
-    const pages = [ {to: '/home', name: 'Home'}, { to:'/cities', name:'Cities'}];
+    const pages = [{to: '/home', name: 'Home'}, { to:'/cities', name:'Cities'}];
     const settings=[{to:'/signUp' , name:'Sign Up', icon:<PersonAddAlt1Icon/>}, {to:'/logIn', name:'Log In',icon:<LoginIcon/>}];
   
     const [anchorElNav, setAnchorElNav] = useState(null);
