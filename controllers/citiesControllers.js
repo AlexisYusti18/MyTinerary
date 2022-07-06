@@ -35,7 +35,7 @@ const cityControllers={
     addCity: async (req, res)=>{
         let city 
         let error=null
-        const{name, country,image,imagebanner,currency,language,description}= req.body.data //REQUIERE EL BODY
+        const{name, country,image,imagebanner,currency,language,description}= req.body.data
         try{
             city= await new City({ 
                 name: name,
@@ -84,5 +84,6 @@ const cityControllers={
         error: error
         })
     }
- }
+}
 module.exports= cityControllers
+

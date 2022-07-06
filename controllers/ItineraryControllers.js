@@ -6,7 +6,7 @@ const itineraryControllers={
         let error=null // defino el error que en primer instancia en null
 
         try{
-            itinerarys= await Itinerary.find() //espero esa creacion y utilizo el metodo find() que acciona como un filtro y nos devuelve los datos de la coleccion
+            itinerarys= await Itinerary.find().populate("activities") //espero esa creacion y utilizo el metodo find() que acciona como un filtro y nos devuelve los datos de la coleccion
         } catch (err) {error= err}
         res.json({
         response: error ? 'ERROR' : {itinerarys},
@@ -18,12 +18,11 @@ const itineraryControllers={
         const id= req.params.id
         let itinerary
         let error= null
-
         try{
-            itinerary= await Itinerary.findOne({_id: id}) //finOne acciona como filtro y aca le indico un id que de la coleccion sea igual al id enviado por parametro ||METODO-MONGOOSE
+            itinerary= await Itinerary.findOne({_id: id}).populate("activities") //finOne acciona como filtro y aca le indico un id que de la coleccion sea igual al id enviado por parametro ||METODO-MONGOOSE
         } catch (err) {error= err}
         res.json({
-        response: error ? 'ERROR' : itinerary,
+        response: error ? 'ERROR' :{ itinerary},
         success: error ? false : true,
         error: error
         })
@@ -60,7 +59,10 @@ const itineraryControllers={
         
         try{
             itinerarydb= await Itinerary.findOneAndUpdate({_id:id}, itinerary, {new: true}) //
-        } catch (err) {error= err}
+        } catch (err) {
+            error= err
+            console.log(error);
+        }
         res.json({
         response: error ? 'ERROR' : itinerary,
         success: error ? false : true,
@@ -80,6 +82,23 @@ const itineraryControllers={
         success: error ? false : true,
         error: error
         })
-    }
+    },
+    itinerariesByCityId: async (req, res)=>{
+           const id = req.params.id
+           let itineraries
+           let error=null
+           try{
+               itineraries= await Itinerary.find({cityId:id}).populate("activities")
+               console.log(itineraries)
+           } catch (err) {
+               error= err
+               console.log(error);
+           }
+           res.json({
+               response: error ? 'ERROR' :{itineraries},
+               success: error ? false : true,
+               error: error
+               })
+       }
 }
 module.exports= itineraryControllers

@@ -8,16 +8,19 @@ const citiesControllers= require("../controllers/citiesControllers");
 const {getCities, getOneCity, addCity, modifyCity, removeCity}= citiesControllers
 
 const itinerarysControllers= require("../controllers/ItineraryControllers")
-const {getItinerarys,getOneItinerary,addItinerary,modifyItinerary,removeItinerary}=itinerarysControllers
+const {getItinerarys,getOneItinerary,addItinerary,modifyItinerary,removeItinerary,itinerariesByCityId}=itinerarysControllers
 
 const usersControllers= require('../controllers/usersControllers')
 const {signUp,logIn,logOut,verifyEmail,verifyToken} = usersControllers
+
+const activitiesControllers= require('../controllers/activitiesControlles')
+const {getActivities,getOneActivity,addActivity,modifyActivity,removeActivity}= activitiesControllers
+
 
 //CITIES
 Router.route('/cities')
 .get(getCities)
 .post(addCity)
-
 
 Router.route('/cities/:id')
 .delete(removeCity)
@@ -29,7 +32,7 @@ Router.route('/itineraries')
 .get(getItinerarys)
 .post(addItinerary)
 
-Router.route('/itinerarys/:id')
+Router.route('/itineraries/:id')
 .delete(removeItinerary)
 .put(modifyItinerary)
 .get(getOneItinerary)
@@ -50,5 +53,15 @@ Router.route('/verify/:uniqueString')
 //TOKEN
 Router.route('/logInToken')
 .get(passport.authenticate('jwt', {session: false}), verifyToken)
+
+//ACTIVITIES
+Router.route('/activities')
+.get(getActivities)
+.post(addActivity)
+
+Router.route('/activities/:id')
+.delete(removeActivity)
+.put(modifyActivity)
+.get(getOneActivity)
 
 module.exports= Router // EXPORTO EL MODULO ROUTER   

@@ -6,8 +6,6 @@ import {useDispatch, useSelector} from 'react-redux';
 import citiesActions from '../redux/actions/citiesActions'
 
 export default function CardsCities(){
-    //const [citiesFilter ,setCitiesFilter]= useState([])
-    
     const dispatch= useDispatch()
 
     useEffect(()=>{

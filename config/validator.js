@@ -7,6 +7,7 @@ const validator= (req, res , next) =>{
         .min(4)
         .max(20)
         .required()
+        .pattern(new RegExp('[a-zA-Z]'))
         .messages({
             'string.min':'"name": error min 4 characters',
             'string.max':'"name": error max 20 characters'
@@ -15,6 +16,7 @@ const validator= (req, res , next) =>{
         .min(4)
         .max(20)
         .required()
+        .pattern(new RegExp('[a-zA-Z]'))
         .messages({
             'string.min':'"lastName": error min 4 characters',
             'string.max':'"lastName": error max 20 characters'
@@ -29,6 +31,7 @@ const validator= (req, res , next) =>{
         .min(2)
         .max(40)
         .required()
+        .pattern(new RegExp('[a-zA-Z]'))
         .messages({
             'string.min':'"password": error min 2 characters',
             'string.max':'"password": error max 20 characters'

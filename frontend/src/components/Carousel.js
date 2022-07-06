@@ -1,19 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Carousel from 'react-grid-carousel';
 import '../styles/style.css'
-import {useDispatch, useSelector} from 'react-redux';
-import citiesActions from '../redux/actions/citiesActions'
+import {useSelector} from 'react-redux';
+
 
 export default function CarouselCiudades(){
 
-    const dispatch= useDispatch()
-
-    useEffect(()=>{
-      //DESPACHO EL GET ALL CITIES
-      dispatch(citiesActions.getAllCities())
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[])
-    
     //LE PIDO DE CITIESREDUCER QUE ME TRAIGA EL ESTADO CITIES
     const cities= useSelector(store=> store.citiesReducer.cities)
     //USESELECTOR= EXTRAE LOS DATOS QUE LE PIDAMOS DEL DEL STORE

@@ -2,6 +2,7 @@ import React, { useEffect} from "react";
 import { useParams } from "react-router-dom";
 import {useDispatch, useSelector} from 'react-redux';
 import citiesActions from '../redux/actions/citiesActions'
+import itinerariesActions from '../redux/actions/itinerariesActions'
 import { Link as LinkRouter } from "react-router-dom";
 import InterpreterModeIcon from '@mui/icons-material/InterpreterMode';
 import LocalAtmIcon from '@mui/icons-material/LocalAtm';
@@ -18,18 +19,27 @@ export default function CitiesDetails(){
         dispatch(citiesActions.getOneCity(id))
         // eslint-disable-next-line react-hooks/exhaustive-deps
       },[])
-
     const city= useSelector(store=> store.citiesReducer.oneCity)
-    //EXTRAE LOS DATOS QUE LE PIDAMOS DEL DEL STORE
-    //console.log(city);
-    //console.log(city.itineraries);
+    
+    useEffect(()=>{
+        dispatch(itinerariesActions.getItineraries())
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+      },[])
+
+    useEffect(()=>{
+        dispatch(itinerariesActions.getItinerariesByCityId(id))
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+      },[])
+    const itinerary= useSelector(store=>store.itinerariesReducer.itineraryByCity)
+    console.log(itinerary)
+    
     return(
     <>
         <div className="ctn-details">
             <div className="details-description">
                     <div>
                         <div className='img-card-details' style={{background: `url(${city.image})`}}>
-                                <h1 className="title">{city.name} , {city.country}</h1>
+                                <h1 className="title-city-details">{city.name} , {city.country}</h1>
                         </div>
                         <div className="datos-cities">
                             <img className="flag" src={city.imagebanner} alt="flag"/>
@@ -58,20 +68,19 @@ export default function CitiesDetails(){
                                 <p className="title-cards">{itinerary.name}</p>
                                 <img src={itinerary.userimage} style={{borderRadius:"100%", height:"6rem"}} alt="img-user"/>
                             </div>
-                            <div className="price-time"> Price:
-                                <div className="title-cards">{Array(itinerary.price).fill().map(index=> (
-                                        <p key={index}>💵</p>
-                                    )
-                                    )}</div>
-                                <p className="title-cards">Duration: {itinerary.time}hs</p>
+                            <div className="title-price">Price:{Array(itinerary.price).fill().map((index,price)=> (
+                                            <div key={price}>💰</div>
+                                        )
+                                    )}
                             </div>
+                            <p className="title-cards">Duration: {itinerary.time}hs</p>
                             <div className="tags">
                                 <p className="title-cards">#{itinerary.tag}  #{itinerary.tag2}  #{itinerary.tag3}</p>
                             </div>
                   
                     <Collapsible  trigger="View More" triggerWhenOpen="Close" transitionTime="1000" transitionCloseTime="100" className="view-more">
                         <div className="img-activities">                                                                   
-                            <h3 className="activities-title">ACTIVITIES</h3>
+                        
                         </div>
                     </Collapsible>
                     </div>
