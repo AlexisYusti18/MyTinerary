@@ -25,24 +25,25 @@ const citiesActions={
     },
     //RECIBE COMO PARAMETRO EL ID DEL ITINERARIO
      likeAndDislike:(id)=>{
-        console.log(id)
+        //console.log(id)
         const token= localStorage.getItem('token')
         //console.log(token);
         return async()=>{
             try{
                 let res= await axios.put(`${url}/api/likes/${id}`, {},
+                // let res= await axios.put(url+'/api/likes/'+ id, {},
                 {
                     headers:{
                         'Authorization':'Bearer '+token
                     }
                 })
-                console.log(res);
+                //console.log(res)
                 return res
 
             }catch(error){
-                //console.log(error)
+                console.log(error)
             }
         }
-    }
+    },
 }
 export default citiesActions

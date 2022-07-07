@@ -8,34 +8,49 @@ import LocalAtmIcon from '@mui/icons-material/LocalAtm';
 import Collapsible from 'react-collapsible';
 import ErrorSearch from './ErrorSearch';
 import dolar from '../assets/dolar.png'
+
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
+
 import Carousel from 'react-grid-carousel';
 
 function CitiesDetails(){
     const {id}= useParams()
     const dispatch= useDispatch()
-    const [likes,setLikes]=useState()
+    const [reload,setReload]=useState(false)
+    const [inputText, setInputText]=useState('')
 
     useEffect(()=>{
         dispatch(citiesActions.getOneCity(id))
         //eslint-disable-next-line
-      },[])
+    },[reload])
     const city=useSelector(store=> store.citiesReducer.oneCity)
     //console.log(city)
     
-    async function likeOrDislike(){
-        const res=dispatch(citiesActions.likeAndDislike(city.itineraries._id))
-        //console.log(likes)
-        setLikes(res)
-     }
-     const user=useSelector(store=>store.userReducer.user)
+    async function likeOrDislike(idItinerario){
+        //console.log(idItinerario)
+        await dispatch(citiesActions.likeAndDislike(idItinerario))
+        //console.log(res)
+        setReload(!reload)
+    }
 
-     useEffect(()=>{
-        dispatch(citiesActions.likeAndDislike(id))
-        //eslint-disable-next-line
-      },[])
+    async function commentAdd(event){
+        const commentData={
+            // itinerary:itinerary._id,
+            comment:inputText
+        }
+        
+    }
     
+    
+    
+    
+    
+    
+    
+    const user=useSelector(store=>store.userReducer.user)
 
     return(
     <>
@@ -61,30 +76,28 @@ function CitiesDetails(){
             <div className="itineraries-ctn">
                 {city.itineraries?.length > 0 ?  city.itineraries?.map((itinerary,index)=>
                     <div key={index} className="itineraries-card">
+                        
                              <div className="title-itinerary">
                                 <h1 className="title-cards">{itinerary.title}</h1>
                             </div>
-                            
                             <div className="likes">
                                 {user ?
-                                <button onClick={likeOrDislike}> {likes?.includes(user.id) ?
+                                <>
+                                <button className="button-like" onClick={()=>likeOrDislike(itinerary._id)}>
+                                    {itinerary.likes?.includes(user.id) ?
                                     (<div style={{color:'red'}}>
-                                        <FavoriteIcon sx={{cursor:'pointer'}}/>
+                                        
+                                        <FavoriteIcon id={itinerary._id} sx={{cursor:'pointer'}}/>
                                     </div>) : 
                                     (<div style={{color:'red'}}>
-                                        <FavoriteBorderIcon sx={{cursor:'pointer'}}/>
+                                        <FavoriteBorderIcon id={itinerary._id} sx={{cursor:'pointer'}}/>
                                     </div>)}
+                                    {itinerary?.likes.length}
                                 </button>
-                                :   (<div>
-                                        <FavoriteBorderIcon sx={{cursor:'pointer'}}/>
-                                    </div>)
+                                </>
+                                :  (<div><FavoriteBorderIcon id={itinerary._id} sx={{cursor:'pointer'}}/></div>)
                             }
-                                <p>{likes?.length}</p>
-                               
                             </div>
-
-
-
                             <div className="name-image">
                                 <p className="title-cards">{itinerary.name}</p>
                                 <img src={itinerary.userimage} style={{borderRadius:"100%", height:"6rem"}} alt="img-user"/>
@@ -96,7 +109,7 @@ function CitiesDetails(){
                             <div className="tags">
                                 <p className="title-cards">#{itinerary.tag}  #{itinerary.tag2}  #{itinerary.tag3}</p>
                             </div>
-                            <Collapsible  trigger="View More" triggerWhenOpen="close" transitionTime="1000" transitionCloseTime="100" className="view-more">
+                            <Collapsible  trigger={<KeyboardArrowDownIcon/>} triggerWhenOpen={<ArrowUpwardIcon/>} transitionTime="1000" transitionCloseTime="100" className="view-more">
                                 <Carousel loop mobileBreakpoint={0} responsiveLayout={[{ breakpoint:4160,cols:1,rows:1,gap:2,autoplay:3000,hideArrow:true}]} className='aeste'>
                                     {itinerary.activities?.map((activity, index)=>(
                                         <Carousel.Item key={index} className='aeste'>
@@ -106,10 +119,28 @@ function CitiesDetails(){
                                         </Carousel.Item>
                                     ))}
                                 </Carousel>
+                            <div style={{height:'40vw'}}>
+                                {itinerary?.comments.map((comment,index)=>
+                                    <>
+                                        {comment.userId?._id !== user?.id ?
+                                        <div key={index}>
+                                            <div>
+                                                <p>{comment.userId.name}</p><p>{new Date(comment.data).toUTCString()}</p>
+                                            </div>
+                                            <div>
+                                                <p>{comment.comment}</p>
+                                            </div>
+                                        </div> :
+                                        <div>aa</div>}
+                                    
+                                    
+                                    </>
+                                    )}
+                            </div>
                             </Collapsible>
                     </div>
                         ) :(<ErrorSearch/>)
-                        }
+                    }
         </div>
             <div className="back-cities-ctn">
                 <LinkRouter to="/cities" onClick={() => window.scrollTo({top: 0,left: 0,behavior: 'smooth'})}>

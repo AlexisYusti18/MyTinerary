@@ -168,11 +168,11 @@
     font-family: 'Shadows Into Light', cursive !important;
 }
 .bqyzQp{
-    width: 80vw !important;
+    width: 40vw !important;
 }
 .img-carousel{
-    height: 43vh;
-    width: 38vw;
+    height: 40vh;
+    width: 90%;
     background-position: center !important;
     background-size: cover !important;
     background-repeat: no-repeat;
@@ -602,7 +602,7 @@
 .view-more{
     width: 100%;
     background-color: #1a2221;
-    height: 2vw;
+    height: 3%;
     color: white !important;
     font-weight: 800;
     font-size: 20px !important;
@@ -809,7 +809,18 @@
 .css-i4bv87-MuiSvgIcon-root{
     font-size: 35px !important;
 }
-/* .title-all{
-    font
-} */
-
+.button-like{
+    display: flex;
+ align-items: center;
+ font-family: inherit;
+ font-weight: 500;
+ font-size: 16px;
+ padding: 0.7em 1.4em 0.7em 1.1em;
+ color: white;
+ background: #ad5389;
+ background:#1a2221;
+ border: none;
+ box-shadow: 0 0.7em 1.5em -0.5em #12231798;
+ letter-spacing: 0.05em;
+ border-radius: 20em;
+}

@@ -7,7 +7,9 @@ const commentsActions={
         const token= localStorage.getItem('token')
 
         return async(dispatch, getState)=>{
+            //SI EL COMENTARIO NO ESTA VACIO=> QUE EL CAPO A CARGAR TENGA ALGO
             if(comment.comment !== '') {
+                //SI COMMENT NO ESTA VACIO, SE HACE EL PEDIDO LA RUTA
                 const res= await axios.post(`${url}/api/comment`, {comment},{
                     headers:{
                         'Authorization':'Bearer '+token
@@ -28,7 +30,7 @@ const commentsActions={
                     type:'MESSAGE',
                     payload:{
                         view:true,
-                        message:'ingresa tu comentario'
+                        message:'Enter a comment before sending'//Ingresa un comentario antes de enviar
                     }
                 })
             }
