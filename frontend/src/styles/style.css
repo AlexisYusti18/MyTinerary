@@ -442,6 +442,7 @@
 }
 
 .cards{
+    
     height: 35vh;
     width: 40vw;
     background-position: center !important;
@@ -565,8 +566,13 @@
     background-repeat: no-repeat;
 }
 .itineraries-card{
-    background: rgb(50, 126, 224);
-    border-radius: 40px 0 40px 0;
+    background: white;
+    position: relative;
+     display: flex;
+    place-content: center;
+    place-items: center;
+    overflow: hidden;
+    border-radius: 20px;
     border: 2px solid white !important;
     width: 40vw;
     margin: 30px 15px;
@@ -574,37 +580,73 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
-    background-color: white;
     border: #212121 0.2rem solid;
     box-shadow: 0.4rem 0.4rem 0.6rem #00000040;
 }
 .title-cards{
     color: black;
+    z-index: 1;
 }
 .likes{
     display: flex;
     color: black;
+    z-index: 1;
 }
 .tags{
     display:flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    z-index: 1;
 }
 .view-more{
-    border-radius: 40px 0 40px 0;
+    width: 100%;
     background-color: #1a2221;
     height: 2vw;
-    color: black;
+    color: white !important;
+    font-weight: 800;
+    font-size: 20px !important;
     cursor: pointer;
+    z-index: 1;
 }
 .Collapsible{
     background-color: #1a2221;
-    color: black;
+    color: white !important;
     cursor: pointer;
+    z-index: 1;
+    width: 100%;
+    font-weight: 800;
+    font-size: 20px !important;
+}
+.activities-title{
+    color: black;
+    font-size: 40px;
+    z-index: 1;
+}
+.price-time{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    z-index: 1;
+}
+.title-price{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    z-index: 1;
+}
+/* ACTIVITIES */
+.activities-ctn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .img-activities{
-    height: 20vw;
+    height: 20vw !important;
     width: 100%;
     background-image: url("../assets/background.jpg");
     background-position: center;
@@ -613,25 +655,17 @@
     justify-content: center;
     align-items: center;
 }
-.activities-title{
-    color: black;
-    font-size: 40px;
+.title-activities{
+    font-weight: 600;
+    text-shadow: 4px 4px 4px #1a2221;
+    
 }
-.price-time{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: black;
+.sc-ifAKCX{
+    width: 100% !important;
 }
-.title-price{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    color: black;
+.aeste{
+    width: 100% !important;
 }
-
 /* FORMS */
 
 .signup-ctn{

@@ -7,9 +7,10 @@ import InterpreterModeIcon from '@mui/icons-material/InterpreterMode';
 import LocalAtmIcon from '@mui/icons-material/LocalAtm';
 import Collapsible from 'react-collapsible';
 import ErrorSearch from './ErrorSearch';
-
+import dolar from '../assets/dolar.png'
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import Carousel from 'react-grid-carousel';
 
 function CitiesDetails(){
     const {id}= useParams()
@@ -89,22 +90,22 @@ function CitiesDetails(){
                                 <img src={itinerary.userimage} style={{borderRadius:"100%", height:"6rem"}} alt="img-user"/>
                             </div>
                             <div className="title-price">Price:{Array(itinerary.price).fill().map((index,price)=>(
-                                <div key={price}>💰</div>))}
+                                <img key={price} src={dolar} alt='imgDolar' style={{width:'50px'}}/>))}
                             </div>
                             <p className="title-cards">Duration: {itinerary.time}hs</p>
                             <div className="tags">
                                 <p className="title-cards">#{itinerary.tag}  #{itinerary.tag2}  #{itinerary.tag3}</p>
                             </div>
-                            <Collapsible  trigger="View More" triggerWhenOpen="Close" transitionTime="1000" transitionCloseTime="100" className="view-more">
-                                <div className="img-activities">                                                                   
-                                    <div>{itinerary.activities?.map((activity, index)=>(
-                                       <div key={index} style={{display:'flex'}}>
-                                        <img src={activity.image} alt='img' style={{width:'90px'}}/>
-                                        <p>{activity.name}</p>
-                                       </div>
+                            <Collapsible  trigger="View More" triggerWhenOpen="close" transitionTime="1000" transitionCloseTime="100" className="view-more">
+                                <Carousel loop mobileBreakpoint={0} responsiveLayout={[{ breakpoint:4160,cols:1,rows:1,gap:2,autoplay:3000,hideArrow:true}]} className='aeste'>
+                                    {itinerary.activities?.map((activity, index)=>(
+                                        <Carousel.Item key={index} className='aeste'>
+                                            <div className="img-activities" style={{background:`url(${activity.image})`, backgroundPosition:'center', backgroundSize:'cover', backgroundRepeat:'no-repeat'}}>
+                                                <p className="title-activities">{activity.name}</p>
+                                            </div>
+                                        </Carousel.Item>
                                     ))}
-                                    </div>
-                                </div>
+                                </Carousel>
                             </Collapsible>
                     </div>
                         ) :(<ErrorSearch/>)
