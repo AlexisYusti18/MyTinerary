@@ -1,9 +1,7 @@
 const passport=require('passport')
 const jwtStrategy= require('passport-jwt').Strategy //REQUIERO STRATEGY
 const extractJwt= require('passport-jwt').ExtractJwt//REQUIERO EXTRACTJWT
-
 const User= require('../models/user') //REQUIERO MI MODELO USUARIO
-
 
 module.exports= passport.use(new jwtStrategy({
     //DEFINO UN OBJECT QUE VA A TENER DOS PROPIEDADES :

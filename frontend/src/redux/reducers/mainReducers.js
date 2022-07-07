@@ -5,9 +5,8 @@
 import {combineReducers} from 'redux'
 import citiesReducer from '../reducers/citiesReducer';
 import userReducer from '../reducers/userReducer'
-import itinerariesReducer from './itinerariesReducer';
 
 const mainReducer= combineReducers({
-    citiesReducer, userReducer,itinerariesReducer
+    citiesReducer, userReducer
 })
 export default mainReducer

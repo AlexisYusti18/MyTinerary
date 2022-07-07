@@ -1,15 +1,15 @@
 const Itinerary=require('../models/itinerary')
 
 const itineraryControllers={
-    getItinerarys : async (req,res)=>{ //funciona asincrona que crear las city
-        let itinerarys //variable que va a tener la nueva ciudad
-        let error=null // defino el error que en primer instancia en null
-
+    getItinerarys : async (req,res)=>{ 
+        let itineraries
+        let error=null 
         try{
-            itinerarys= await Itinerary.find().populate("activities") //espero esa creacion y utilizo el metodo find() que acciona como un filtro y nos devuelve los datos de la coleccion
+            itineraries= await Itinerary.find()
+            //console.log(itinerarys);
         } catch (err) {error= err}
         res.json({
-        response: error ? 'ERROR' : {itinerarys},
+        response: error ? 'ERROR' : {itineraries},
         success: error ? false : true,
         error: error
         })
@@ -19,7 +19,7 @@ const itineraryControllers={
         let itinerary
         let error= null
         try{
-            itinerary= await Itinerary.findOne({_id: id}).populate("activities") //finOne acciona como filtro y aca le indico un id que de la coleccion sea igual al id enviado por parametro ||METODO-MONGOOSE
+            itinerary= await Itinerary.findOne({_id: id})
         } catch (err) {error= err}
         res.json({
         response: error ? 'ERROR' :{ itinerary},
@@ -58,7 +58,7 @@ const itineraryControllers={
         let error= null
         
         try{
-            itinerarydb= await Itinerary.findOneAndUpdate({_id:id}, itinerary, {new: true}) //
+            itinerarydb= await Itinerary.findOneAndUpdate({_id:id}, itinerary, {new: true}) 
         } catch (err) {
             error= err
             console.log(error);
@@ -83,22 +83,37 @@ const itineraryControllers={
         error: error
         })
     },
-    itinerariesByCityId: async (req, res)=>{
-           const id = req.params.id
-           let itineraries
-           let error=null
-           try{
-               itineraries= await Itinerary.find({cityId:id}).populate("activities")
-               console.log(itineraries)
-           } catch (err) {
-               error= err
-               console.log(error);
-           }
-           res.json({
-               response: error ? 'ERROR' :{itineraries},
-               success: error ? false : true,
-               error: error
-               })
-       }
+    likeAndDislike: async(req,res)=>{
+        const id=req.params.id
+        //console.log(id);
+        const user=req.user.id
+        //console.log(user)
+        await Itinerary.findOne({_id:id})
+
+        .then(itinerary=>{
+            console.log(itinerary);
+            
+            if(itinerary.likes.includes(user)){
+                Itinerary.findOneAndUpdate({_id:id}, {$pull:{likes:user}}, {new:true})
+                .then((res)=>
+                res.json({
+                    success:true,
+                    response:res.likes,
+                })
+                ).catch((error)=>console.log(error))
+            }
+            else {
+                Itinerary.findOneAndUpdate({_id:id}, {$push:{likes:user}}, {new:true})
+                .then((res)=>
+                res.json({
+                    success:true,
+                    response:res.likes,
+                })).catch((error)=>console.log(error))
+            }
+        }).catch((error)=>({
+            success:false,
+            response:error
+        }))
+    }
 }
 module.exports= itineraryControllers

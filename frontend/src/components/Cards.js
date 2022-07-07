@@ -13,7 +13,6 @@ export default function CardsCities(){
       // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])   
     //const cities= useSelector(store=> store.citiesReducer.cities)
-    //console.log(cities);
    
     const search=(e)=>{
         dispatch(citiesActions.filterCities(e.target.value))

@@ -1,15 +1,15 @@
 //importo el modelo de cities
 const City= require('../models/city')
 
-//creo una constante que tiene un objecto y que cada propiedad de ese objeto es un metodo de objeto
+
 const cityControllers={
    
-    getCities : async (req,res)=>{ //FUNCIONA ASINCRONA QUE OBTIENE LAS CIUDADES
+    getCities : async (req,res)=>{ 
         let cities
-        let error=null // DEFINO UNA VARIABLE ERROR QUE EN PRIMER INSTANCIA EN NULL
+        let error=null
 
         try{
-            cities= await City.find().populate("itineraries")  //espero esa creacion y utilizo el metodo find() que acciona como un filtro y nos devuelve los datos de la coleccion
+            cities= await City.find()
         } catch (err) {error= err}
         res.json({
         response: error ? 'ERROR' : {cities},
@@ -23,9 +23,11 @@ const cityControllers={
         let error= null
 
         try{
-            city= await City.findOne({_id: id}).populate("itineraries") //finOne acciona como filtro y aca le indico un id que de la coleccion sea igual al id enviado por parametro ||METODO-MONGOOSE
+            city= await City.findOne({_id: id}).populate({
+                path:"itineraries", 
+                populate:{path:"activities"}
+                })
         } catch (err) {error= err}
-        //DEVUELVE UNA RESPUESTA LA CUAL DEVUELVE Y ES CAPTURADA EN EL FRONTEND
         res.json({
         response: error ? 'ERROR' : city,
         success: error ? false : true,

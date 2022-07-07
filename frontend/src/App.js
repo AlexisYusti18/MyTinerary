@@ -56,7 +56,7 @@ function App(props) {
   );
 }
 const mapDispatchToProps ={
-  verifyToken: userActions.verifyToken,
+  verifyToken: userActions.verifyToken
 }
 const mapStateToProps=(state)=>{
   return {
