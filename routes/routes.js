@@ -16,6 +16,8 @@ const {signUp,logIn,logOut,verifyEmail,verifyToken} = usersControllers
 const activitiesControllers= require('../controllers/activitiesControlles')
 const {getActivities,getOneActivity,addActivity,modifyActivity,removeActivity}= activitiesControllers
 
+const commentsControllers= require('../controllers/commentsControllers')
+const {addComment,modifyComment,deleteComment}=commentsControllers
 
 //CITIES
 Router.route('/cities')
@@ -41,6 +43,14 @@ Router.route('/itineraries/:id')
 Router.route('/likes/:id')
 //CON EL METODO PUT PASA POR PASSPORT(QUE ES EL QUE ME DEVUELVE EL ID) Y UNA VEZ QUE PASO POR PASSPORT VA A MI likeAndDislike(CONTROLADOR)=> LUEGO PARA QUE LLEGUE A LA RUTA VOY A LAS ACTIONS
 .put(passport.authenticate('jwt', {session:false}),likeAndDislike)
+
+//COMMENTS 
+Router.route('/comment')
+.post(passport.authenticate('jwt', {session:false}), addComment)
+.put(passport.authenticate('jwt', {session:false}), modifyComment)
+
+Router.route('/comment/:id')
+.post(passport.authenticate('jwt', {session:false}), deleteComment)
 
 //USER ROUTES
 Router.route('/signUp')

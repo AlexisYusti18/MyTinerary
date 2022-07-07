@@ -13,7 +13,7 @@ const itinerarySchema= new mongoose.Schema({ //creo el nuevo esquema de mongoose
     activities:[{type:mongoose.Types.ObjectId, ref:"activities"}],
     comments:[{
             userId: {type:mongoose.Types.ObjectId, ref:"users"},
-            comments:{type:String}
+            comment:{type:String}
         }] 
 })
 const Itinerary= mongoose.model('itineraries', itinerarySchema)
