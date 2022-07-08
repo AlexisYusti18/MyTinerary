@@ -3,59 +3,70 @@ const Itinerary=require('../models/itinerary')
 const commentsControllers={
 
     addComment: async (req,res)=>{
-        const {itinerary, comment}=req.body.comment
+        //REQUIERE POR BODY COMMENT
+        const {itineraryId,comments}=req.body.data
+        //ID DEL USUARIO DESDE PASSPORT
         const user=req.user._id
 
         try{
-            const newComment= await Itinerary.findOneAndUpdate({_id:itinerary}, {$push:{comments:{comment:comment, userId:user, date:Date.now()}}}, {new:true}).populate("comments.userId", {name:1})
+            const newComment= await Itinerary.findOneAndUpdate(
+                {_id:itineraryId},
+                {$push:{comments:{comment:comments, userId:user}}},
+                {new:true})
+                //console.log(newComment)
             res.json({
                 success: true,
                 response: {newComment},
-                message:'gracias comentario'
+                message:'Comment uploaded successfully!'
             })
         } catch(error){
             console.log(error)
             res.json({
                 success:false,
-                message:'algo salio mal'
+                message:'something went wrong, try again'
             })
         }
     },
     modifyComment: async(req,res)=>{
-        const {commentId, comment}=req.body.comment
+        const {commentId, comment}=req.body.commentModify
 
         try{
-            const newComment= await Itinerary.findOneAndUpdate({'comments._id':commentId}, {$set:{'comments.$.comment':comment, 'comments.$.data': Date.now()}}, {new:true})
-            console.log(newComment)
+            const modifyComment= await Itinerary.findOneAndUpdate(
+                {'comments._id':commentId},
+                {$set:{'comments.$.comment':comment}}, {new:true})
+            //console.log(newComment)
             res.json({
                 success:true,
-                response:{newComment},
-                message:'comentario modificado'
+                response:{modifyComment},
+                message:'your comment has been modified'
             })
         } catch(error){
             console.log(error)
             res.json({
                 success:true,
-                message:'algo salio mal'
+                message:'something went wrong, try again'
             })
         }
     },
     deleteComment: async(req,res)=>{
+        //USO EL PARAMS=> EL ID QUE ME MANDA EL FRONTEND POR PARAMETRO
         const id=req.params.id
 
         try{
-            const deleteComment= await Itinerary.findOneAndUpdate({'comments._id':id}, {$pull:{comments: {_id:id}}}, {new:true})
+            const deleteComment= await Itinerary.findOneAndUpdate(
+                {'comments._id':id},
+                {$pull: {comments: {_id:id}}}, {new:true})
             console.log(deleteComment)
             res.json({
                 success:true,
                 response: {deleteComment},
-                message:'comenario eliminado'
+                message:'comment deleted successfully'
             })
         } catch(error){
             console.log(error)
             res.json({
                 success:false,
-                message:'algo salio mal'
+                message:'something went wrong, try again'
             })
         }
     }

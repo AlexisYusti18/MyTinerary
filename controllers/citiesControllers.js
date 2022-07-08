@@ -23,6 +23,7 @@ const cityControllers={
         let error= null
 
         try{
+            // city= await City.findOne({_id: id}).populate("itineraries").populate("itineraries.activities")
             city= await City.findOne({_id: id}).populate({
                 path:"itineraries", 
                 populate:{path:"activities"}

@@ -47,10 +47,10 @@ Router.route('/likes/:id')
 //COMMENTS 
 Router.route('/comment')
 .post(passport.authenticate('jwt', {session:false}), addComment)
-.put(passport.authenticate('jwt', {session:false}), modifyComment)
 
 Router.route('/comment/:id')
-.post(passport.authenticate('jwt', {session:false}), deleteComment)
+.put(passport.authenticate('jwt', {session:false}), modifyComment)
+.delete(passport.authenticate('jwt', {session:false}), deleteComment)
 
 //USER ROUTES
 Router.route('/signUp')

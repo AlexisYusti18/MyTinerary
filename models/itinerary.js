@@ -14,7 +14,6 @@ const itinerarySchema= new mongoose.Schema({ //creo el nuevo esquema de mongoose
     comments:[{
             userId: {type:mongoose.Types.ObjectId, ref:"users"},
             comment:{type:String, required:true},
-            date:{type:Date, required:true}
         }] 
 })
 const Itinerary= mongoose.model('itineraries', itinerarySchema)

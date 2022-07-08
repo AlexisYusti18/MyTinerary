@@ -15,42 +15,52 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 
 import Carousel from 'react-grid-carousel';
+import commentsActions from "../redux/actions/commentsActions";
 
 function CitiesDetails(){
     const {id}= useParams()
     const dispatch= useDispatch()
+    
     const [reload,setReload]=useState(false)
-    const [inputText, setInputText]=useState('')
+    const [text, setText]=useState('')
+    const [modify,setModify]=useState()
+    const user=useSelector(store=>store.userReducer.user)
 
     useEffect(()=>{
         dispatch(citiesActions.getOneCity(id))
         //eslint-disable-next-line
     },[reload])
     const city=useSelector(store=> store.citiesReducer.oneCity)
-    //console.log(city)
-    
+
     async function likeOrDislike(idItinerario){
         //console.log(idItinerario)
         await dispatch(citiesActions.likeAndDislike(idItinerario))
-        //console.log(res)
         setReload(!reload)
     }
 
-    async function commentAdd(event){
-        const commentData={
-            // itinerary:itinerary._id,
-            comment:inputText
+    async function addComment(id){
+        const data={
+            itineraryId:id,
+            comments:text
         }
-        
+        await dispatch(commentsActions.addComment(data))
+        setReload(!reload)
     }
     
+    async function modifyComment(e){
+        const commentModify={
+            commentId:e.target.id,
+            commentModify:modify
+        }
+        await dispatch(commentsActions.modifyComment(commentModify))
+        setReload(!reload)
+    }
+
+    async function deleteComment(e){
+        await dispatch(commentsActions.deleteComment(e.target.id))
+        setReload(!reload)
+    }
     
-    
-    
-    
-    
-    
-    const user=useSelector(store=>store.userReducer.user)
 
     return(
     <>
@@ -76,26 +86,21 @@ function CitiesDetails(){
             <div className="itineraries-ctn">
                 {city.itineraries?.length > 0 ?  city.itineraries?.map((itinerary,index)=>
                     <div key={index} className="itineraries-card">
-                        
-                             <div className="title-itinerary">
+                            <div className="title-itinerary">
                                 <h1 className="title-cards">{itinerary.title}</h1>
                             </div>
                             <div className="likes">
                                 {user ?
                                 <>
                                 <button className="button-like" onClick={()=>likeOrDislike(itinerary._id)}>
-                                    {itinerary.likes?.includes(user.id) ?
-                                    (<div style={{color:'red'}}>
-                                        
-                                        <FavoriteIcon id={itinerary._id} sx={{cursor:'pointer'}}/>
-                                    </div>) : 
-                                    (<div style={{color:'red'}}>
-                                        <FavoriteBorderIcon id={itinerary._id} sx={{cursor:'pointer'}}/>
-                                    </div>)}
-                                    {itinerary?.likes.length}
+                                    {itinerary.likes?.includes(user.id) ?(<div style={{color:'red'}}><FavoriteIcon id={itinerary._id} sx={{cursor:'pointer'}}/></div>) : 
+                                    (<div style={{color:'red'}}><FavoriteBorderIcon id={itinerary._id} sx={{cursor:'pointer'}}/></div>)}{itinerary?.likes.length}
                                 </button>
                                 </>
-                                :  (<div><FavoriteBorderIcon id={itinerary._id} sx={{cursor:'pointer'}}/></div>)
+                                :  (
+                                <button className="button-like">
+                                    <FavoriteBorderIcon id={itinerary._id} sx={{cursor:'pointer'}}/>
+                                </button>)
                             }
                             </div>
                             <div className="name-image">
@@ -112,30 +117,46 @@ function CitiesDetails(){
                             <Collapsible  trigger={<KeyboardArrowDownIcon/>} triggerWhenOpen={<ArrowUpwardIcon/>} transitionTime="1000" transitionCloseTime="100" className="view-more">
                                 <Carousel loop mobileBreakpoint={0} responsiveLayout={[{ breakpoint:4160,cols:1,rows:1,gap:2,autoplay:3000,hideArrow:true}]} className='aeste'>
                                     {itinerary.activities?.map((activity, index)=>(
-                                        <Carousel.Item key={index} className='aeste'>
+                                        <Carousel.Item key={activity} className='aeste'>
                                             <div className="img-activities" style={{background:`url(${activity.image})`, backgroundPosition:'center', backgroundSize:'cover', backgroundRepeat:'no-repeat'}}>
                                                 <p className="title-activities">{activity.name}</p>
                                             </div>
                                         </Carousel.Item>
                                     ))}
                                 </Carousel>
+                                <p>comments({itinerary.comments.length})</p>
                             <div style={{height:'40vw'}}>
+                                
                                 {itinerary?.comments.map((comment,index)=>
-                                    <>
+                                    <>  
                                         {comment.userId?._id !== user?.id ?
-                                        <div key={index}>
+                                        <div key={comment._id}>
                                             <div>
-                                                <p>{comment.userId.name}</p><p>{new Date(comment.data).toUTCString()}</p>
+                                                <h1>{comment.userId.name}</h1>
                                             </div>
                                             <div>
                                                 <p>{comment.comment}</p>
                                             </div>
-                                        </div> :
-                                        <div>aa</div>}
+                                        </div>
+                                        :
+                                            <>
+                                                <div onInput={(e)=>setModify(e.currentTarget.textContent)} contentEditable >{comment.comment}</div>
+                                                <button className="text-comment" id={comment._id} onClick={modifyComment}>MODIFICAR</button>
+                                                <button className="text-comment" id={comment._id} onClick={deleteComment}>ELIMINAR</button>
+                                            </>
+                                        }
                                     
                                     
                                     </>
-                                    )}
+                                            )}
+                                    {user?
+                                    <div>DEJANOS TU COMENTARIO
+                                        <div className="text-comment" contentEditable placeholder='send comment' onInput={(event)=>setText(event.currentTarget.textContent)}></div>
+                                        <button className="button-send" onClick={()=>addComment(itinerary._id)}>Send</button>
+                                    </div>
+                                    : <h1>dejanos</h1>
+
+                                    }
                             </div>
                             </Collapsible>
                     </div>
@@ -151,4 +172,3 @@ function CitiesDetails(){
    </>)
 }
 export default CitiesDetails
-// export default connect(mapStateToProps,mapDispatchToProps)(CitiesDetails)

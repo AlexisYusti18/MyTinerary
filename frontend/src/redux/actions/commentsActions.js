@@ -3,21 +3,21 @@ const url="http://localhost:4000"
 
 const commentsActions={
     
-    addComment:(comment)=>{
+    addComment:(data)=>{
         const token= localStorage.getItem('token')
-
+        //console.log(token)
         return async(dispatch, getState)=>{
             //SI EL COMENTARIO NO ESTA VACIO=> QUE EL CAPO A CARGAR TENGA ALGO
-            if(comment.comment !== '') {
+            if(data.comment !== "") {
                 //SI COMMENT NO ESTA VACIO, SE HACE EL PEDIDO LA RUTA
-                const res= await axios.post(`${url}/api/comment`, {comment},{
+                const res= await axios.post(`${url}/api/comment`, {data},{
                     headers:{
                         'Authorization':'Bearer '+token
                     }
                 })
                 console.log(res)
                 dispatch({
-                    type:'MESSAGE',
+                    type:'MESSAGEC',
                     payload:{
                         view:true,
                         message: res,
@@ -26,8 +26,9 @@ const commentsActions={
                 })
                 return res
             } else{
+                //EN CASO DE QUE ESTE VACIO EL CAMPO, DEVUELVO EL MENSAJE
                 dispatch({
-                    type:'MESSAGE',
+                    type:'MESSAGEC',
                     payload:{
                         view:true,
                         message:'Enter a comment before sending'//Ingresa un comentario antes de enviar
@@ -36,10 +37,11 @@ const commentsActions={
             }
         }
     },
-    modifyComment: (comment)=>{
+    modifyComment: (commentModify)=>{
+        //console.log(commentModify)
         const token= localStorage.getItem('token')
         return async (dispatch, getState)=>{
-            const res= await axios.put(`${url}/api/comment`, {comment}, {
+            const res= await axios.put(`${url}/api/comment`, {commentModify}, {
                 headers:{
                     'Authorization':'Bearer '+token
                 }
