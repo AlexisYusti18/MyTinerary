@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect,useState} from "react";
 import { useParams } from "react-router-dom";
 import {useDispatch, useSelector} from 'react-redux';
 import citiesActions from '../redux/actions/citiesActions'
@@ -8,15 +8,19 @@ import LocalAtmIcon from '@mui/icons-material/LocalAtm';
 import Collapsible from 'react-collapsible';
 import ErrorSearch from './ErrorSearch';
 import dolar from '../assets/dolar.png'
-
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 
-import Carousel from 'react-grid-carousel';
+import ImageList from '@mui/material/ImageList';
+import ImageListItem from '@mui/material/ImageListItem';
 import commentsActions from "../redux/actions/commentsActions";
+import Swal from 'sweetalert2'
+import { TextField } from "@mui/material";
 
 function CitiesDetails(){
     const {id}= useParams()
@@ -28,17 +32,22 @@ function CitiesDetails(){
 
     const user=useSelector(store=>store.userReducer.user)
 
+
     useEffect(()=>{
         dispatch(citiesActions.getOneCity(id))
+
         //eslint-disable-next-line
     },[reload])
     const city=useSelector(store=> store.citiesReducer.oneCity)
     //console.log(city)
 
-    // useEffect(()=>{
-    //     dispatch(citiesActions.getItineratyForCity(id))
-    //     //eslint-disable-next-line
-    // },[reload])
+    const viewAlert=()=>{
+        Swal.fire({
+            icon:'error',
+            title:'You must be logged in to comment',
+            timer:1500
+        })
+    }
 
     async function likeOrDislike(idItinerario){
         //console.log(idItinerario)
@@ -53,6 +62,7 @@ function CitiesDetails(){
         }
         await dispatch(commentsActions.addComment(data))
         setReload(!reload)
+        setText("")
     }
     
     async function modifyComment(id){
@@ -106,7 +116,7 @@ function CitiesDetails(){
                                 </button>
                                 </>
                                 :  (
-                                <button className="button-like">
+                                <button className="button-like" onClick={()=>viewAlert()}>
                                     <FavoriteBorderIcon id={itinerary._id} sx={{cursor:'pointer'}}/>
                                 </button>)
                             }
@@ -123,35 +133,35 @@ function CitiesDetails(){
                                 <p className="title-cards">#{itinerary.tag}  #{itinerary.tag2}  #{itinerary.tag3}</p>
                             </div>
                             <Collapsible  trigger={<KeyboardArrowDownIcon/>} triggerWhenOpen={<ArrowUpwardIcon/>} transitionTime="1000" transitionCloseTime="100" className="view-more">
-                                <Carousel loop mobileBreakpoint={0} responsiveLayout={[{ breakpoint:4160,cols:1,rows:1,gap:2,autoplay:3000,hideArrow:true}]} className='aeste'>
+                                    <ImageList sx={{ width:'100%', height:'30vh'}} cols={3} rowHeight={200}>
                                     {itinerary.activities?.map((activity, index)=>(
-                                        <Carousel.Item key={activity} className='aeste'>
+                                        <ImageListItem key={index}>
                                             <div className="img-activities" style={{background:`url(${activity.image})`, backgroundPosition:'center', backgroundSize:'cover', backgroundRepeat:'no-repeat'}}>
-                                                <p className="title-activities">{activity.name}</p>
+                                                <p className="title-cities-activities">{activity.name}</p>
                                             </div>
-                                        </Carousel.Item>
+                                        </ImageListItem>
+                                                                                     
                                     ))}
-                                </Carousel>
-                                <p>comments({itinerary.comments.length})</p>
-                            <div style={{minHeight:'40vw'}}>
-                                
-                                {itinerary?.comments.map((comment,index)=>
-                                    <div key={index}>  
+                                    </ImageList>
+                                <p style={{color:'yellow'}}>COMMENTS({itinerary.comments.length})</p>
+                            <div style={{minHeight:'20vw'}}>
+                            {itinerary?.comments.map((comment,index)=>
+                                    <div key={index} className="ctn-texto">  
                                        {/* <div>
                                             <p>{comment.comment}</p>
                                         </div> */}
                                         {user ?
-                                            <div>
-                                                <p>{user.name}</p>
-                                                <img style={{width:'10vw',borderRadius:'50%'}}  src={user.imageUser} alt="imgUser"/>
-                                                <div suppressContentEditableWarning={true} type="text" onInput={(e)=>setModify(e.currentTarget.textContent)} contentEditable >{comment.comment}</div>
-                                                <button onClick={()=>modifyComment(comment._id)}>MODIFICAR</button>
-                                                <button onClick={()=>deleteComment(comment._id)}>ELIMINAR</button>
+                                            <div className="ctn-texto">
+                                                <p>User:{user.name}</p>
+                                                {/* <img style={{width:'10vw',borderRadius:'50%'}}  src={user.imageUser} alt="imgUser"/> */}
+                                                <div style={{backgroundColor:'white', color:'red'}} suppressContentEditableWarning={true} type="text" onInput={(e)=>setModify(e.currentTarget.textContent)} contentEditable >{comment.comment}</div>
+                                                <button onClick={()=>modifyComment(comment._id)} className='tooltip'><EditIcon/></button>
+                                                <button onClick={()=>deleteComment(comment._id)} className='tooltip'><DeleteForeverIcon/></button>
                                             </div>
                                         
                                             : 
                                             <>
-                                                <p>anon</p>
+                                                
                                                 <p>{comment.comment}</p>
                                             </>
                                     }
@@ -164,11 +174,45 @@ function CitiesDetails(){
                                     </div>
                                             :
                                      
-                                            <p>If you want to write a comment you must log in</p>
+                                            <div className="button-textfield">
+                                            <TextField sx={{width:'80%', backgroundColor:'white'}}></TextField>
+                                            <button className="button-send" onClick={()=>viewAlert()}>comment</button>
+                                        </div> 
                                        
 
                                     }
                             </div>
+                                {/* {itinerary?.comments.map((comment,index)=>
+                                    <div key={index}>  
+                                        {user ?
+                                            <div>
+                                                <p>{user.name}</p>
+                                                <img style={{width:'10vw',borderRadius:'50%'}}  src={user.imageUser} alt="imgUser"/>
+                                                <div style={{color:'white'}} suppressContentEditableWarning={true} type="text" onInput={(e)=>setModify(e.currentTarget.textContent)} contentEditable >{comment.comment}</div>
+                                                <button onClick={()=>modifyComment(comment._id)} className='tooltip'><EditIcon/></button>
+                                                <button onClick={()=>deleteComment(comment._id)} className='tooltip'><DeleteForeverIcon/></button>
+                                            </div>
+                                        
+                                            : 
+
+                                            <>
+                                                <p>{comment.comment}</p>
+                                            </>
+                                    }
+                                    </div>
+                                    )}
+                                    {user?
+                                    <div className="button-textfield">
+                                        <TextField onInput={(event)=>setText(event.currentTarget.textContent)} className="text-comment" contentEditable sx={{width:'80%', backgroundColor:'white'}}></TextField>
+                                        <button className="button-send" onClick={()=>addComment(itinerary._id)}>comment</button>
+                                    </div>
+                                        : 
+                                        <div className="button-textfield">
+                                            <TextField sx={{width:'80%', backgroundColor:'white'}}></TextField>
+                                            <button className="button-send" onClick={()=>viewAlert()}>comment</button>
+                                        </div>
+                                }
+                            </div> */}
                             </Collapsible>
                     </div>
                         ) :(<ErrorSearch/>)
@@ -179,7 +223,7 @@ function CitiesDetails(){
                     <button className="back-cities">BACK TO CITIES</button>
                 </LinkRouter>
             </div>
-            </div>
+    </div>
            
    </>
    )

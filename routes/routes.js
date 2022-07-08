@@ -5,7 +5,7 @@ const passport= require('../config/passport')
 
 //IMPORTO MIS CONTRALDORES Y LOS DESECTRUCTOR
 const citiesControllers= require("../controllers/citiesControllers");
-const {getCities, getOneCity, addCity, modifyCity, removeCity}= citiesControllers
+const {getCities,getOneCity,addCity,modifyCity,removeCity}= citiesControllers
 
 const itinerarysControllers= require("../controllers/ItineraryControllers")
 const {getItinerarys,getOneItinerary,addItinerary,modifyItinerary,removeItinerary,likeAndDislike}=itinerarysControllers
@@ -29,9 +29,6 @@ Router.route('/cities/:id')
 .put(modifyCity)
 .get(getOneCity)
 
-// Router.route('/citiesItineraries/:id')
-// .get(getOneItineraryByCity)
-
 //ITINERARIES
 Router.route('/itineraries')
 .get(getItinerarys)
@@ -46,15 +43,15 @@ Router.route('/itineraries/:id')
 //LA RUTA VIENE CON EL PARAEMTRO ID QUE YO LO EXTRAIGO EN EL CONTROLADOR
 Router.route('/likes/:id')
 //CON EL METODO PUT PASA POR PASSPORT(QUE ES EL QUE ME DEVUELVE EL ID) Y UNA VEZ QUE PASO POR PASSPORT VA A MI likeAndDislike(CONTROLADOR)=> LUEGO PARA QUE LLEGUE A LA RUTA VOY A LAS ACTIONS
-.put(passport.authenticate('jwt', {session:false}),likeAndDislike)
+.put(passport.authenticate('jwt',{session:false}),likeAndDislike)
 
 //COMMENTS 
 Router.route('/comment')
-.post(passport.authenticate('jwt', {session:false}), addComment)
-.put(passport.authenticate('jwt', {session:false}), modifyComment)
+.post(passport.authenticate('jwt',{session:false}), addComment)
+.put(passport.authenticate('jwt',{session:false}), modifyComment)
 
 Router.route('/comment/:id')
-.post(passport.authenticate('jwt', {session:false}), deleteComment)
+.post(passport.authenticate('jwt',{session:false}), deleteComment)
 
 //USER ROUTES
 Router.route('/signUp')
