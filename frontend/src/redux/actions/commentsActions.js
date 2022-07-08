@@ -17,18 +17,18 @@ const commentsActions={
                 })
                 console.log(res)
                 dispatch({
-                    type:'MESSAGEC',
+                    type:'MESSAGE',
                     payload:{
                         view:true,
-                        message: res,
-                        success:res
+                        message: res.data.message,
+                        success:res.data.success
                     }
                 })
                 return res
             } else{
                 //EN CASO DE QUE ESTE VACIO EL CAMPO, DEVUELVO EL MENSAJE
                 dispatch({
-                    type:'MESSAGEC',
+                    type:'MESSAGE',
                     payload:{
                         view:true,
                         message:'Enter a comment before sending'//Ingresa un comentario antes de enviar
@@ -50,8 +50,8 @@ const commentsActions={
                 type:'MESSAGE',
                 payload:{
                     view:true,
-                    message:res,
-                    success:res
+                    message:res.data.message,
+                    success:res.data.success
                 }
             })
             return res
@@ -61,7 +61,7 @@ const commentsActions={
         const token= localStorage.getItem('token')
         
         return async(dispatch, getState)=>{
-            const res= await axios.post(`${url}/comment/${id}`, {}, {
+            const res= await axios.post(`${url}/api/comment/${id}`, {}, {
                 headers:{
                     'Authorization':'Bearer '+token
                 }
@@ -70,8 +70,8 @@ const commentsActions={
                 type:'MESSAGE',
                 payload:{
                     view:true,
-                    message:res,
-                    success:res
+                    message:res.data.message,
+                    success:res.data.success
                 }
             })
         }

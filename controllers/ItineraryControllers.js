@@ -83,6 +83,29 @@ const itineraryControllers={
         error: error
         })
     },
+    getOneItineraryByCity:async(req,res)=>{
+        const id = req.params.id
+
+        let itinerary
+        let error=null
+
+        try{
+            itinerary = await Itinerary.find({cities:id})
+            console.log(itinerary)
+            // itinerary = await Itinerary.find({city:id}).populate("activities")
+            // itinerary = await Itinerary.find({city:id}).populate({
+            //     path:"activities",
+            //     populate:{path:"comments.userId"}
+            // })
+        }catch(err){
+            error = err
+        }
+        res.json({
+            response: error? 'ERROR' : itinerary,
+            success: error ? false : true,
+            error: error
+        })
+    },
     likeAndDislike: async(req,res)=>{
         //console.log(req)
         const id=req.params.id

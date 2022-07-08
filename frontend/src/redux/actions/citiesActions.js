@@ -23,6 +23,15 @@ const citiesActions={
             dispatch({type:"FILTER_CITIES", payload:value})
         }
     },
+    getItineratyForCity: (id) => {
+        return async (dispatch, getState) => {
+            const res = await axios.get(`${url}/api/oneItinerary/${id}`)
+            console.log(res)
+            dispatch({type: 'GETTINFROMCITY', payload: res.data.response})
+            return res
+
+        }
+    },
     //RECIBE COMO PARAMETRO EL ID DEL ITINERARIO
      likeAndDislike:(id)=>{
         //console.log(id)

@@ -390,6 +390,7 @@
     border-radius: 16px;
     overflow: hidden;
     transition: all 0.2s;
+    cursor: pointer;
    }
 .text-comment{
     width: 100% !important;
