@@ -23,11 +23,11 @@ const cityControllers={
         let error= null
 
         try{
-            // city= await City.findOne({_id: id}).populate({
-            //     path:"itineraries", 
-            //     populate:{path:"activities"}
-            //     })
-            city= await City.findOne({_id: id}).populate("itineraries")
+            city= await City.findOne({_id: id}).populate({
+                path:"itineraries", 
+                populate:{path:"activities"}
+                })
+            // city= await City.findOne({_id: id})
         } catch (err) {error= err}
         res.json({
         response: error ? 'ERROR' : city,
@@ -86,7 +86,30 @@ const cityControllers={
         success: error ? false : true,
         error: error
         })
-    }
+    },
+    // getOneItineraryByCity:async(req,res)=>{
+    //     const id = req.params.id
+
+    //     let itinerary
+    //     let error=null
+
+    //     try{
+    //         itinerary = await City.find({itineraries:id})
+    //         console.log(itinerary)
+           
+    //         // itinerary = await Itinerary.find({city:id}).populate({
+    //         //     path:"activities",
+    //         //     populate:{path:"comments.userId"}
+    //         // })
+    //     }catch(err){
+    //         error = err
+    //     }
+    //     res.json({
+    //         response: error? 'ERROR' : itinerary,
+    //         success: error ? false : true,
+    //         error: error
+    //     })
+    // },
 }
 module.exports= cityControllers
 

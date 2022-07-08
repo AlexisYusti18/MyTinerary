@@ -8,7 +8,7 @@ const citiesControllers= require("../controllers/citiesControllers");
 const {getCities, getOneCity, addCity, modifyCity, removeCity}= citiesControllers
 
 const itinerarysControllers= require("../controllers/ItineraryControllers")
-const {getItinerarys,getOneItinerary,addItinerary,modifyItinerary,removeItinerary,likeAndDislike,getOneItineraryByCity}=itinerarysControllers
+const {getItinerarys,getOneItinerary,addItinerary,modifyItinerary,removeItinerary,likeAndDislike}=itinerarysControllers
 
 const usersControllers= require('../controllers/usersControllers')
 const {signUp,logIn,logOut,verifyEmail,verifyToken} = usersControllers
@@ -29,6 +29,9 @@ Router.route('/cities/:id')
 .put(modifyCity)
 .get(getOneCity)
 
+// Router.route('/citiesItineraries/:id')
+// .get(getOneItineraryByCity)
+
 //ITINERARIES
 Router.route('/itineraries')
 .get(getItinerarys)
@@ -39,8 +42,6 @@ Router.route('/itineraries/:id')
 .put(modifyItinerary)
 .get(getOneItinerary)
 
-Router.route('/oneItinerary/:id')
-.get(getOneItineraryByCity)
 
 //LA RUTA VIENE CON EL PARAEMTRO ID QUE YO LO EXTRAIGO EN EL CONTROLADOR
 Router.route('/likes/:id')

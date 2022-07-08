@@ -11,6 +11,7 @@ const itinerarySchema= new mongoose.Schema({ //creo el nuevo esquema de mongoose
     tag3:{type:String, required: true},
     likes:{type:Array, required:true},
     activities:[{type:mongoose.Types.ObjectId, ref:"activities"}],
+    // city:[{type:mongoose.Types.ObjectId, ref:"cities"}],
     comments:[{
             userId: {type:mongoose.Types.ObjectId, ref:"users"},
             comment:{type:String, required:true},
