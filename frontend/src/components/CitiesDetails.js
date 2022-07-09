@@ -104,6 +104,7 @@ function CitiesDetails(){
             <div className="itineraries-ctn">
                 {city.itineraries?.length > 0 ?  city.itineraries?.map((itinerary,index)=>
                     <div key={index} className="itineraries-card">
+                        {console.log(itinerary)}
                             <div className="title-itinerary">
                                 <h1 className="title-cards">{itinerary.title}</h1>
                             </div>
@@ -118,6 +119,7 @@ function CitiesDetails(){
                                 :  (
                                 <button className="button-like" onClick={()=>viewAlert()}>
                                     <FavoriteBorderIcon id={itinerary._id} sx={{cursor:'pointer'}}/>
+                                    <p>{itinerary?.likes.length}</p>
                                 </button>)
                             }
                             </div>
@@ -143,25 +145,22 @@ function CitiesDetails(){
                                                                                      
                                     ))}
                                     </ImageList>
-                                <p style={{color:'yellow'}}>COMMENTS({itinerary.comments.length})</p>
+                                    <p style={{color:'white'}}>COMMENTS({itinerary.comments.length})</p>
                             <div style={{minHeight:'20vw'}}>
+
                             {itinerary?.comments.map((comment,index)=>
                                     <div key={index} className="ctn-texto">  
-                                       {/* <div>
-                                            <p>{comment.comment}</p>
-                                        </div> */}
                                         {user ?
                                             <div className="ctn-texto">
-                                                <p>User:{user.name}</p>
-                                                {/* <img style={{width:'10vw',borderRadius:'50%'}}  src={user.imageUser} alt="imgUser"/> */}
-                                                <div style={{backgroundColor:'white', color:'red'}} suppressContentEditableWarning={true} type="text" onInput={(e)=>setModify(e.currentTarget.textContent)} contentEditable >{comment.comment}</div>
-                                                <button onClick={()=>modifyComment(comment._id)} className='tooltip'><EditIcon/></button>
-                                                <button onClick={()=>deleteComment(comment._id)} className='tooltip'><DeleteForeverIcon/></button>
+                                                <div className="viewText" suppressContentEditableWarning={true} type="text" onInput={(e)=>setModify(e.currentTarget.textContent)} contentEditable >{comment.comment}</div>
+                                                <div style={{display:'flex'}}>
+                                                    <button onClick={()=>modifyComment(comment._id)} className='tooltip'><EditIcon/></button>
+                                                    <button onClick={()=>deleteComment(comment._id)} className='tooltip'><DeleteForeverIcon/></button>
+                                                </div>
                                             </div>
                                         
                                             : 
                                             <>
-                                                
                                                 <p>{comment.comment}</p>
                                             </>
                                     }
@@ -178,41 +177,8 @@ function CitiesDetails(){
                                             <TextField sx={{width:'80%', backgroundColor:'white'}}></TextField>
                                             <button className="button-send" onClick={()=>viewAlert()}>comment</button>
                                         </div> 
-                                       
-
                                     }
                             </div>
-                                {/* {itinerary?.comments.map((comment,index)=>
-                                    <div key={index}>  
-                                        {user ?
-                                            <div>
-                                                <p>{user.name}</p>
-                                                <img style={{width:'10vw',borderRadius:'50%'}}  src={user.imageUser} alt="imgUser"/>
-                                                <div style={{color:'white'}} suppressContentEditableWarning={true} type="text" onInput={(e)=>setModify(e.currentTarget.textContent)} contentEditable >{comment.comment}</div>
-                                                <button onClick={()=>modifyComment(comment._id)} className='tooltip'><EditIcon/></button>
-                                                <button onClick={()=>deleteComment(comment._id)} className='tooltip'><DeleteForeverIcon/></button>
-                                            </div>
-                                        
-                                            : 
-
-                                            <>
-                                                <p>{comment.comment}</p>
-                                            </>
-                                    }
-                                    </div>
-                                    )}
-                                    {user?
-                                    <div className="button-textfield">
-                                        <TextField onInput={(event)=>setText(event.currentTarget.textContent)} className="text-comment" contentEditable sx={{width:'80%', backgroundColor:'white'}}></TextField>
-                                        <button className="button-send" onClick={()=>addComment(itinerary._id)}>comment</button>
-                                    </div>
-                                        : 
-                                        <div className="button-textfield">
-                                            <TextField sx={{width:'80%', backgroundColor:'white'}}></TextField>
-                                            <button className="button-send" onClick={()=>viewAlert()}>comment</button>
-                                        </div>
-                                }
-                            </div> */}
                             </Collapsible>
                     </div>
                         ) :(<ErrorSearch/>)

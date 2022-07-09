@@ -37,6 +37,7 @@ export default function CardsCities(){
             <div className="ctn-cards">
                     {filter.length > 0 ? filter.map(city=>(
                         <div key={city._id} className="card">
+                             <LinkRouter to={`/city/${city._id}`} onClick={() => window.scrollTo({top: 0,left: 0,behavior: 'smooth'})} className="button-card">
                             <div className="front">
                                 <img className="img-card" src={city.image} alt="imageCity"/>
                                 {/* <div className="img-card" style={{background: `url(${city.image})`}}> */}
@@ -45,12 +46,7 @@ export default function CardsCities(){
                             <div className="back">
                                 <p>{city.description}</p>
                             </div>
-                            <div className="cities-button-ctn">
-                                <LinkRouter to={`/city/${city._id}`} onClick={() => window.scrollTo({top: 0,left: 0,behavior: 'smooth'})}>
-                                    <button className="details-button" >See more</button>
-                                </LinkRouter>
-                            </div>
-                           
+                            </LinkRouter>
                         </div>
                 ))  
                     : (<ErrorSearch/>)
