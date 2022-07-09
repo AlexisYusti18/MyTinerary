@@ -5,11 +5,11 @@ import {useDispatch, useSelector} from 'react-redux';
 import commentsActions from "../redux/actions/commentsActions";
 
 export default function Comments({comment, setReload}){
-    console.log(comment)
+    //console.log(comment)
     const dispatch= useDispatch()
     const [modify,setModify]=useState()
     const user=useSelector(store=>store.userReducer.user)
-    
+    //console.log(user);
 
     async function modifyComment(id){
         const commentModify={
@@ -27,7 +27,8 @@ export default function Comments({comment, setReload}){
 
     return(
     <>
-        {user.id === comment.userId ?
+    
+        {user?.id === comment.userId ?
            <div className="ctn-texto">
                     <img className='img-user' src={user.imageUser} alt='imageUser'/>
                     <p className='nameuser'>{user.name} {user.lastName}</p>

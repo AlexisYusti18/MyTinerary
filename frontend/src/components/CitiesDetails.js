@@ -20,7 +20,7 @@ import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import commentsActions from "../redux/actions/commentsActions";
 import Swal from 'sweetalert2'
-import { TextField } from "@mui/material";
+
 
 function CitiesDetails(){
     const {id}= useParams()
@@ -130,7 +130,7 @@ function CitiesDetails(){
                                     </div>}
                                     </ImageList>
                                     <p style={{color:'white'}}>COMMENTS({itinerary.comments.length})</p>
-                            <div style={{minHeight:'20vw'}}>
+                            <div className="back-comment">
 
                             {itinerary?.comments.map((comment)=>
                                     <Comments comment={comment} key={comment._id} setReload={setReload}/>
@@ -142,7 +142,7 @@ function CitiesDetails(){
                                     </div>
                                             :
                                             <div className="button-textfield">
-                                            <TextField sx={{width:'80%', backgroundColor:'white'}}></TextField>
+                                            <div sx={{width:'80%', backgroundColor:'white'}}></div>
                                             <button className="button-send" onClick={()=>viewAlert()}>comment</button>
                                         </div> 
                                     }
