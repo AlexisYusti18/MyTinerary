@@ -36,17 +36,21 @@ export default function CardsCities(){
             </div>
             <div className="ctn-cards">
                     {filter.length > 0 ? filter.map(city=>(
-                        <div key={city._id} className="card-body">
-                            <div className="cards" style={{background: `url(${city.image})`}}>
-                                    <div className="cities-title-ctn">
-                                        <h1 className='title-cities'>{city.name}</h1>
-                                    </div>
-                                    <div className="cities-button-ctn">
-                                        <LinkRouter to={`/city/${city._id}`} onClick={() => window.scrollTo({top: 0,left: 0,behavior: 'smooth'})}>
-                                            <button className="details-button" >See more</button>
-                                        </LinkRouter>
-                                    </div>
-                            </div> 
+                        <div key={city._id} className="card">
+                            <div className="front">
+                                <img className="img-card" src={city.image} alt="imageCity"/>
+                                {/* <div className="img-card" style={{background: `url(${city.image})`}}> */}
+                                <h1 className='title-cities'>{city.name}</h1>
+                            </div>
+                            <div className="back">
+                                <p>{city.description}</p>
+                            </div>
+                            <div className="cities-button-ctn">
+                                <LinkRouter to={`/city/${city._id}`} onClick={() => window.scrollTo({top: 0,left: 0,behavior: 'smooth'})}>
+                                    <button className="details-button" >See more</button>
+                                </LinkRouter>
+                            </div>
+                           
                         </div>
                 ))  
                     : (<ErrorSearch/>)

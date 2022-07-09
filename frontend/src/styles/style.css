@@ -475,24 +475,34 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        flex-wrap: wrap;
-    }
-
-    .card-body {
-        margin: 15px 15px 70px 15px;
-    }
-
-    .cards {
-
-        height: 35vh;
-        width: 40vw;
-        background-position: center !important;
-        background-size: cover !important;
-        display: flex;
         flex-direction: column;
-        justify-content: space-between;
     }
 
+    .card{
+        position: relative;
+        height: 40vh;
+        width: 70vw;
+        margin: 15px 15px 70px 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .front{
+        transform: perspective(500px) rotateX(0deg);
+        box-shadow: 0 5px 10px #000;
+    }
+    /* .back{
+
+    } */
+    .img-card{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
     .cities-title-ctn {
         background-color: rgba(0, 0, 0, 0.759) !important;
         height: 6vh !important;
