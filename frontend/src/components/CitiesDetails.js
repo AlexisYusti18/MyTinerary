@@ -12,9 +12,9 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
-import EditIcon from '@mui/icons-material/Edit';
-import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
+
+import Comments from '../components/Comments'
 
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
@@ -25,14 +25,10 @@ import { TextField } from "@mui/material";
 function CitiesDetails(){
     const {id}= useParams()
     const dispatch= useDispatch()
-    
     const [reload,setReload]=useState(false)
     const [text, setText]=useState('')
-    const [modify,setModify]=useState()
-
     const user=useSelector(store=>store.userReducer.user)
-
-
+    
     useEffect(()=>{
         dispatch(citiesActions.getOneCity(id))
 
@@ -44,7 +40,7 @@ function CitiesDetails(){
     const viewAlert=()=>{
         Swal.fire({
             icon:'error',
-            title:'You must be logged in to comment',
+            title:'Sign In',
             timer:1500
         })
     }
@@ -64,20 +60,7 @@ function CitiesDetails(){
         setReload(!reload)
         setText("")
     }
-    
-    async function modifyComment(id){
-        const commentModify={
-            commentId:id,
-            comment:modify
-        }
-        await dispatch(commentsActions.modifyComment(commentModify))
-        setReload(!reload)
-    }
 
-    async function deleteComment(id){
-        await dispatch(commentsActions.deleteComment(id))
-        setReload(!reload)
-    }
     
 
     return(
@@ -104,7 +87,6 @@ function CitiesDetails(){
             <div className="itineraries-ctn">
                 {city.itineraries?.length > 0 ?  city.itineraries?.map((itinerary,index)=>
                     <div key={index} className="itineraries-card">
-                        {console.log(itinerary)}
                             <div className="title-itinerary">
                                 <h1 className="title-cards">{itinerary.title}</h1>
                             </div>
@@ -136,43 +118,29 @@ function CitiesDetails(){
                             </div>
                             <Collapsible  trigger={<KeyboardArrowDownIcon/>} triggerWhenOpen={<ArrowUpwardIcon/>} transitionTime="1000" transitionCloseTime="100" className="view-more">
                                     <ImageList sx={{ width:'100%', height:'30vh'}} cols={3} rowHeight={200}>
-                                    {itinerary.activities?.map((activity, index)=>(
+                                    {itinerary.activities?.length > 0 ? itinerary.activities?.map((activity, index)=>(
                                         <ImageListItem key={index}>
                                             <div className="img-activities" style={{background:`url(${activity.image})`, backgroundPosition:'center', backgroundSize:'cover', backgroundRepeat:'no-repeat'}}>
                                                 <p className="title-cities-activities">{activity.name}</p>
                                             </div>
                                         </ImageListItem>
-                                                                                     
-                                    ))}
+                                ))  : 
+                                     <div>
+                                        <p className="err-activites">There are no activities for this itinerary yet.</p>
+                                    </div>}
                                     </ImageList>
                                     <p style={{color:'white'}}>COMMENTS({itinerary.comments.length})</p>
                             <div style={{minHeight:'20vw'}}>
 
-                            {itinerary?.comments.map((comment,index)=>
-                                    <div key={index} className="ctn-texto">  
-                                        {user ?
-                                            <div className="ctn-texto">
-                                                <div className="viewText" suppressContentEditableWarning={true} type="text" onInput={(e)=>setModify(e.currentTarget.textContent)} contentEditable >{comment.comment}</div>
-                                                <div style={{display:'flex'}}>
-                                                    <button onClick={()=>modifyComment(comment._id)} className='tooltip'><EditIcon/></button>
-                                                    <button onClick={()=>deleteComment(comment._id)} className='tooltip'><DeleteForeverIcon/></button>
-                                                </div>
-                                            </div>
-                                        
-                                            : 
-                                            <>
-                                                <p>{comment.comment}</p>
-                                            </>
-                                    }
-                                    </div>
+                            {itinerary?.comments.map((comment)=>
+                                    <Comments comment={comment} key={comment._id} setReload={setReload}/>
                                     )}
                                     {user?
-                                    <div>
-                                        <div className="text-comment" contentEditable placeholder='send comment' onInput={(event)=>setText(event.currentTarget.textContent)}></div>
-                                        <button className="button-send" onClick={()=>addComment(itinerary._id)}>Send</button>
+                                    <div className="ctn-text-button">
+                                        <div className="text-comment" contentEditable onInput={(event)=>setText(event.currentTarget.textContent)}></div>
+                                        <button className="button-send" onClick={()=>addComment(itinerary._id)}>comment</button>
                                     </div>
                                             :
-                                     
                                             <div className="button-textfield">
                                             <TextField sx={{width:'80%', backgroundColor:'white'}}></TextField>
                                             <button className="button-send" onClick={()=>viewAlert()}>comment</button>

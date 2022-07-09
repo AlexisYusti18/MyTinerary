@@ -15,7 +15,6 @@ const commentsActions={
                         'Authorization':'Bearer '+token
                     }
                 })
-                console.log(res)
                 dispatch({
                     type:'MESSAGE',
                     payload:{
@@ -31,7 +30,7 @@ const commentsActions={
                     type:'MESSAGE',
                     payload:{
                         view:true,
-                        message:'Enter a comment before sending'//Ingresa un comentario antes de enviar
+                        message:'Enter a comment before sending',//Ingresa un comentario antes de enviar
                     }
                 })
             }
