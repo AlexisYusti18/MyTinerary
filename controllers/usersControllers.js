@@ -216,7 +216,7 @@ logIn: async (req, res)=>{
                         country:req.user.country,
                         from:'token'
                     },
-                    message: 'WelcomeBack' +' '+req.user.name + req.user.lastName
+                    message: 'Welcome Back' +' '+req.user.name + req.user.lastName
                 })
             }
             else {

@@ -67,16 +67,3 @@ export default function CarouselCiudades(){
     )
     
 }
-//LO USAMOS PARA ENVIAR ACCIONES A LA STORE.
-//DISPATCH ES UNA FUNCION DE REDUX QUE SIRVE PARA REALIZAR UN CAMBIO DE ESTADO.
-//mapDispatchToProps: PERMITE CREAR FUNCIONES QUE SE ENVIAN CUANDO SE LAS LLAMA Y PASAR ESAS FUNCIONES COMO ACCESORIOS AL COMPONENTE.
-// const mapDispatchToProps= {
-//   getAllCities: citiesAction.getAllCities
-// }
-
-// //DEVUELVE UN OBJETO CON LOS DATOS QUE NECESITA EL COMPONENTE
-// const mapStateToPros = (state)=>{
-//   return{
-//       allCities: state.citiesReducer.cities
-//   }
-// } 

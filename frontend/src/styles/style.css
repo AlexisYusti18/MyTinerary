@@ -149,7 +149,7 @@
       height: 6vh !important;
     }
 
-    .title-cities {
+    .title-cities{
       color: white;
       font-weight: 900 !important;
       font-size: 30px !important;
@@ -208,6 +208,12 @@
       .button-sigin-log {
         width: 15vw !important;
       }
+      .city-descrp{
+        font-size: 20px !important;
+       }
+       .title-cities-card{
+        font-size: 40px !important;
+       }
     }
 
     @media screen and (max-width:870px) {
@@ -234,6 +240,17 @@
     }
 
     @media screen and (max-width:810px) {
+      .title-cities-activities{
+        font-size: 10px !important;
+       opacity: 0% !important;
+      }
+      .sepuede{
+        width: 100% !important;
+        height: 70% !important;
+      }
+      .img-activities{
+        height: 60vh !important;
+      }
       .title-form {
         display: flex !important;
         flex-direction: column !important;
@@ -275,10 +292,20 @@
     }
 
     @media screen and (max-width:610px) {
+      .editimg{
+        width: 100% !important;
+        height: 100% !important;
+      }
+      .callToAction{
+        width: 60vw !important;
+      }
       .footer-ctn {
         display: flex !important;
         flex-direction: column !important;
       }
+      .city-descrp{
+        font-size: 15px !important;
+       }
 
       .css-i4bv87-MuiSvgIcon-root {
         font-size: 10px !important;
@@ -331,11 +358,17 @@
       .title-error {
         font-size: 60px;
       }
+      .title-cities-card{
+        font-size: 30px !important;
+      }
     }
 
     @media screen and (max-width:440px) {
       .button-log {
         width: 50vw !important;
+      }
+      .title-cities-pag{
+        font-size: 30px !important; 
       }
     }
 
@@ -407,15 +440,21 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      background-color: #1b1b1d;
+      background-color: #1a2221;
 
     }
-
+    .title-cities-pag{
+      color: #fff;
+      font-size: 70px;
+      text-shadow: 2px 2px 2px rgba(10, 49, 4, 0.851);
+    }
     .cities-image {
       width: 100%;
       min-height: 76vh;
       background-color: aliceblue !important;
-      background-image: url("https://images.unsplash.com/photo-1503221043305-f7498f8b7888?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1153&q=80");
+      background-image: url(../assets/backgroundCities.jpg);
+      --opacidad-negro: 0.3;
+      background-image: linear-gradient(rgba(0, 0, 0, var(--opacidad-negro)), rgba(0, 0, 0, var(--opacidad-negro))), url("../assets/backgroundCities.jpg");
       background-repeat: no-repeat;
       background-size: cover;
       background-position: center;
@@ -481,48 +520,64 @@
 
     .card {
       position: relative;
-      height: 40vh !important;
       width: 60vw !important;
+      height: 40vh !important;
       margin: 15px 15px 70px 15px;
-
     }
-    .card div{
+    .card .face{
       position: absolute;
       width: 100%;
       height: 100%;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
       backface-visibility: hidden;
-      transition: 1s;
-    }
-    .button-card{
-      color: white !important;
-    }
-    .card .front {
-      transform: perspective(500px) rotateX(0deg);
-      box-shadow: 0 5px 10px #000;
-    }
+      border-radius: 10px;
+      overflow:hidden;
+      transition: .5s;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
-    .card.back{
-      transform: perspective(500px) rotateX(180deg);
     }
-
-    .card:hover.front{
-      transform: perspective(500px) rotateX(180deg);
+    .card .front{
+      transform: perspective(600px) rotateX(0deg);
+ 
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  
     }
-    .card:hover .back{
-      transform: perspective(500px) rotateX(360deg);
-    }
-
-    .img-card {
+    .card .front .img-card{
       position: absolute;
-      width: 100%;
-      height: 100%;
-      background-position: center;
-      background-size: cover;
-      background-repeat: no-repeat;
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover;
+      object-position: center;;
     }
+    .card .back{
+      transform: perspective(600px) rotateX(180deg);
+      background: rgb(3,35,54);
+      padding: 15px;
+      color: #f3f3f3;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+   .card:hover .front{
+    transform: perspective(600px) rotateX(180deg);
+   }
+   .card:hover .back{
+    transform: perspective(600px) rotateX(360deg);
+   }
+   .city-descrp{
+    letter-spacing: 1px;
+    font-size: 30px;
+    font-weight: 800;
+   }
+   .title-cities-card{
+    color: #fff;
+    font-size: 50px;
+    text-shadow: 2px 2px 2px rgba(10, 49, 4, 0.851);
+}
 
     .cities-title-ctn {
       background-color: rgba(0, 0, 0, 0.759) !important;
@@ -625,14 +680,13 @@
       display: flex;
       justify-content: center;
       align-items: center;
-
-    }
+      }
 
     .title-error {
       color: white;
       font-size: 50px;
+      font-weight: 900 !important;
       font-family: 'Inter', sans-serif !important;
-      opacity: 90%;
     }
 
     /* ITINERARIES */
@@ -747,7 +801,6 @@
     .img-activities {
       height: 20vw !important;
       width: 100% !important;
-      background-image: url("../assets/background.jpg");
       background-position: center !important;
       background-size: cover !important;
       background-repeat: no-repeat !important;

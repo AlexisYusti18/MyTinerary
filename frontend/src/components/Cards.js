@@ -24,7 +24,7 @@ export default function CardsCities(){
     return(
         <div className="cities-ctn">
             <div className="cities-image">
-                <h1 className="title">Find your destination now!</h1>
+                <h1 className="title-cities-pag">Find your destination now!</h1>
             </div>
         
             <div className="input-ctn">
@@ -36,15 +36,13 @@ export default function CardsCities(){
             </div>
             <div className="ctn-cards">
                     {filter.length > 0 ? filter.map(city=>(
-                        <div key={city._id} className="card">
+                        <div key={city._id} className="card" style={{background: `url(${city.image})`,backgroundPosition:'center', backgroundSize:'cover'}}>
                              <LinkRouter to={`/city/${city._id}`} onClick={() => window.scrollTo({top: 0,left: 0,behavior: 'smooth'})} className="button-card">
-                            <div className="front">
-                                <img className="img-card" src={city.image} alt="imageCity"/>
-                                {/* <div className="img-card" style={{background: `url(${city.image})`}}> */}
-                                <h1 className='title-cities'>{city.name}</h1>
+                            <div className="face front">
+                                <h1 className='title-cities-card'>{city.name}, {city.country}</h1>
                             </div>
-                            <div className="back">
-                                <p>{city.description}</p>
+                            <div className="face back" style={{background: `url(${city.image})`,backgroundPosition:'center', backgroundSize:'cover'}}>
+                                <p className="city-descrp">{city.description}</p>
                             </div>
                             </LinkRouter>
                         </div>

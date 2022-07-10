@@ -24,11 +24,12 @@ const cityControllers={
 
         try{
             city= await City.findOne({_id: id}).populate({
-                path:"itineraries",
+                path:"itineraries", match:"comments.userId",
                 populate:{
-                    path:"activities",
+                    path:"activities"
                 }
                 })
+
         } catch (err) {error= err}
         res.json({
         response: error ? 'ERROR' : city,

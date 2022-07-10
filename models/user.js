@@ -12,5 +12,5 @@ const userSchema= new mongoose.Schema({
     uniqueString:{type:String},
     userVerification:{type:Boolean} 
 })
-const User= mongoose.model('user',userSchema)
+const User= mongoose.model('users',userSchema)
 module.exports=User
