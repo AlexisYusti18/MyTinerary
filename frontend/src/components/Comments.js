@@ -3,6 +3,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import {useDispatch, useSelector} from 'react-redux';
 import commentsActions from "../redux/actions/commentsActions";
+import { Avatar } from '@mui/material';
 
 export default function Comments({comment, setReload}){
     //console.log(comment)
@@ -37,7 +38,9 @@ export default function Comments({comment, setReload}){
                         <button onClick={()=>deleteComment(comment._id)} className='tooltip'><DeleteForeverIcon/></button>
                     </div>
             </div> : 
-                    <div>
+                    <div className='ctn-texto'>
+                        <Avatar className='img-user'/>
+                        <p className='nameuser'>User</p>
                         <p className="viewText">{comment.comment}</p>
                     </div>
             }

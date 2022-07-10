@@ -40,8 +40,8 @@ export default function Tinerary({itinerary,setReload}){
     const viewAlert=()=>{
         Swal.fire({
             icon:'error',
-            title:'Sign In',
-            timer:1500
+            title:'you must log in',
+            timer:1500,
         })
     }
     return(
@@ -103,8 +103,8 @@ export default function Tinerary({itinerary,setReload}){
                                         <button className="button-send" onClick={()=>addComment(itinerary._id)}>comment</button>
                                     </div>
                                             :
-                                            <div className="button-textfield">
-                                                <div sx={{width:'80%', backgroundColor:'white'}}></div>
+                                            <div className="ctn-text-button">
+                                                <div contentEditable  className="text-comment" sx={{width:'80%', backgroundColor:'white'}}></div>
                                                 <button className="button-send" onClick={()=>viewAlert()}>comment</button>
                                             </div> 
                                     }

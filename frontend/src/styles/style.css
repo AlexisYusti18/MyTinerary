@@ -532,6 +532,7 @@
       width: 60vw !important;
       height: 40vh !important;
       margin: 15px 15px 70px 15px;
+      box-shadow: 5px 10px 15px #000 !important;
     }
     .title-cards{
       font-size: 30px !important;
@@ -657,21 +658,16 @@
       box-shadow: 0 4px 8px 0 rgba(95, 97, 98, 0.3), 0 6px 20px 0 rgba(88, 92, 93, 0.41);
     }
 
-    .back-cities-ctn {
-      background-color: #1b1b1d;
-      min-height: 20vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
 
     .back-cities {
+      margin-top: 20px !important;
+      margin-bottom: 30px !important;
       padding: 15px 25px;
       border: unset;
       border-radius: 15px;
-      color: #212121;
+      color: white;
       z-index: 1;
-      background: #e8e8e8;
+      background-image: url('../assets//backgrounCollapsible.png');
       position: relative;
       font-weight: 1000;
       font-size: 17px;
@@ -768,7 +764,7 @@
       width: 100%;
       font-weight: 800;
       font-size: 20px !important;
-      background-image: url('https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=627&q=80');
+      background-image: url('../assets/backgrounCollapsible.png');
       background-position: center;
       background-size: cover;
       background-repeat: no-repeat;
