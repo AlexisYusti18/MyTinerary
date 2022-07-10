@@ -77,7 +77,7 @@
     }
 
     .title-callToAction {
-      color: #492c36 !important;
+      color: #1a2221 !important;
       font-size: 40px !important;
     }
 
@@ -201,6 +201,15 @@
     }
 
     @media screen and (max-width:1150px) {
+      .ctn-texto{
+        flex-direction: column;
+      }
+      .viewText, .text-comment{
+        width: 90% !important;
+      }
+      .nameuser{
+        font-size: 25px !important;
+      }
       .form-signup {
         width: 60vw !important;
       }
@@ -524,6 +533,9 @@
       height: 40vh !important;
       margin: 15px 15px 70px 15px;
     }
+    .title-cards{
+      font-size: 30px !important;
+    }
     .card .face{
       position: absolute;
       width: 100%;
@@ -721,11 +733,6 @@
       flex-direction: column;
       border: #212121 0.2rem solid;
       box-shadow: 0.4rem 0.4rem 0.6rem #00000040;
-    }
-
-    .title-cards {
-      color: black;
-      z-index: 1;
     }
 
     .likes {
@@ -1013,7 +1020,7 @@
   opacity: 95%;
   background-color: white;
   border-radius: 5px;
-  width: 70%;
+  width: 80%;
   min-height: 7vh !important;
   color: black;
   display: flex;
@@ -1062,6 +1069,7 @@
   align-items: flex-start;
   justify-content: flex-start;
   font-family: 'Shadows Into Light', cursive !important;
+  word-wrap: break-word !important;
 }
 /* COMMENTS */
 .ctn-texto{
@@ -1096,8 +1104,4 @@
 }
 .back-comment{
   min-height: 20vh !important;
-  /* display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-  flex-direction: column; */
 }

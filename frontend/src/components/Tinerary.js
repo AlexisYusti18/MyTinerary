@@ -47,7 +47,7 @@ export default function Tinerary({itinerary,setReload}){
     return(
         <>
         <div className="itineraries-card">
-                        {console.log(itinerary)}
+                        {/* {console.log(itinerary)} */}
                             <div className="title-itinerary">
                                 <h1 className="title-cards">{itinerary.title}</h1>
                             </div>
@@ -73,9 +73,9 @@ export default function Tinerary({itinerary,setReload}){
                             <div className="title-price">Price:{Array(itinerary.price).fill().map((index,price)=>(
                                 <img key={price} src={dolar} alt='imgDolar' style={{width:'50px'}}/>))}
                             </div>
-                            <p className="title-cards">Duration: {itinerary.time}hs</p>
+                            <p className="title-price">Duration: {itinerary.time}hs</p>
                             <div className="tags">
-                                <p className="title-cards">#{itinerary.tag}  #{itinerary.tag2}  #{itinerary.tag3}</p>
+                                <p className="title-price">#{itinerary.tag}  #{itinerary.tag2}  #{itinerary.tag3}</p>
                             </div>
                             <Collapsible  trigger={<KeyboardArrowDownIcon/>} triggerWhenOpen={<ArrowUpwardIcon/>} transitionTime="1000" transitionCloseTime="100" className="view-more">
                                     <ImageList sx={{ width:'100%', height:'30vh'}} cols={3} rowHeight={200} className='sepuede'>
