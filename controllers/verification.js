@@ -47,7 +47,7 @@ const verificacion = async (email, uniqueString) => {
           <h1 style="color:white; text-align: center; height: 15vh;">MyTinerary</h1>
         </div>
        <div style="text-align:center;">
-        <a href=http://localhost:4000/api/verify/${uniqueString} style="height: 10vh; background-color: yellow; text-align:center; padding: 1.3em 3em; font-size: 12px; text-transform: uppercase; letter-spacing: 2.5px; font-weight: 500; border: none; border-radius: 45px; box-shadow:0px 8px 15px rgba(0, 0, 0, 0.1); transition: all 0.3s ease 0s; cursor: pointer; outline: none; text-decoration: none;">Click here!</a>
+        <a href=https://mytinerary-yusti.herokuapp.com/api/verify/${uniqueString} style="height: 10vh; background-color: yellow; text-align:center; padding: 1.3em 3em; font-size: 12px; text-transform: uppercase; letter-spacing: 2.5px; font-weight: 500; border: none; border-radius: 45px; box-shadow:0px 8px 15px rgba(0, 0, 0, 0.1); transition: all 0.3s ease 0s; cursor: pointer; outline: none; text-decoration: none;">Click here!</a>
        </div>
       </div>
          
