@@ -34,10 +34,6 @@ const cityControllers={
             //     path:"itineraries",
             //     populate:{
             //         path:"activities"
-            //     },
-            //     populate:{
-            //         path:"comments.userId",
-            //         select:"name lastName"
             //     }
             // })
             city= await City.findOne({_id: id}).populate({
@@ -45,9 +41,19 @@ const cityControllers={
                 populate:{
                     path:"activities"
                 }
-            })
+                }).populate({
+                    path:"itineraries",
+                    populate:{
+                        path:"comments.userId",
+                        select:"name lastName imageUser"
+                    }
+                    })
+            
 
-        } catch (err) {error= err}
+        } catch (err) {
+            error= err
+            console.log(error)
+        }
         res.json({
         response: error ? 'ERROR' : city,
         success: error ? false : true,

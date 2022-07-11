@@ -14,7 +14,7 @@ const itinerarySchema= new mongoose.Schema({ //creo el nuevo esquema de mongoose
     comments:[{
         comment:{type:String, required:true},
         userId: {type:mongoose.Types.ObjectId, ref:"users"}
-        }] 
+    }] 
 })
 const Itinerary= mongoose.model('itineraries', itinerarySchema)
 module.exports=Itinerary //exportamos el modelo

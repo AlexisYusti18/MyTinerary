@@ -28,20 +28,29 @@ export default function Comments({comment, setReload}){
 
     return(
     <>
-        {user?.id === comment.userId ?
+    
+    {comment.userId?._id !== user?.id ?
            <div className="ctn-texto">
-                    <img className='img-user' src={user.imageUser} alt='imageUser'/>
-                    <p className='nameuser'>{user.name} {user.lastName}</p>
-                    <div className="viewText" suppressContentEditableWarning={true} type="text" onInput={(e)=>setModify(e.currentTarget.textContent)} contentEditable >{comment.comment}</div>
-                    <div style={{display:'flex'}}>
-                        <button onClick={()=>modifyComment(comment._id)} className='tooltip'><EditIcon/></button>
-                        <button onClick={()=>deleteComment(comment._id)} className='tooltip'><DeleteForeverIcon/></button>
+                    <div className='backuser'>
+                            <Avatar src={comment.userId.imageUser} alt='imageUser'/>
+                            <p className='nameuser'>{comment.userId.name}, {comment.userId.lastName}</p>
+                    </div>
+                    <div className='center-display'>
+                        <div className="viewText">{comment.comment}</div>
                     </div>
             </div> : 
-                    <div className='ctn-texto'>
-                        <Avatar className='img-user'/>
-                        <p className='nameuser'>User</p>
-                        <p className="viewText">{comment.comment}</p>
+                    <div>
+                        <div className='backuser'>
+                            <Avatar src={comment.userId.imageUser} alt='imageUser'/>
+                            <p className='nameuser'>{comment.userId.name}, {comment.userId.lastName}</p>
+                        </div>
+                        <div className='center-display'>
+                            <div className="viewText" suppressContentEditableWarning={true} type="text" onInput={(e)=>setModify(e.currentTarget.textContent)} contentEditable >{comment.comment}</div>
+                            <div>
+                                <button onClick={()=>modifyComment(comment._id)} className='tooltip'><EditIcon/></button>
+                                <button onClick={()=>deleteComment(comment._id)} className='tooltip'><DeleteForeverIcon/></button>
+                            </div>
+                        </div>
                     </div>
             }
     </>

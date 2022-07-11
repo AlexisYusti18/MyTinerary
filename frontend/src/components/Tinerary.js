@@ -93,18 +93,19 @@ export default function Tinerary({itinerary,setReload}){
                         <div/>
                             
                             <div className="back-comment">
-                                    <p style={{color:'white'}}>COMMENTS({itinerary.comments.length})</p>
+                                    <p style={{color:'white'}}>COMMENTS ({itinerary.comments.length})</p>
                                 {itinerary?.comments.map((comment)=>
                                     <Comments comment={comment} key={comment._id} setReload={setReload}/>
                                     )}
+                                    
                                     {user?
-                                    <div className="ctn-text-button">
-                                        <div className="text-comment" contentEditable onInput={(event)=>setText(event.currentTarget.textContent)}></div>
-                                        <button className="button-send" onClick={()=>addComment(itinerary._id)}>comment</button>
-                                    </div>
-                                            :
+                                        <div className="ctn-text-button">
+                                            <div className="text-comment" contentEditable onInput={(event)=>setText(event.currentTarget.textContent)}></div>
+                                            <button className="button-send" onClick={()=>addComment(itinerary._id)}>comment</button>
+                                        </div>
+                                    :
                                             <div className="ctn-text-button">
-                                                <div contentEditable  className="text-comment" sx={{width:'80%', backgroundColor:'white'}}></div>
+                                                <div className="text-comment" sx={{width:'80%', backgroundColor:'white'}}></div>
                                                 <button className="button-send" onClick={()=>viewAlert()}>comment</button>
                                             </div> 
                                     }

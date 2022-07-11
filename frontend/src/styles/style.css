@@ -61,6 +61,7 @@
     .subtitulo {
       color: white;
       font-size: 4vh;
+      opacity: 92%;
     }
 
     .menu-color {
@@ -202,6 +203,9 @@
 
     @media screen and (max-width:1150px) {
       .ctn-texto{
+        flex-direction: column;
+      }
+      .center-display{
         flex-direction: column;
       }
       .viewText, .text-comment{
@@ -529,7 +533,7 @@
 
     .card {
       position: relative;
-      width: 60vw !important;
+      width: 70vw !important;
       height: 40vh !important;
       margin: 15px 15px 70px 15px;
       box-shadow: 5px 10px 15px #000 !important;
@@ -552,7 +556,6 @@
     }
     .card .front{
       transform: perspective(600px) rotateX(0deg);
- 
       display: flex;
       justify-content: center;
       align-items: center;
@@ -574,6 +577,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      background: rgba(255, 255, 255, 0.442);
     }
    .card:hover .front{
     transform: perspective(600px) rotateX(180deg);
@@ -583,9 +587,9 @@
    }
    .city-descrp{
     letter-spacing: 1px;
-    font-size: 30px;
-    font-weight: 800;
-   }
+    font-size: 25px;
+    font-weight:900 !important;
+  }
    .title-cities-card{
     color: #fff;
     font-size: 50px;
@@ -1016,7 +1020,7 @@
   opacity: 95%;
   background-color: white;
   border-radius: 5px;
-  width: 80%;
+  width: 75%;
   min-height: 7vh !important;
   color: black;
   display: flex;
@@ -1069,20 +1073,14 @@
 }
 /* COMMENTS */
 .ctn-texto{
-  display: flex;
+  /* display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
   min-height: 10vh;
-}
-.img-user{
-  border-radius: 10px;
-  width: 5vh;
-  object-fit: cover;
-  object-position: center;
 }
 .nameuser{
   font-family: 'Shadows Into Light', cursive !important;
-  padding: 10px;
+  padding: 5px;
 }
 .tooltip{
   border: none;
@@ -1100,4 +1098,14 @@
 }
 .back-comment{
   min-height: 20vh !important;
+}
+.center-display{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.backuser{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

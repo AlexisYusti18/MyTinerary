@@ -19,7 +19,7 @@ function CitiesDetails(){
         //eslint-disable-next-line
     },[reload])
     const city=useSelector(store=> store.citiesReducer.oneCity)
-    //console.log(city)
+    // console.log(city)
 
     return(
     <>
