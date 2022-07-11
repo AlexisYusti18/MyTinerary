@@ -47,7 +47,7 @@ export default function Tinerary({itinerary,setReload}){
     return(
         <>
         <div className="itineraries-card">
-                        {/* {console.log(itinerary)} */}
+                        {console.log(itinerary)}
                             <div className="title-itinerary">
                                 <h1 className="title-cards">{itinerary.title}</h1>
                             </div>

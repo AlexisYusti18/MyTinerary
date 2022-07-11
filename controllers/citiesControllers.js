@@ -23,12 +23,29 @@ const cityControllers={
         let error= null
 
         try{
+            // city= await City.findOne({_id: id}).populate({
+            //     path:"itineraries",
+            //     populate:{
+            //         path:"comments.userId",
+            //         select:"name lastName imageUser"
+            //     }
+            // })
+            // city= await City.findOne({_id: id}).populate({
+            //     path:"itineraries",
+            //     populate:{
+            //         path:"activities"
+            //     },
+            //     populate:{
+            //         path:"comments.userId",
+            //         select:"name lastName"
+            //     }
+            // })
             city= await City.findOne({_id: id}).populate({
-                path:"itineraries", match:"comments.userId",
+                path:"itineraries",
                 populate:{
                     path:"activities"
                 }
-                })
+            })
 
         } catch (err) {error= err}
         res.json({
