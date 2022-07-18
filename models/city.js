@@ -9,6 +9,8 @@ const citySchema= new mongoose.Schema({
     currency:{type:String, required: true},
     language:{type:String, required: true},
     description:{type:String, required: true},
+    category:{type:String, required: true},
+    price:{type:String, required: true},
     itineraries:[{type: mongoose.Types.ObjectId, ref:"itineraries"}],
 })
 const City= mongoose.model('cities', citySchema) 
