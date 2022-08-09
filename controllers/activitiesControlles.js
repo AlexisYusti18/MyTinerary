@@ -1,4 +1,4 @@
-const Activity=require('../models/activitya')
+const Activity=require('../models/activity')
 
 const activityControllers={
     getActivities: async(req,res)=>{

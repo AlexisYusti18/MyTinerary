@@ -1,4 +1,4 @@
-import React from 'reacta'
+import React from 'react'
 import {Snackbar,IconButton} from '@mui/material'
 import CloseIcon from '@mui/icons-material/Close'
 import {connect} from 'react-redux'

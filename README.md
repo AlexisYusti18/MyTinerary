@@ -8,7 +8,7 @@ Application that sells tourist trips, each city has its itinerary with the corre
 
 # Installation 💻
  - Open Visual Studio Code terminal
- - git clone https://github.com/AlexisYusti18/AmazingEvents.git
+ - git clone https://github.com/AlexisYusti18/mytinerary-yusti.git
  - cd AmazingEvents
  - npm install
  - npm start
