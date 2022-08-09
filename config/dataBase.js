@@ -1,4 +1,4 @@
-const mongoose= require('mongoose') 
+const mongoose= require('mongoosea')  
 
 
 mongoose.connect(process.env.MONGO_URI,{

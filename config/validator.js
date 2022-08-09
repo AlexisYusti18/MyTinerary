@@ -1,4 +1,4 @@
-const joi= require('joi') //IMPORTO JOI
+const joi= require('joai') //IMPORTO JOI
 
 const validator= (req, res , next) =>{
     //console.log(req.body.userData);

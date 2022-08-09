@@ -1,4 +1,4 @@
-const passport=require('passport')
+const passport=require('passporta')
 const jwtStrategy= require('passport-jwt').Strategy //REQUIERO STRATEGY
 const extractJwt= require('passport-jwt').ExtractJwt//REQUIERO EXTRACTJWT
 const User= require('../models/user') //REQUIERO MI MODELO USUARIO

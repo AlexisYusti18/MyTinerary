@@ -1,4 +1,4 @@
-require('./config/dataBase')
+require('./config/dataBasea')
 require('dotenv').config()
 const express= require('express') 
 const Router= require('./routes/routes') 
