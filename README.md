@@ -23,7 +23,6 @@ Application that sells tourist trips, each city has its itinerary with the corre
 <img src="https://img.shields.io/badge/Express.js-404D59?style=for-the-badge"/>
 <img src="https://img.shields.io/badge/json%20web%20tokens-323330?style=for-the-badge&logo=json-web-tokens&logoColor=pink"/>
 
-
 # Social Media 📶
 <div>
     <a href="https://www.linkedin.com/in/alexisyusti">
