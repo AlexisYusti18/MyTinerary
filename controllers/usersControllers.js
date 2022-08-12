@@ -178,15 +178,15 @@ logIn: async (req, res)=>{
     }
     
 },
-        logOut: async (req,res)=>{
-            const email= req.body.closeUser
-            const user= await User.findOne({email})
-            await user.save()
-            res.json({
-                success:true,
-                message:'Deslogueado'
-            })
-        },
+logOut: async (req, res) => {
+    const email = req.body.closeUser
+    const user = await User.findOne({ email })
+    await user.save()
+    res.json({
+      success: true,
+      message: 'Come back soon'
+    })
+  },
 
         verifyEmail: async(req, res)=>{
             const {uniqueString} = req.params
