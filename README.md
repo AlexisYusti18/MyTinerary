@@ -1,4 +1,4 @@
-# [MYTINERARY](https://mytinerary-alexis-yusti.herokuapp.com/) | 
+# [MYTINERARY](https://mytinerary-frontend-ten.vercel.app/home) | 
 [![My-Tinerary-Google-Chrome-10-08-2022-15-21-34.png](https://i.postimg.cc/FzxrZHCS/My-Tinerary-Google-Chrome-10-08-2022-15-21-34.png)](https://mytinerary-alexis-yusti.herokuapp.com/)
 
 # Resume 📜
